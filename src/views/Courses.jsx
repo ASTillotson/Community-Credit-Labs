@@ -26,11 +26,13 @@ class Courses extends Component {
             <div className="course-content">
                 <div className="course-tabs">
                     <h3>Tabs
-                        <Button bsStyle="info" pullRight fill type="submit">
-                        + New Course
-                        </Button>
+                        
+                            <Button bsStyle="info" pullRight fill>
+                                + New Course
+                            </Button>
+                        
                     </h3>
-                    <hr/>
+                    <hr />
                 </div>
                 <Grid fluid>
                     <Row>
@@ -45,13 +47,13 @@ class Courses extends Component {
                                     <div className="ct-chart">
                                         <a
                                             className="img-holder switch-trigger"
-                                            // onClick={() => {
-                                            //     this.setState({ bgImage: imagine1 });
-                                            //     this.props.handleImageClick(imagine1);
-                                            // }}
+                                        // onClick={() => {
+                                        //     this.setState({ bgImage: imagine1 });
+                                        //     this.props.handleImageClick(imagine1);
+                                        // }}
                                         >
                                             <img src={course1} alt="..." />
-                                        </a> 
+                                        </a>
                                     </div>
                                 }
                             />
@@ -68,10 +70,10 @@ class Courses extends Component {
                                     <div className="ct-chart">
                                         <a
                                             className="img-holder switch-trigger"
-                                            // onClick={() => {
-                                            //     this.setState({ bgImage: imagine1 });
-                                            //     this.props.handleImageClick(imagine1);
-                                            // }}
+                                        // onClick={() => {
+                                        //     this.setState({ bgImage: imagine1 });
+                                        //     this.props.handleImageClick(imagine1);
+                                        // }}
                                         >
                                             <img src={course2} alt="..." />
                                         </a>

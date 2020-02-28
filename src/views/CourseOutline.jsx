@@ -18,7 +18,12 @@
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
+import Button from "components/CustomButton/CustomButton.jsx";
+import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 
+//import PopUp from "components/PopUp.jsx";
+
+import PopUp from "components/PopUp/PopUp.jsx";
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
@@ -46,6 +51,10 @@ class CourseOutline extends Component {
   //   }
   //   return legend;
   // }
+  state = {
+    isOpen: false
+  }
+
   render() {
     return (
       <div className="content">
@@ -56,38 +65,66 @@ class CourseOutline extends Component {
                 title="Section 1: Introduction"
                 content={
                   <div className="ct-chart">
+
                     <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 1"
-                        statsIconText="Add Image"
-                      />
+                      <Button onClick={(e) => this.setState({ isOpen: true })}>
+                        <Card
+                          title="Page 1"
+                          stats="Add Images"
+                          statsIcon="fa fa-plus" />
+                      </Button>
+
+                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+                        Add Content
+                      </PopUp>
                     </Col>
 
                     <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 2"
-                        statsIconText="Add Text"
-                      />
+                      <Button onClick={(e) => this.setState({ isOpen: true })}>
+                        <Card
+                          title="Page 2"
+                          stats="Add Images"
+                          statsIcon="fa fa-plus" />
+                      </Button>
+
+                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+                        Add Content
+                      </PopUp>
                     </Col>
 
                     <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 3"
-                        statsIconText="Add Text"
-                      />
+                      <Button onClick={(e) => this.setState({ isOpen: true })}>
+                        <Card
+                          title="Page 3"
+                          stats="Add Images"
+                          statsIcon="fa fa-plus" />
+                      </Button>
+
+                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+                        Add Content
+                      </PopUp>
                     </Col>
 
                     <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 4"
-                        statsIconText="Add Video"
-                      />
+                      <Button onClick={(e) => this.setState({ isOpen: true })}>
+                        <Card
+                          title="Page 4"
+                          stats="Add Images"
+                          statsIcon="fa fa-plus" />
+                      </Button>
+
+                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+                        Add Content
+                      </PopUp>
                     </Col>
+
+
                   </div>
                 }
               />
             </Col>
           </Row>
+
 
           <Row>
             <Col md={100}>
@@ -122,11 +159,20 @@ class CourseOutline extends Component {
                         statsIconText="Add Video"
                       />
                     </Col>
+
+                    <Col lg={2} sm={2}>
+
+                      <Button bsStyle="info"  >
+                        + Add Page
+                      </Button>
+                    </Col>
+
                   </div>
                 }
               />
             </Col>
           </Row>
+
 
           {/* <Row>
             <Col md={6}>

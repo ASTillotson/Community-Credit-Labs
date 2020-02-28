@@ -1,28 +1,27 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-export default class PopUp extends Component {
-  handleClick = () => {
-    this.props.toggle();
-  };
 
-  render() {
-    return (
-      <div className="modal">
-        <div className="modal_content">
-          <span className="close" onClick={this.handleClick}>
-            &times;
-          </span>
-          <form>
-            <h4>Enter Title</h4>
-            <label>
-              Title:
-              <input type="text" name="name" />
-            </label>
-            <br />
-            <input type="submit" />
-          </form>
-        </div>
-      </div>
-    );
-  }
+
+
+
+class PopUp extends Component {
+    render() {
+        let dialog = (
+            <div className="dialog" >
+                <button className="dialog-btn" onClick={this.props.onClose}> X </button>
+                {this.props.children}
+            </div>
+        );
+
+        if (!this.props.isOpen) {
+            dialog = null;
+        }
+        return (
+            <div>
+                {dialog}
+            </div>
+        );
+    }
 }
+
+export default PopUp;
