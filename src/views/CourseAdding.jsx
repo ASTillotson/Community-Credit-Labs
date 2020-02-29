@@ -70,45 +70,52 @@ class CourseAdding extends Component {
                                                 </Button>
                                                 <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
                                                     <div className="course-popup">
-                                                    <div className="course-title">
-                                                        <FormInputs
-                                                            ncols={["col-md-12"]}
-                                                            properties={[
-                                                                {
-                                                                    label: "Title Name:",
-                                                                    type: "text",
-                                                                    bsClass: "form-control",
-                                                                    placeholder: "Title Name"
-                                                                }
-                                                            ]}
-                                                        />
-                                                        
-                                                        <label>SELECT TEMPLATE</label>
-                                                        <hr />
-                                                        <Grid fluid>
-                                                            <Row>
-                                                                <Col md={2}>
-                                                                    <img src={template1}></img>
-                                                                </Col>
+                                                        <div className="course-title">
+                                                            <FormInputs
+                                                                ncols={["col-md-12"]}
+                                                                properties={[
+                                                                    {
+                                                                        label: "Title Name:",
+                                                                        type: "text",
+                                                                        bsClass: "form-control",
+                                                                        placeholder: "Title Name"
+                                                                    }
+                                                                ]}
+                                                            />
+                                                            <label>SELECT TEMPLATE</label>
+                                                            <hr />
+                                                            </div>
+                                                            <div className="course-templates">
+                                                            <Grid fluid>
+                                                                <Row>
+                                                                    <Col md={2}>
+                                                                        <img src={template1}></img>
+                                                                        <label>IMAGE WITH TEXT</label>
+                                                                    </Col>
 
-                                                                <Col md={2}>
-                                                                    <img src={template2}></img>
-                                                                </Col>
-                                                                <Col md={2}>
-                                                                    <img src={template3}></img>
-                                                                </Col>
-                                                                <Col md={2}>
-                                                                    <img src={template4}></img>
-                                                                </Col>
+                                                                    <Col md={2}>
+                                                                        <img src={template2}></img>
+                                                                        <label>FULLSCREEN VIDEO</label>
+                                                                    </Col>
+                                                                    <Col md={2}>
+                                                                        <img src={template3}></img>
+                                                                        <label>VIDEO WITH CAPTION</label>
+                                                                    </Col>
+                                                                    <Col md={2}>
+                                                                        <img src={template4}></img>
+                                                                        <label>FULLSCREEN IMAGE</label>
+                                                                    </Col>
 
-                                                                <Col md={2}>
-                                                                    <img src={template5}></img>
-                                                                </Col>
-                                                                <Col md={2}>
-                                                                    <img src={template6}></img>
-                                                                </Col>
-                                                            </Row>
-                                                        </Grid>
+                                                                    <Col md={2}>
+                                                                        <img src={template5}></img>
+                                                                        <label>TEXT</label>
+                                                                    </Col>
+                                                                    <Col md={2}>
+                                                                        <img src={template6}></img>
+                                                                        <label>NUMBER LIST</label>
+                                                                    </Col>
+                                                                </Row>
+                                                            </Grid>
                                                         </div>
                                                         <hr />
                                                         <Button bsStyle="info" pullRight fill >

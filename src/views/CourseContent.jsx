@@ -21,6 +21,7 @@ import {
 } from "variables/Variables.jsx";
 import PopUp from "components/PopUp/PopUp.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
+import upload from "assets/img/upload.png";
 
 class CourseContent extends Component {
     render() {
@@ -48,6 +49,7 @@ class CourseContent extends Component {
                                     <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
                                         Upload Video
                                     </Button>
+                                    {/* <img src={upload} width="100%" alt="..." /> */}
                                     {/* <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
                                         <div className="course-popup">
                                             <div className="course-title">

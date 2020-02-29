@@ -1,27 +1,15 @@
-/*!
-
-=========================================================
-* Light Bootstrap Dashboard React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 
-//import PopUp from "components/PopUp.jsx";
+//import Dialog from "components/dialog.jsx";
+import template1 from "assets/img/page1.png";
+import template2 from "assets/img/page2.png";
+import template3 from "assets/img/page3.png";
+import plus from "assets/img/plus.png";
+
 
 import PopUp from "components/PopUp/PopUp.jsx";
 import { Card } from "components/Card/Card.jsx";
@@ -59,6 +47,7 @@ class CourseOutline extends Component {
     return (
       <div className="content">
         <Grid fluid>
+
           <Row>
             <Col md={100}>
               <Card
@@ -66,57 +55,80 @@ class CourseOutline extends Component {
                 content={
                   <div className="ct-chart">
 
-                    <Col lg={2} sm={2}>
-                      <Button onClick={(e) => this.setState({ isOpen: true })}>
-                        <Card
-                          title="Page 1"
-                          stats="Add Images"
-                          statsIcon="fa fa-plus" />
-                      </Button>
+                    <Col md={3}>
+                      <Card
+                        title="Page 1"
+                        content={
+                          <div>
+                            <img src={template1} width="100%" alt="..." />
+                            <div>
 
-                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                        Add Content
-                      </PopUp>
+                            </div>
+                          </div>
+                        } />
                     </Col>
 
-                    <Col lg={2} sm={2}>
-                      <Button onClick={(e) => this.setState({ isOpen: true })}>
-                        <Card
-                          title="Page 2"
-                          stats="Add Images"
-                          statsIcon="fa fa-plus" />
-                      </Button>
 
-                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                        Add Content
-                      </PopUp>
+                    <Col md={3}>
+                      <Card
+                        title="Page 2"
+                        content={
+                          <div>
+                            <img src={template2} width="100%" alt="..." />
+
+                          </div>
+                        } />
                     </Col>
 
-                    <Col lg={2} sm={2}>
-                      <Button onClick={(e) => this.setState({ isOpen: true })}>
-                        <Card
-                          title="Page 3"
-                          stats="Add Images"
-                          statsIcon="fa fa-plus" />
-                      </Button>
 
-                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                        Add Content
-                      </PopUp>
+
+
+                    <Col md={3}>
+                      <Card
+                        title="Page 3"
+                        content={
+                          <div>
+                            <img src={template3} width="100%" alt="..." />
+
+                          </div>
+                        } />
                     </Col>
 
-                    <Col lg={2} sm={2}>
-                      <Button onClick={(e) => this.setState({ isOpen: true })}>
-                        <Card
-                          title="Page 4"
-                          stats="Add Images"
-                          statsIcon="fa fa-plus" />
-                      </Button>
+                    <Col md={3}>
+                      <Card
+                        title="Page 4"
+                        stats="Fullscreen Image "
 
-                      <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                        Add Content
-                      </PopUp>
+                        content={
+                          <div>
+
+                            <Button
+                              a href="/admin/coursemedia"
+                              className='btn-simple-add' >
+                              <img src={plus} width="20px" height="20px" alt="..." />
+
+                            </Button>
+
+                          </div>
+                        } />
                     </Col>
+
+
+
+
+                    {/* Save for later button dialog */}
+                    {/* <Col lg={2} sm={2}>
+          <Button onClick={(e) => this.setState({ isOpen: true })}>
+            <Card
+              title="Page 4"
+              stats="Add Images"
+              statsIcon="fa fa-plus" />
+          </Button>
+
+          <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+            Add Content
+            </PopUp>
+        </Col> */}
 
 
                   </div>
@@ -132,40 +144,66 @@ class CourseOutline extends Component {
                 title="Section 2: Preparation"
                 content={
                   <div className="ct-chart">
-                    <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 1"
-                        statsIconText="Add Image"
-                      />
+
+                    <Col md={3}>
+                      <Card
+                        title="Page 5"
+                        stats="Fullscreen Video "
+
+                        content={
+                          <div>
+
+                            <Button
+                              a href="/admin/coursemedia"
+                              className='btn-simple-add' >
+                              <img src={plus} width="20px" height="20px" alt="..." />
+
+                            </Button>
+
+                          </div>
+                        } />
                     </Col>
 
-                    <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 2"
-                        statsIconText="Add Text"
-                      />
+
+                    <Col md={3}>
+                      <Card
+                        title="Page 6"
+                        stats="Image with text "
+
+                        content={
+                          <div>
+
+                            <Button
+                              a href="/admin/coursemedia"
+                              className='btn-simple-add' >
+                              <img src={plus} width="20px" height="20px" alt="..." />
+
+                            </Button>
+
+                          </div>
+                        } />
                     </Col>
 
-                    <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 3"
-                        statsIconText="Add Text"
-                      />
+                    <Col md={3}>
+                      <Card
+                        title="Page 7"
+                        stats="Full Video"
+
+                        content={
+                          <div>
+
+                            <Button
+                              a href="/admin/coursemedia"
+                              className='btn-simple-add' >
+                              <img src={plus} width="20px" height="20px" alt="..." />
+
+                            </Button>
+
+                          </div>
+                        } />
                     </Col>
 
-                    <Col lg={2} sm={2}>
-                      <StatsCard
-                        statsText="Page 4"
-                        statsIconText="Add Video"
-                      />
-                    </Col>
 
-                    <Col lg={2} sm={2}>
-
-                      <Button bsStyle="info"  >
-                        + Add Page
-                      </Button>
-                    </Col>
 
                   </div>
                 }
@@ -173,48 +211,63 @@ class CourseOutline extends Component {
             </Col>
           </Row>
 
+          <h3>
+            <Button bsStyle="info" pullRight fill>
+              Publish
+            </Button>
+            <Button bsStyle="info" pullRight fill>
+              Preview
+            </Button>
+            <Button bsStyle="info" pullRight fill>
+              Save
+            </Button>
+
+          </h3>
+
 
           {/* <Row>
-            <Col md={6}>
-              <Card
-                id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
-            </Col>
+  <Col md={6}>
+    <Card
+      id="chartActivity"
+      title="2014 Sales"
+      category="All products including Taxes"
+      stats="Data information certified"
+      statsIcon="fa fa-check"
+      content={
+        <div className="ct-chart">
+          <ChartistGraph
+            data={dataBar}
+            type="Bar"
+            options={optionsBar}
+            responsiveOptions={responsiveBar}
+          />
+        </div>
+      }
+      legend={
+        <div className="legend">{this.createLegend(legendBar)}</div>
+      }
+    />
+  </Col>
 
-            <Col md={6}>
-              <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
-                statsIcon="fa fa-history"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
-              />
-            </Col>
-          </Row> */}
+  <Col md={6}>
+    <Card
+      title="Tasks"
+      category="Backend development"
+      stats="Updated 3 minutes ago"
+      statsIcon="fa fa-history"
+      content={
+        <div className="table-full-width">
+          <table className="table">
+            <Tasks />
+          </table>
+        </div>
+      }
+    />
+  </Col>
+</Row> */}
         </Grid>
+
+
       </div >
     );
   }

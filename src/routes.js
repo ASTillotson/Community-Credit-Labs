@@ -28,6 +28,7 @@ import CoursesAdding from "views/CourseAdding.jsx";
 import Popup from "components/PopUp/PopUp.jsx";
 import CourseOutline from "views/CourseOutline.jsx";
 import CourseContent from "views/CourseContent.jsx";
+import CourseMedia from "views/CourseMedia.jsx";
 
 const dashboardRoutes = [
   {
@@ -66,19 +67,19 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
+    path: "/coursemedia",
+    name: "Course Media",
+    icon: "pe-7s-map-marker",
+    component: CourseMedia,
+    layout: "/admin"
+  },
+  {
     path: "/coursecontent",
     name: "Course Content",
     icon: "pe-7s-map-marker",
     component: CourseContent,
     layout: "/admin"
   },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "pe-7s-bell",
-  //   component: Notifications,
-  //   layout: "/admin"
-  // },
 ];
 
 export default dashboardRoutes;

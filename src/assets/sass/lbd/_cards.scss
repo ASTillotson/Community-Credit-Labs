@@ -35,7 +35,6 @@
 }
 
 .course-popup .btn{
-    
     margin-bottom: 10px;
     float:right;
 }
@@ -45,11 +44,15 @@
     margin-top: 0;
 }
 
-.course-title img{
+.course-templates img{
     width:150px;
     height:120px;
     padding-right:10px;
-    border: 0.3px solid #1A8A99;
+    // border: 0.3px solid #1A8A99;
+}
+.course-templates label{
+    text-align: center;
+    width:100%;
 }
 .container{
     width:100%;
