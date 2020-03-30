@@ -3,7 +3,7 @@ import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-
+import { Link } from 'react-router-dom';
 //import Dialog from "components/dialog.jsx";
 import template1 from "assets/img/page1.png";
 import template2 from "assets/img/page2.png";
@@ -49,33 +49,40 @@ class CourseOutline extends Component {
         <Grid fluid>
 
           <Row>
-            <Col md={100}>
+            <Col md={100} className="section-card">
               <Card
                 title="Section 1: Introduction"
                 content={
-                  <div className="ct-chart">
-
-                    <Col md={3}>
+                  <div className="outline-card">
+                    <Col md={4}>
                       <Card
-                        title="Page 1"
+                        category="Page 1"
+                        stats="Fullscreen Video "
                         content={
-                          <div>
-                            <img src={template1} width="100%" alt="..." />
-                            <div>
-
-                            </div>
+                          <div className="outline-content">
+                            {/* <img src={template1} width="100%" alt="..." /> */}
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>
 
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <Card
-                        title="Page 2"
+                        category="Page 2"
+                        stats="Fullscreen Video "
                         content={
-                          <div>
-                            <img src={template2} width="100%" alt="..." />
-
+                          <div className="outline-content">
+                            {/* <img src={template2} width="100%" alt="..." /> */}
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>
@@ -83,32 +90,34 @@ class CourseOutline extends Component {
 
 
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <Card
-                        title="Page 3"
+                        category="Page 3"
+                        stats="Fullscreen Video "
                         content={
-                          <div>
-                            <img src={template3} width="100%" alt="..." />
-
+                          <div className="outline-content">
+                            {/* <img src={template3} width="100%" alt="..." /> */}
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <Card
-                        title="Page 4"
-                        stats="Fullscreen Image "
+                        category="Page 4"
+                        stats="Fullscreen Video"
 
                         content={
-                          <div>
-
-                            <Button
-                              a href="/admin/coursemedia"
-                              className='btn-simple-add' >
-                              <img src={plus} width="20px" height="20px" alt="..." />
-
-                            </Button>
-
+                          <div className="outline-content">
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>
@@ -139,66 +148,57 @@ class CourseOutline extends Component {
 
 
           <Row>
-            <Col md={100}>
+            <Col md={100} className="section-card">
               <Card
                 title="Section 2: Preparation"
                 content={
-                  <div className="ct-chart">
+                  <div className="outline-card">
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <Card
-                        title="Page 5"
+                        category="Page 5"
                         stats="Fullscreen Video "
 
                         content={
-                          <div>
-
-                            <Button
-                              a href="/admin/coursemedia"
-                              className='btn-simple-add' >
-                              <img src={plus} width="20px" height="20px" alt="..." />
-
-                            </Button>
-
+                          <div className="outline-content">
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>
 
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <Card
-                        title="Page 6"
+                        category="Page 6"
                         stats="Image with text "
 
                         content={
-                          <div>
-
-                            <Button
-                              a href="/admin/coursemedia"
-                              className='btn-simple-add' >
-                              <img src={plus} width="20px" height="20px" alt="..." />
-
-                            </Button>
-
+                          <div className="outline-content">
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>
 
-                    <Col md={3}>
+                    <Col md={4}>
                       <Card
-                        title="Page 7"
+                        category="Page 7"
                         stats="Full Video"
 
                         content={
-                          <div>
-
-                            <Button
-                              a href="/admin/coursemedia"
-                              className='btn-simple-add' >
-                              <img src={plus} width="20px" height="20px" alt="..." />
-
-                            </Button>
-
+                          <div className="outline-content">
+                            <Link to='/admin/coursecontent'>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>
                           </div>
                         } />
                     </Col>

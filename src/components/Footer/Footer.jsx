@@ -39,12 +39,10 @@ class Footer extends Component {
               </li>
             </ul>
           </nav> */}
-          <p className="copyright pull-right">
-            &copy; {new Date().getFullYear()}{" "}
-            <a href="http://www.communitycreditlab.org">
-              Community Credit Lab
-            </a>
-            , made with love for a better web
+          <p className="copyright pull-left">
+            &copy;
+            Community Credit Lab, 
+            {new Date().getFullYear()}{" "}
           </p>
         </Grid>
       </footer>

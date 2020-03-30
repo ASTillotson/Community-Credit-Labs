@@ -16,16 +16,9 @@
 
 */
 import Dashboard from "views/Dashboard.jsx";
-import UserProfile from "views/UserProfile.jsx";
 import TableList from "views/TableList.jsx";
-import Typography from "views/Typography.jsx";
-import Icons from "views/Icons.jsx";
-import Maps from "views/Maps.jsx";
-import Notifications from "views/Notifications.jsx";
-import Upgrade from "views/Upgrade.jsx";
 import Courses from "views/Courses.jsx";
 import CoursesAdding from "views/CourseAdding.jsx";
-import Popup from "components/PopUp/PopUp.jsx";
 import CourseOutline from "views/CourseOutline.jsx";
 import CourseContent from "views/CourseContent.jsx";
 import CourseMedia from "views/CourseMedia.jsx";
@@ -57,28 +50,31 @@ const dashboardRoutes = [
     name: "Course Adding",
     icon: "pe-7s-news-paper",
     component: CoursesAdding,
-    layout: "/admin"
+    layout: "/admin",
+    disappear: true
   },
   {
     path: "/courseoutline",
     name: "Course Outline",
     icon: "pe-7s-science",
     component: CourseOutline,
-    layout: "/admin"
+    layout: "/admin",
+    disappear: true
   },
-  {
-    path: "/coursemedia",
-    name: "Course Media",
-    icon: "pe-7s-map-marker",
-    component: CourseMedia,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/coursemedia",
+  //   name: "Course Media",
+  //   icon: "pe-7s-map-marker",
+  //   component: CourseMedia,
+  //   layout: "/admin"
+  // },
   {
     path: "/coursecontent",
     name: "Course Content",
     icon: "pe-7s-map-marker",
     component: CourseContent,
-    layout: "/admin"
+    layout: "/admin",
+    disappear: true
   },
 ];
 

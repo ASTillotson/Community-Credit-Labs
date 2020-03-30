@@ -7,6 +7,9 @@ import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
+import { Link } from 'react-router-dom';
+import next from "assets/img/next.png";
+import previous from "assets/img/previous.png";
 import {
     dataPie,
     legendPie,
@@ -28,23 +31,29 @@ class CourseContent extends Component {
         return (
             <div className="course-content">
                 <div className="course-tabs">
-                    <h3>Section 1: Introduction | Page 1
-                        <Button bsStyle="info" pullRight fill type="submit">
-                            BACK TO OUTLINE
+                    <h4>Section 1: Introduction | Page 1
+                    <Link to='/admin/courseoutline'>
+                            <Button bsStyle="info" pullRight fill type="submit">
+                                BACK TO OUTLINE
                         </Button>
-                    </h3>
+                        </Link>
+                    </h4>
                     <hr />
                 </div>
                 <div className="container">
                     <Grid fluid>
                         <Row>
-                            <Col md={2}>
-                                <Button bsStyle="info" type="submit">
-                                    Previous
-                                </Button>
+                            <Col md={1}>
+                                <div className="previous">
+                                <Link to='/admin/coursecontent'>
+                                        <Button className='btn-previous' >
+                                            <img src={previous} width="20px" height="20px" alt="..." />
+                                        </Button>
+                                    </Link>
+                                </div>
                             </Col>
 
-                            <Col md={8}>
+                            <Col md={10}>
                                 <div className="container-window">
                                     <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
                                         Upload Video
@@ -75,10 +84,14 @@ class CourseContent extends Component {
                                 </div>
                             </Col>
 
-                            <Col md={2}>
-                                <Button bsStyle="info" type="submit">
-                                    Next
-                                </Button>
+                            <Col md={1}>
+                                <div className="next">
+                                    <Link to='/admin/coursecontent'>
+                                        <Button className='btn-next' >
+                                            <img src={next} width="20px" height="20px" alt="..." />
+                                        </Button>
+                                    </Link>
+                                </div>
                             </Col>
                         </Row>
                     </Grid>

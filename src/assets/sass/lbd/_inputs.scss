@@ -1,3 +1,6 @@
+.form-group{
+    display: flex;
+}
 .form-control::-moz-placeholder{
    @include placeholder($medium-gray,1);
 }

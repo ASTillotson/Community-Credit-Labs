@@ -1,35 +1,23 @@
 import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
+import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from "react-bootstrap";
 import Tabs from "react-bootstrap/lib/Tabs";
 import Tab from "react-bootstrap/lib/Tab";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
-import { StatsCard } from "components/StatsCard/StatsCard.jsx";
-import { Tasks } from "components/Tasks/Tasks.jsx";
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
-import {
-    dataPie,
-    legendPie,
-    dataSales,
-    optionsSales,
-    responsiveSales,
-    legendSales,
-    dataBar,
-    optionsBar,
-    responsiveBar,
-    legendBar
-} from "variables/Variables.jsx";
 
 class Courses extends Component {
 
     render() {
         return (
             <div className="course-content">
-                <Button bsStyle="info" pullRight fill type="submit">
-                    + New Course
-                </Button>
+                <Link to='/admin/addcourse'>
+                    <Button  bsStyle="info" pullRight fill type="submit">
+                        + New Course
+                    </Button>
+                </Link>
                 <div className="course-tabs">
                     <Tabs defaultActiveKey="Courses">
                         <Tab eventKey="Courses" title="Active Courses">

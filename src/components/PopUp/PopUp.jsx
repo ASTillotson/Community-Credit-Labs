@@ -17,7 +17,7 @@ class PopUp extends Component {
             dialog = null;
         }
         return (
-            <div>
+            <div className="pop-div">
                 {dialog}
             </div>
         );
