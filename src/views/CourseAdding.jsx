@@ -90,50 +90,52 @@ class CourseAdding extends Component {
                                                             <Grid fluid>
                                                                 <Row>
                                                                     <Col md={2}>
-                                                                        
-                                                                            <a><img src={template1}></img></a>
-                                                                            <label>IMAGE WITH TEXT</label>
-                                                                        
+
+                                                                        <a><img src={template1}></img></a>
+                                                                        <label>IMAGE WITH TEXT</label>
+
                                                                     </Col>
 
                                                                     <Col md={2}>
-                                                                        
-                                                                            <a><img src={template2}></img></a>
-                                                                            <label>FULLSCREEN VIDEO</label>
-                                                                        
+
+                                                                        <a><img src={template2}></img></a>
+                                                                        <label>FULLSCREEN VIDEO</label>
+
                                                                     </Col>
                                                                     <Col md={2}>
-                                                                        
-                                                                            <a><img src={template3}></img></a>
-                                                                            <label>VIDEO WITH CAPTION</label>
-                                                                        
+
+                                                                        <a><img src={template3}></img></a>
+                                                                        <label>VIDEO WITH CAPTION</label>
+
                                                                     </Col>
                                                                     <Col md={2}>
-                                                                        
-                                                                            <a><img src={template4}></img></a>
-                                                                            <label>FULLSCREEN IMAGE</label>
-                                                                        
+
+                                                                        <a><img src={template4}></img></a>
+                                                                        <label>FULLSCREEN IMAGE</label>
+
                                                                     </Col>
 
                                                                     <Col md={2}>
-                                                                        
-                                                                            <a><img src={template5}></img></a>
-                                                                            <label>TEXT</label>
-                                                                        
+
+                                                                        <a><img src={template5}></img></a>
+                                                                        <label>TEXT</label>
+
                                                                     </Col>
                                                                     <Col md={2}>
-                                                                        
-                                                                            <a><img src={template6}></img></a>
-                                                                            <label>NUMBER LIST</label>
-                                                                        
+
+                                                                        <a><img src={template6}></img></a>
+                                                                        <label>NUMBER LIST</label>
+
                                                                     </Col>
                                                                 </Row>
                                                             </Grid>
                                                         </div>
                                                         <hr />
-                                                        <Button bsStyle="info" pullRight fill >
-                                                            + ADD PAGE
-                                                        </Button>
+                                                        <Link to='/admin/addcourse'>
+                                                            <Button bsStyle="info" pullRight fill >
+                                                                + ADD PAGE
+                                                            </Button>
+                                                        </Link>
                                                     </div>
                                                 </PopUp>
                                             </div>

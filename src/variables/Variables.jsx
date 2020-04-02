@@ -266,14 +266,14 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
+const thArray = ["Name", "User ID", "Group", "Phone Number", "Email Address"];
 const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
+  ["Dakota Rice", "DEV63016762", "CodingDojo", "(618)312-3065", "rsnyder@blogspan.gov"],
+  ["Minerva Hooper", "DEV08801335", "JFS", "(648)993-5934", "belliott@youspan.mil"]
+  // ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
+  // ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
+  // ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
+  // ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
 ];
 
 //
@@ -497,7 +497,7 @@ var dataPie = {
   series: [40, 20, 40]
 };
 var legendPie = {
-  names: ["Open", "Bounce", "Unsubscribe"],
+  names: ["> 90%", "> 70%", "< 60%"],
   types: ["info", "danger", "warning"]
 };
 

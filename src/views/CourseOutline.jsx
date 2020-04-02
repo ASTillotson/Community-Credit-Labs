@@ -212,16 +212,21 @@ class CourseOutline extends Component {
           </Row>
 
           <h3>
-            <Button bsStyle="info" pullRight fill>
-              Publish
+            <Link to='/admin/courses'>
+              <Button bsStyle="info" pullRight fill>
+                Publish
             </Button>
-            <Button bsStyle="info" pullRight fill>
-              Preview
+            </Link>
+            <Link to='/admin/courses'>
+              <Button bsStyle="info" pullRight fill>
+                Preview
             </Button>
-            <Button bsStyle="info" pullRight fill>
-              Save
+            </Link>
+            <Link to='/admin/courses'>
+              <Button bsStyle="info" pullRight fill>
+                Save
             </Button>
-
+            </Link>
           </h3>
 
 
