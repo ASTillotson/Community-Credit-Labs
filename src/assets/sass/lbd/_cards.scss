@@ -1,3 +1,71 @@
+
+.course-content .video-cap{
+    display: grid;
+    padding-left: 100px;
+}
+.text-input{
+    width: 90%;
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    // overflow-wrap: break-word;
+    // word-wrap: break-word;
+    // hyphens: auto;
+}
+.video-uploader button, .image-uploader button{
+    margin-top: -7px;
+    margin-right: -25px;
+}
+.uploader-title{
+    margin-top: -35px;
+    font-size: 18px;
+}
+.uploader p{
+    font-size: 11px;
+    color: #a9a9a9;
+    margin-left: -15px;
+}
+.uploader{
+    box-shadow:2px 3px 5px #999;
+        width: 40%;
+        // maxWidth: '100%',
+        margin: 0 auto;
+        position: fixed;
+        left: 60%;
+        top: 30%;
+        transform: translate(-50%, 50%);
+        z-Index: 999;
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        // max-height:500px;
+}
+.uploader-btn{
+    margin-bottom: 15px;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    align-self: flex-end;
+}
+.uploader-title label{
+    margin-top: 10px;
+    border-bottom: 2px solid #1A8A9A;
+    padding-bottom: 10px;
+    color: #605E5E;
+    font-weight: bold;
+    width: max-content;
+    font-size: 13px;
+}
+.uploader-title hr{
+    margin-top: -5px;
+}
 .css-2b097c-container {
     margin-bottom: 10px;
 }
@@ -7,7 +75,7 @@
     font-weight: 100;
     width: 100px;
 }
-.user-popup hr{
+.user-popup hr, .video-uploader hr{
     border-color: rgb(206, 206, 206);
 }
 .user-popup h5{

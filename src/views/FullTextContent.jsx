@@ -23,10 +23,28 @@ import {
     legendBar
 } from "variables/Variables.jsx";
 import PopUp from "components/PopUp/PopUp.jsx";
+import Uploader from "components/PopUp/Uploader.jsx"
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
-class CourseContent extends Component {
+class FullTextContent extends Component {
+    state = {
+        isOpen: false,
+        seen: false,
+        selectedFile: null
+    };
+    togglePop = () => {
+        this.setState({
+            seen: !this.state.seen
+        });
+    };
+    fileSelectedHandler = event => {
+        this.setState({ selectedFile: event.target.files[0] });
+    };
+
+    fileUploaderHandler = () => {
+        //upload to database? 
+    }
     render() {
         return (
             <div className="course-content">
@@ -35,7 +53,7 @@ class CourseContent extends Component {
                     <Link to='/admin/courseoutline'>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO OUTLINE
-                        </Button>
+                            </Button>
                         </Link>
                     </h4>
                     <hr />
@@ -45,7 +63,7 @@ class CourseContent extends Component {
                         <Row>
                             <Col md={1}>
                                 <div className="previous">
-                                <Link to='/admin/coursecontent'>
+                                    <Link to='/admin/fullimagecontent'>
                                         <Button className='btn-previous' >
                                             <img src={previous} width="20px" height="20px" alt="..." />
                                         </Button>
@@ -55,38 +73,23 @@ class CourseContent extends Component {
 
                             <Col md={10}>
                                 <div className="container-window">
-                                    <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
-                                        Upload Video
-                                    </Button>
-                                    {/* <img src={upload} width="100%" alt="..." /> */}
-                                    {/* <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                                        <div className="course-popup">
-                                            <div className="course-title">
-                                                <label>UPLOAD VIDEO</label>
-                                                <hr />
-                                                <FormInputs
-                                                    ncols={["col-md-12"]}
-                                                    properties={[
-                                                        {
-                                                            type: "text",
-                                                            bsClass: "form-control",
-                                                        }
-                                                    ]}
-                                                />
-                                                <label>NOTE: All files should be less than 4.0 GB</label>
-                                                <hr />
-                                            </div>
-                                            <Button bsStyle="info" pullRight fill >
-                                                UPLOAD
-                                            </Button>
-                                        </div>
-                                    </PopUp> */}
+                                    {/* <FormInputs
+                                        ncols={["col-md-12"]}
+                                        properties={[
+                                            {
+                                                type: "text",
+                                                bsClass: "form-control",
+                                                placeholder: "Enter Text"
+                                            }
+                                        ]}
+                                    /> */}
+                                    <input className="text-input" placeholder="Enter Text Here"></input>
                                 </div>
                             </Col>
 
                             <Col md={1}>
                                 <div className="next">
-                                    <Link to='/admin/coursecontent'>
+                                    <Link to='/admin/imagecapcontent'>
                                         <Button className='btn-next' >
                                             <img src={next} width="20px" height="20px" alt="..." />
                                         </Button>
@@ -102,4 +105,4 @@ class CourseContent extends Component {
         );
     }
 }
-export default CourseContent;
+export default FullTextContent;

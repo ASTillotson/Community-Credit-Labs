@@ -20,8 +20,12 @@ import TableList from "views/TableList.jsx";
 import Courses from "views/Courses.jsx";
 import CoursesAdding from "views/CourseAdding.jsx";
 import CourseOutline from "views/CourseOutline.jsx";
-import CourseContent from "views/CourseContent.jsx";
+import FullVideoContent from "views/FullVideoContent.jsx";
 import CourseMedia from "views/CourseMedia.jsx";
+import FullImageContent from "views/FullImageContent.jsx";
+import FullTextContent from "views/FullTextContent.jsx";
+import VideoCapContent from "views/VideoCapContent.jsx";
+import ImageCapContent from "views/ImageCapContent.jsx";
 
 const dashboardRoutes = [
   {
@@ -69,10 +73,42 @@ const dashboardRoutes = [
   //   layout: "/admin"
   // },
   {
-    path: "/coursecontent",
+    path: "/fullvideocontent",
     name: "Course Content",
     icon: "pe-7s-map-marker",
-    component: CourseContent,
+    component: FullVideoContent,
+    layout: "/admin",
+    disappear: true
+  },
+  {
+    path: "/fullimagecontent",
+    name: "Course Content",
+    icon: "pe-7s-map-marker",
+    component: FullImageContent,
+    layout: "/admin",
+    disappear: true
+  },
+  {
+    path: "/fulltextcontent",
+    name: "Course Content",
+    icon: "pe-7s-map-marker",
+    component: FullTextContent,
+    layout: "/admin",
+    disappear: true
+  },
+  {
+    path: "/videocapcontent",
+    name: "Course Content",
+    icon: "pe-7s-map-marker",
+    component: VideoCapContent,
+    layout: "/admin",
+    disappear: true
+  },
+  {
+    path: "/imagecapcontent",
+    name: "Course Content",
+    icon: "pe-7s-map-marker",
+    component: ImageCapContent,
     layout: "/admin",
     disappear: true
   },

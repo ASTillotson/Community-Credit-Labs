@@ -29,16 +29,12 @@ import Section from "components/Section/Section.jsx";
 class CourseAdding extends Component {
     constructor() {
         super();
-        // this.state = {showSection: false }
         this.state = {
             showSection: 1,
             optionsInSections: [],
         }
     }
     _showSection = () => {
-        // this.setState({
-        //     showSection: true
-        // });
         this.setState({showSection: this.state.showSection + 1})
     }
     handlePageAdded = (i, selectedOption) => {

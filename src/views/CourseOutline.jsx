@@ -45,7 +45,7 @@ class CourseOutline extends Component {
             stats={o}
             content={
               <div className="outline-content">
-                <Link to='/admin/coursecontent'>
+                <Link to='/admin/fullvideocontent'>
                   <Button className='btn-simple-add' >
                     <img src={plus} width="20px" height="20px" alt="..." />
                   </Button>

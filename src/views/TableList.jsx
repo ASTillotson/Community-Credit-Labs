@@ -98,17 +98,6 @@ class TableList extends Component {
               <hr />
               <div className="user-info">
                 <form>
-                  {/* <FormInputs
-                    ncols={["col-md-12"]}
-                    properties={[
-                      {
-                        label: "Group",
-                        type: "text",
-                        bsClass: "form-control",
-                        placeholder: "Group"
-                      }
-                    ]}
-                  /> */}
                   <Row>
                     <Col md={1}>
                       <label>Group</label>
@@ -139,7 +128,7 @@ class TableList extends Component {
                     properties={[
                       {
                         label: "Email Address",
-                        type: "text",
+                        type: "email",
                         bsClass: "form-control",
                         placeholder: "Email Address",
                         value: this.state.email,
@@ -147,7 +136,7 @@ class TableList extends Component {
                       },
                       {
                         label: "Phone",
-                        type: "text",
+                        type: "tel",
                         bsClass: "form-control",
                         placeholder: "Phone number",
                         value: this.state.phone,
