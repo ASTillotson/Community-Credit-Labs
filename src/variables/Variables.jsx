@@ -266,15 +266,31 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["Name", "User ID", "Group", "Phone Number", "Email Address"];
+const thArray = ["Name", "Group", "Phone Number", "Email Address"];
 const tdArray = [
-  ["Dakota Rice", "DEV63016762", "CodingDojo", "(618)312-3065", "rsnyder@blogspan.gov"],
-  ["Minerva Hooper", "DEV08801335", "JFS", "(648)993-5934", "belliott@youspan.mil"]
-  // ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  // ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  // ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  // ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
+  ["Dakota Rice", "CodingDojo", "(618)312-3065", "rsnyder@blogspan.gov"],
+  ["Minerva Hooper", "JFS", "(648)993-5934", "belliott@youspan.mil"],
+  ["Sage Rodriguez", "JFS", "(355)459-3399", "sage@gmail.com"],
+  ["Philip Chaney", "CodingDojo", "(205)333-5690", "chaney@gmail.com"],
+  ["Doris Greene", "JFS", "(425)670-5421", "greene@gmail.com"],
+  ["Mason Porter", "CodingDojo", "(625)374-8845", "porter@gmail.com"]
 ];
+
+const recentItem = tdArray.length - 1; // for recent sign up
+const recentArray = [];
+recentArray.push(tdArray[recentItem], tdArray[recentItem - 1], tdArray[recentItem - 2]);
+
+const thCommentArr = ["Name", "Comment"];
+const tdCommentArr = [
+  ["Dakota Rice", "Clear structure and instruction"], 
+  ["Minerva Hooper", "Easy to follow"],
+  ["Sage Rodriguez", "Easy to understand"]
+];
+const thInternalArr = ["Name", "Phone Number", "Email Address"];
+const tdInternalArr = [
+  ["Ryan Glasgo", "(xxx)xxx-xxxx", "xxxx@xxxx.com"],
+  ["Sandhya Nakhasi", "(xxx)xxx-xxxx", "xxxx@xxxx.com"]
+]
 
 //
 // //
@@ -602,6 +618,11 @@ module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,
   tdArray, // For tables (TableList view)
+  thCommentArr,
+  tdCommentArr,
+  thInternalArr,
+  tdInternalArr,
+  recentArray,
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,

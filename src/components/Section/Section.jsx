@@ -37,12 +37,11 @@ const templates = [
         label: "NUMBER LIST",
     },
 ]
-class CourseAdding extends Component {  
+class Section extends Component {  
     state = {
         isOpen: false,
         seen: false,
         selectedOption: null,
-        selectedOptions: [],
     };
 
     handleChange = selectedOption => {
@@ -51,8 +50,10 @@ class CourseAdding extends Component {
     handleAddPage = () => {
         const state = this.state;
         if (state.selectedOption) {
+            if (this.props.onPageAdded) {
+                this.props.onPageAdded(state.selectedOption);
+            }
             this.setState({
-                selectedOptions: state.selectedOptions.concat([state.selectedOption]),
                 isOpen: false,
                 selectedOption : null,
             });
@@ -65,7 +66,7 @@ class CourseAdding extends Component {
         });
     };
     render() {
-        const renderSelected = this.state.selectedOptions.map((t, index) =>(
+        const renderSelected = this.props.selectedOptions.map((t, index) =>(
             <Col md={3} key={t.label}>
                 <p>{`Page ${index+1}`}</p>
                 <img className="templates-img" src={t.imgSrc}></img>
@@ -144,4 +145,4 @@ class CourseAdding extends Component {
         )
     }
 }
-export default CourseAdding;
+export default Section;

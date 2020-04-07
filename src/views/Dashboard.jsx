@@ -7,6 +7,10 @@ import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
+import { recentArray } from "variables/Variables.jsx";
+import { thCommentArr, tdCommentArr } from "variables/Variables.jsx";
+import course from "assets/img/book.png";
+import user from "assets/img/user.png";
 import {
   dataPie,
   legendPie,
@@ -91,52 +95,52 @@ class Dashboard extends Component {
                   </div>
                 }
                 content={
-                  <div className="ct-chart">
+                  <div className="ct-chart recent-courses">
                     <Grid fluid>
                       <Row>
                         <Col md={4}>
                           <Card
                             id="chartActivity"
-                            title="Course1"
+                            title="CodingDojo"
                             category="Published: YYYY-MM-DD"
                             stats="Active"
                             statsIcon="fa fa-check"
-                          // content={
-                          //   <div className="ct-chart">
-                          //     <a
-                          //       className="img-holder switch-trigger"
-                          //     // onClick={() => {
-                          //     //     this.setState({ bgImage: imagine1 });
-                          //     //     this.props.handleImageClick(imagine1);
-                          //     // }}
-                          //     >
-                          //       <img src={course1} alt="..." />
-                          //     </a>
-                          //   </div>
-                          // }
+                            content={
+                              <div className="recent-img">
+                                <a
+                                  className="img-holder switch-trigger"
+                                // onClick={() => {
+                                //     this.setState({ bgImage: imagine1 });
+                                //     this.props.handleImageClick(imagine1);
+                                // }}
+                                >
+                                  <img src={course1} alt="..." />
+                                </a>
+                              </div>
+                            }
                           />
                         </Col>
 
                         <Col md={4}>
                           <Card
                             id="chartActivity"
-                            title="Course2"
+                            title="JFS"
                             category="Published: YYYY-MM-DD"
                             stats="Active"
                             statsIcon="fa fa-check"
-                          // content={
-                          //   <div className="ct-chart">
-                          //     <a
-                          //       className="img-holder switch-trigger"
-                          //     // onClick={() => {
-                          //     //     this.setState({ bgImage: imagine1 });
-                          //     //     this.props.handleImageClick(imagine1);
-                          //     // }}
-                          //     >
-                          //       <img src={course2} alt="..." />
-                          //     </a>
-                          //   </div>
-                          // }
+                            content={
+                              <div className="recent-img">
+                                <a
+                                  className="img-holder switch-trigger"
+                                // onClick={() => {
+                                //     this.setState({ bgImage: imagine1 });
+                                //     this.props.handleImageClick(imagine1);
+                                // }}
+                                >
+                                  <img src={course2} alt="..." />
+                                </a>
+                              </div>
+                            }
                           />
                         </Col>
                         <Col md={4}>
@@ -146,19 +150,6 @@ class Dashboard extends Component {
                             category="Published: YYYY-MM-DD"
                             stats="Active"
                             statsIcon="fa fa-check"
-                          // content={
-                          //   <div className="ct-chart">
-                          //     {/* <a
-                          //                             className="img-holder switch-trigger"
-                          //                             // onClick={() => {
-                          //                             //     this.setState({ bgImage: imagine1 });
-                          //                             //     this.props.handleImageClick(imagine1);
-                          //                             // }}
-                          //                         >
-                          //                             <img src={course1} alt="..." />
-                          //                         </a> */}
-                          //   </div>
-                          // }
                           />
                         </Col>
                       </Row>
@@ -176,22 +167,25 @@ class Dashboard extends Component {
               // }
               />
             </Col>
-            <Col md={4}>
+            <Col md={4} className="total-card">
               <Card
-                statsIcon="fa fa-clock-o"
-                title="Statistics"
-                category="Last Campaign Performance"
-                stats="Campaign sent 2 days ago"
                 content={
-                  <div
-                    id="chartPreferences"
-                    className="ct-chart ct-perfect-fourth"
-                  >
-                    <ChartistGraph data={dataPie} type="Pie" />
+                  <div className="stats">
+                    <Row>
+                      <Col md={6}>
+                        <img src={user}></img>
+                        <h6>Total Users</h6>
+                        <h4>{tdArray.length}</h4>
+                      </Col>
+                      <Col md={6}>
+                        <img src={course}></img>
+                        <h6>Total Courses</h6>
+                        <h4>3</h4>
+                      </Col>
+                    </Row>
                   </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendPie)}</div>
+
+
                 }
               />
             </Col>
@@ -201,6 +195,7 @@ class Dashboard extends Component {
             <Col md={4}>
               <Card
                 title="Recent Sign Up"
+                category="Latest 3 Sign Up"
                 stats={
                   <div className="see-all">
                     <Link to='/admin/table'>
@@ -214,34 +209,26 @@ class Dashboard extends Component {
                   <Grid fluid>
                     <Row>
                       <Col md={12}>
-                        <Card
-                          // title="Striped Table with Hover"
-                          // category="Here is a subtitle for this table"
-                          ctTableFullWidth
-                          ctTableResponsive
-                          content={
-                            <Table striped hover>
-                              <thead>
-                                <tr>
-                                  {thArray.map((prop, key) => {
-                                    return <th key={key}>{prop}</th>;
+                        <Table striped hover>
+                          <thead>
+                            <tr>
+                              {thArray.map((prop, key) => {
+                                return <th key={key}>{prop}</th>;
+                              })}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {recentArray.map((prop, key) => {
+                              return (
+                                <tr key={key}>
+                                  {prop.map((prop, key) => {
+                                    return <td key={key}>{prop}</td>;
                                   })}
                                 </tr>
-                              </thead>
-                              <tbody>
-                                {tdArray.map((prop, key) => {
-                                  return (
-                                    <tr key={key}>
-                                      {prop.map((prop, key) => {
-                                        return <td key={key}>{prop}</td>;
-                                      })}
-                                    </tr>
-                                  );
-                                })}
-                              </tbody>
-                            </Table>
-                          }
-                        />
+                              );
+                            })}
+                          </tbody>
+                        </Table>
                       </Col>
                     </Row>
                   </Grid>
@@ -252,7 +239,7 @@ class Dashboard extends Component {
             <Col md={4}>
               <Card
                 title="Student Performance"
-                // category="Last Campaign Performance"
+                category="Data From Quiz Score"
                 stats={
                   <div className="see-all">
                     <Link to='/admin/table'>
@@ -278,6 +265,7 @@ class Dashboard extends Component {
             <Col md={4}>
               <Card
                 title="Latest Comments"
+                category="Latest 3 Comments"
                 stats={
                   <div className="see-all">
                     <Link to='/admin/table'>
@@ -289,36 +277,29 @@ class Dashboard extends Component {
                 }
                 content={
                   <Grid fluid>
-                    <Row>
+                    <Row className="comment-row">
                       <Col md={12}>
-                        <Card
-                          // title="Striped Table with Hover"
-                          // category="Here is a subtitle for this table"
-                          ctTableFullWidth
-                          ctTableResponsive
-                          content={
-                            <Table striped hover>
-                              <thead>
-                                <tr>
-                                  {thArray.map((prop, key) => {
-                                    return <th key={key}>{prop}</th>;
+                        <Table striped hover>
+                          <thead>
+                            <tr>
+                              {thCommentArr.map((prop, key) => {
+                                return <th key={key}>{prop}</th>;
+                              })}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {tdCommentArr.map((prop, key) => {
+                              return (
+                                <tr key={key}>
+                                  {prop.map((prop, key) => {
+                                    return <td key={key}>{prop}</td>;
                                   })}
                                 </tr>
-                              </thead>
-                              <tbody>
-                                {tdArray.map((prop, key) => {
-                                  return (
-                                    <tr key={key}>
-                                      {prop.map((prop, key) => {
-                                        return <td key={key}>{prop}</td>;
-                                      })}
-                                    </tr>
-                                  );
-                                })}
-                              </tbody>
-                            </Table>
-                          }
-                        />
+                              );
+                            })}
+                          </tbody>
+                        </Table>
+
                       </Col>
                     </Row>
                   </Grid>

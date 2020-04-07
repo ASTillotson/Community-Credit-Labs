@@ -30,7 +30,10 @@ class CourseAdding extends Component {
     constructor() {
         super();
         // this.state = {showSection: false }
-        this.state = {showSection: 1}
+        this.state = {
+            showSection: 1,
+            optionsInSections: [],
+        }
     }
     _showSection = () => {
         // this.setState({
@@ -38,11 +41,25 @@ class CourseAdding extends Component {
         // });
         this.setState({showSection: this.state.showSection + 1})
     }
+    handlePageAdded = (i, selectedOption) => {
+        const optionsInSections = [...this.state.optionsInSections];
+        optionsInSections[i] = (optionsInSections[i] || []).concat([selectedOption]);
+        this.setState({optionsInSections});
+    }
     render() {
         const sections = [];
-        for (var i=0; i< this.state.showSection; i++){
-            sections.push(<Section title={`Section ${i+1}`} key={i}/>)
+        for (let i = 0; i< this.state.showSection; i++){
+            let selectedOptions = this.state.optionsInSections[i] || [];
+            sections.push(
+                <Section
+                    title={`Section ${i + 1}`}
+                    key={i}
+                    selectedOptions={selectedOptions}
+                    onPageAdded={(selectedOption) => this.handlePageAdded(i, selectedOption)}
+                />
+            )
         }
+        const courseCreateState = this.state.optionsInSections.map(selectedOptions => selectedOptions.map(o => o.label));
         return (
             <div className="content add-content">
                 <Grid fluid>
@@ -67,7 +84,7 @@ class CourseAdding extends Component {
                     </Row>
                     {sections}
                 </Grid>
-                <Link to='/admin/courseoutline'>
+                <Link to={{ pathname: '/admin/courseoutline', state:courseCreateState}}>
                     <Button bsStyle="info" pullRight fill type="submit" >
                         Create Course
                     </Button>

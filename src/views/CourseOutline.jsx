@@ -29,188 +29,49 @@ import {
 } from "variables/Variables.jsx";
 
 class CourseOutline extends Component {
-  // createLegend(json) {
-  //   var legend = [];
-  //   for (var i = 0; i < json["names"].length; i++) {
-  //     var type = "fa fa-circle text-" + json["types"][i];
-  //     legend.push(<i className={type} key={i} />);
-  //     legend.push(" ");
-  //     legend.push(json["names"][i]);
-  //   }
-  //   return legend;
-  // }
   state = {
     isOpen: false
   }
 
   render() {
+    const locState = this.props.location.state;
+    const pages = [];
+    for (let i = 0; i < locState.length; i++) {
+      let options = locState[i];
+      const cards = options.map((o, idx) =>
+        <Col md={4}>
+          <Card
+            category={`Page ${idx + 1}`}
+            stats={o}
+            content={
+              <div className="outline-content">
+                <Link to='/admin/coursecontent'>
+                  <Button className='btn-simple-add' >
+                    <img src={plus} width="20px" height="20px" alt="..." />
+                  </Button>
+                </Link>
+              </div>
+            } />
+        </Col>);
+      pages.push(
+        <Row>
+          <Col md={100} className="section-card">
+            <Card
+              title={`Section ${i + 1}: Introduction`}
+              content={
+                <div className="outline-card">
+                  {cards}
+                </div>
+              }
+            />
+          </Col>
+        </Row>
+      )
+    }
     return (
       <div className="content">
         <Grid fluid>
-
-          <Row>
-            <Col md={100} className="section-card">
-              <Card
-                title="Section 1: Introduction"
-                content={
-                  <div className="outline-card">
-                    <Col md={4}>
-                      <Card
-                        category="Page 1"
-                        stats="Fullscreen Video "
-                        content={
-                          <div className="outline-content">
-                            {/* <img src={template1} width="100%" alt="..." /> */}
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-
-                    <Col md={4}>
-                      <Card
-                        category="Page 2"
-                        stats="Fullscreen Video "
-                        content={
-                          <div className="outline-content">
-                            {/* <img src={template2} width="100%" alt="..." /> */}
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-
-
-
-                    <Col md={4}>
-                      <Card
-                        category="Page 3"
-                        stats="Fullscreen Video "
-                        content={
-                          <div className="outline-content">
-                            {/* <img src={template3} width="100%" alt="..." /> */}
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-                    <Col md={4}>
-                      <Card
-                        category="Page 4"
-                        stats="Fullscreen Video"
-
-                        content={
-                          <div className="outline-content">
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-
-
-
-                    {/* Save for later button dialog */}
-                    {/* <Col lg={2} sm={2}>
-          <Button onClick={(e) => this.setState({ isOpen: true })}>
-            <Card
-              title="Page 4"
-              stats="Add Images"
-              statsIcon="fa fa-plus" />
-          </Button>
-
-          <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-            Add Content
-            </PopUp>
-        </Col> */}
-
-
-                  </div>
-                }
-              />
-            </Col>
-          </Row>
-
-
-          <Row>
-            <Col md={100} className="section-card">
-              <Card
-                title="Section 2: Preparation"
-                content={
-                  <div className="outline-card">
-
-                    <Col md={4}>
-                      <Card
-                        category="Page 5"
-                        stats="Fullscreen Video "
-
-                        content={
-                          <div className="outline-content">
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-
-                    <Col md={4}>
-                      <Card
-                        category="Page 6"
-                        stats="Image with text "
-
-                        content={
-                          <div className="outline-content">
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-                    <Col md={4}>
-                      <Card
-                        category="Page 7"
-                        stats="Full Video"
-
-                        content={
-                          <div className="outline-content">
-                            <Link to='/admin/coursecontent'>
-                              <Button className='btn-simple-add' >
-                                <img src={plus} width="20px" height="20px" alt="..." />
-                              </Button>
-                            </Link>
-                          </div>
-                        } />
-                    </Col>
-
-
-
-                  </div>
-                }
-              />
-            </Col>
-          </Row>
-
+          {pages}
           <h3>
             <Link to='/admin/courses'>
               <Button bsStyle="info" pullRight fill>
@@ -228,51 +89,7 @@ class CourseOutline extends Component {
             </Button>
             </Link>
           </h3>
-
-
-          {/* <Row>
-  <Col md={6}>
-    <Card
-      id="chartActivity"
-      title="2014 Sales"
-      category="All products including Taxes"
-      stats="Data information certified"
-      statsIcon="fa fa-check"
-      content={
-        <div className="ct-chart">
-          <ChartistGraph
-            data={dataBar}
-            type="Bar"
-            options={optionsBar}
-            responsiveOptions={responsiveBar}
-          />
-        </div>
-      }
-      legend={
-        <div className="legend">{this.createLegend(legendBar)}</div>
-      }
-    />
-  </Col>
-
-  <Col md={6}>
-    <Card
-      title="Tasks"
-      category="Backend development"
-      stats="Updated 3 minutes ago"
-      statsIcon="fa fa-history"
-      content={
-        <div className="table-full-width">
-          <table className="table">
-            <Tasks />
-          </table>
-        </div>
-      }
-    />
-  </Col>
-</Row> */}
         </Grid>
-
-
       </div >
     );
   }
