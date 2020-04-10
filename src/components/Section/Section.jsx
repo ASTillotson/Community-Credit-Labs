@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import { Grid,Row,Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
@@ -33,8 +32,8 @@ const templates = [
         label: "TEXT",
     },
     {
-        imgSrc: template6,
-        label: "NUMBER LIST",
+        imgSrc: template6, //Replace this with quiz content
+        label: "QUIZ CONTENT",
     },
 ]
 class Section extends Component {  

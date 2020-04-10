@@ -28,10 +28,13 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
 class FullVideoContent extends Component {
+    constructor(props){
+        super(props)
+    }
     state = {
         isOpen: false,
         seen: false,
-        selectedFile: null
+        // selectedFile: null
     };
     togglePop = () => {
         this.setState({

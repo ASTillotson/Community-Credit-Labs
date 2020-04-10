@@ -28,23 +28,7 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
 class FullTextContent extends Component {
-    state = {
-        isOpen: false,
-        seen: false,
-        selectedFile: null
-    };
-    togglePop = () => {
-        this.setState({
-            seen: !this.state.seen
-        });
-    };
-    fileSelectedHandler = event => {
-        this.setState({ selectedFile: event.target.files[0] });
-    };
 
-    fileUploaderHandler = () => {
-        //upload to database? 
-    }
     render() {
         return (
             <div className="course-content">

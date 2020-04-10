@@ -1,7 +1,16 @@
-
+.course-content .img-part .upload-btn{
+    margin-top: 100px;
+    margin-left: 300px;
+}
+.course-content .img-part img{
+    height: 350px;
+    padding-top: 15px;
+}
+.img-part{
+    height: 350px;
+}
 .course-content .video-cap{
-    display: grid;
-    padding-left: 100px;
+    display: block;
 }
 .text-input{
     width: 90%;
@@ -322,6 +331,15 @@ label {
         padding-left: 30px;
         padding-right: 30px;
     }
+}
+.course-content .img-upload{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.course-content .upload-btn{
+    position: absolute;
+    z-index: 99;
+    font-weight: 900;
 }
 .course-adding-content{
     padding:15px 15px 10px 15px;

@@ -28,11 +28,20 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
 class ImageCapContent extends Component {
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+    }
     state = {
         isOpen: false,
         seen: false,
-        selectedFile: null
+        file: null,
     };
+    handleChange(event) {
+        this.setState({
+            file: URL.createObjectURL(event.target.files[0])
+        })
+    }
     togglePop = () => {
         this.setState({
             seen: !this.state.seen
@@ -73,42 +82,46 @@ class ImageCapContent extends Component {
 
                             <Col md={10}>
                                 <div className="container-window video-cap" >
-                                    <Row >
-                                        <Col md={12}>
-                                            <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
-                                                Upload Image
-                                        </Button>
-                                            <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                                                <div className="video-uploader">
-                                                    <div className="uploader-title">
-                                                        <label>UPLOAD IMAGE</label>
+                                    <div className="img-part" id="div-1">
+                                        <Row >
+                                            <Col md={12}>
+                                                <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" className="upload-btn">
+                                                    Upload Image
+                                            </Button>
+                                                <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+                                                    <div className="video-uploader">
+                                                        <div className="uploader-title">
+                                                            <label>UPLOAD IMAGE</label>
+                                                            <hr />
+                                                        </div>
+                                                        <input type="file" className="custom-file-input" onChange={this.handleChange} />
                                                         <hr />
+                                                        <Row>
+                                                            <Col md={8}>
+                                                                <p>NOTE: All files should be less than 4.0 GB</p>
+                                                            </Col>
+                                                            <Col md={4}>
+                                                                <Button
+                                                                    // onClick={this.fileUploadHandler}
+                                                                    bsStyle="info" pullRight onClick={(e) => this.setState({ isOpen: false })}>
+                                                                    Upload
+                                                            </Button>
+                                                            </Col>
+                                                        </Row>
+
                                                     </div>
-                                                    <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} />
-
-                                                    <hr />
-                                                    <Row>
-                                                        <Col md={8}>
-                                                            <p>NOTE: All files should be less than 4.0 GB</p>
-                                                        </Col>
-                                                        <Col md={4}>
-                                                            <Button
-                                                                // onClick={this.fileUploadHandler}
-                                                                bsStyle="info" pullRight>
-                                                                Upload
-                                                    </Button>
-                                                        </Col>
-                                                    </Row>
-
-                                                </div>
-                                            </Uploader>
-                                        </Col>
-                                    </Row>
-                                    <Row >
-                                        <Col md={12}>
-                                            <input className="text-input" placeholder="Enter Text Here"></input>
-                                        </Col>
-                                    </Row>
+                                                </Uploader>
+                                                <img className="img-upload" src={this.state.file} />
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div className="text-part" id="div-2">
+                                        <Row >
+                                            <Col md={12}>
+                                                <input className="text-input" placeholder="Enter Text Here"></input>
+                                            </Col>
+                                        </Row>
+                                    </div>
                                 </div>
                             </Col>
 

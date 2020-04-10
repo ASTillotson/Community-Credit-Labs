@@ -112,6 +112,7 @@ const dashboardRoutes = [
     layout: "/admin",
     disappear: true
   },
+  
 ];
 
 export default dashboardRoutes;
