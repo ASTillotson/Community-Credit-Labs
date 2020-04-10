@@ -31,20 +31,27 @@ class FullVideoContent extends Component {
     state = {
         isOpen: false,
         seen: false,
-        selectedFile: null
+        videoEmbeddingCode: null,
+        enteredVideo: false
     };
     togglePop = () => {
         this.setState({
             seen: !this.state.seen
         });
     };
+    
     fileSelectedHandler = event => {
-        this.setState({ selectedFile: event.target.files[0] });
+        this.setState({ videoEmbeddingCode: this.textInput.value, isOpen: false, enteredVideo: true});
     };
 
     fileUploaderHandler = () => {
         //upload to database? 
+    };
+
+    createDangerousHTML = () => {
+        return {__html: this.state.videoEmbeddingCode}
     }
+
     render() {
         return (
             <div className="course-content">
@@ -73,25 +80,21 @@ class FullVideoContent extends Component {
 
                             <Col md={10}>
                                 <div className="container-window">
-                                    <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
+                                    {this.state.enteredVideo ? <div dangerouslySetInnerHTML={this.createDangerousHTML()}/> : <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
                                         Upload Video
-                                    </Button>
+                                    </Button>}
                                     <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
                                         <div className="video-uploader">
                                             <div className="uploader-title">
                                                 <label>UPLOAD VIDEO</label>
                                                 <hr />
                                             </div>
-                                            <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} />
-                                            
+                                            <input type="String" ref={(input) => this.textInput = input}/>
                                             <hr />
                                             <Row>
-                                                <Col md={8}>
-                                                    <p>NOTE: All files should be less than 4.0 GB</p>
-                                                </Col>
-                                                <Col md={4}>
+                                                <Col md={12}>
                                                     <Button
-                                                        // onClick={this.fileUploadHandler}
+                                                        onClick={this.fileSelectedHandler}
                                                         bsStyle="info" pullRight>
                                                         Upload
                                                     </Button>
