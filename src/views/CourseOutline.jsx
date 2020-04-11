@@ -35,8 +35,15 @@ class CourseOutline extends Component {
                         <img src={plus} width="20px" height="20px" alt="..." />
                       </Button>
                     </Link>
+                    
                     : (o === "IMAGE WITH TEXT" ?
                       <Link to='/admin/imagecapcontent'>
+                        <Button className='btn-simple-add' >
+                          <img src={plus} width="20px" height="20px" alt="..." />
+                        </Button>
+                      </Link>
+                      : (o === "QUIZ CONTENT" ?
+                      <Link to='/admin/quizcontent'>
                         <Button className='btn-simple-add' >
                           <img src={plus} width="20px" height="20px" alt="..." />
                         </Button>
@@ -51,8 +58,9 @@ class CourseOutline extends Component {
                           <Button className='btn-simple-add' >
                             <img src={plus} width="20px" height="20px" alt="..." />
                           </Button>
-                        </Link>)))
+                        </Link>))))
                 }
+                
               </div>
             } />
         </Col>);

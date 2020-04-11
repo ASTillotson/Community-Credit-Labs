@@ -22,6 +22,15 @@
     // word-wrap: break-word;
     // hyphens: auto;
 }
+.text-input-quiz{
+    text-align: center;
+    width: 90%;
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+  
+}
 .video-uploader button, .image-uploader button{
     margin-top: -7px;
     margin-right: -25px;
@@ -36,7 +45,9 @@
     margin-left: -15px;
 }
 .uploader{
-    box-shadow:2px 3px 5px #999;
+        -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        box-shadow: -10px 10px 5px 5000px rgba(0,0,0,0.75); 
         width: 40%;
         // maxWidth: '100%',
         margin: 0 auto;
@@ -209,7 +220,7 @@
     margin-bottom: 0px;
 }
 label {
-    width:150px;
+    width:250px;
     // padding-top:10px;
 }
 .row{
@@ -219,7 +230,9 @@ label {
 }
 .dialog{
     
-        box-shadow:2px 3px 5px #999;
+        -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        box-shadow: -10px 10px 5px 5000px rgba(0,0,0,0.75); 
         width: 80%;
         // maxWidth: '100%',
         margin: 0 auto;
