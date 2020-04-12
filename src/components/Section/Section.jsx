@@ -42,6 +42,7 @@ class Section extends Component {
         isOpen: false,
         seen: false,
         selectedOption: null,
+        sectionTitle: ""
     };
 
     handleChange = selectedOption => {
@@ -73,6 +74,7 @@ class Section extends Component {
                 <label className="templates-label">{t.label}</label>
             </Col>
         ));
+        console.log(this.state.sectionTitle);
         return (
             <Row>
                 <Col md={12} className="new-card">
@@ -95,7 +97,8 @@ class Section extends Component {
                                                                 label: "Title Name:",
                                                                 type: "text",
                                                                 bsClass: "form-control",
-                                                                placeholder: "Title Name"
+                                                                placeholder: "Title Name",
+                                                                onChange: (e) => { this.setState({ sectionTitle: e.target.value })}
                                                             }
                                                         ]}
                                                     />
