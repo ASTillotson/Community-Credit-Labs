@@ -40,6 +40,8 @@ class CourseOutline extends Component {
       let options = locState[i];
       const cards = options.map((o, idx) =>
         <Col md={4}>
+
+          
           <Card
             category={`Page ${idx + 1}`}
             stats={o}
@@ -52,6 +54,8 @@ class CourseOutline extends Component {
                 </Link>
               </div>
             } />
+
+
         </Col>);
       pages.push(
         <Row>

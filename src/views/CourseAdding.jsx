@@ -32,6 +32,8 @@ class CourseAdding extends Component {
         this.state = {
             showSection: 1,
             optionsInSections: [],
+            courseTitle: "",
+            
         }
     }
     _showSection = () => {
@@ -52,10 +54,12 @@ class CourseAdding extends Component {
                     key={i}
                     selectedOptions={selectedOptions}
                     onPageAdded={(selectedOption) => this.handlePageAdded(i, selectedOption)}
+                    getSectionTitle={""}
                 />
             )
         }
-        const courseCreateState = this.state.optionsInSections.map(selectedOptions => selectedOptions.map(o => o.label));
+        console.log(sections);
+        const courseCreateState = this.state.optionsInSections.map((selectedOptions) => ({Title: "", Pages: selectedOptions.map(o => o.label)}));
         return (
             <div className="content add-content">
                 <Grid fluid>
@@ -72,6 +76,7 @@ class CourseAdding extends Component {
                                         type: "text",
                                         bsClass: "form-control",
                                         placeholder: "Course Name",
+                                        onChange: (e) => { this.setState({ courseTitle: e.target.value });}
 
                                     }
                                 ]}
@@ -80,7 +85,7 @@ class CourseAdding extends Component {
                     </Row>
                     {sections}
                 </Grid>
-                <Link to={{ pathname: '/admin/courseoutline', state:courseCreateState}}>
+                <Link to={{ pathname: '/admin/courseoutline', courseTitle: this.state.courseTitle, courseOutline:courseCreateState}}>
                     <Button bsStyle="info" pullRight fill type="submit" >
                         Create Course
                     </Button>
