@@ -27,7 +27,7 @@ import FullTextContent from "views/FullTextContent.jsx";
 import VideoCapContent from "views/VideoCapContent.jsx";
 import ImageCapContent from "views/ImageCapContent.jsx";
 import QuizContent from "views/QuizContent.jsx";
-
+import MultiImgCapContent from "views/MultiImgCapContent.jsx";
 
 const dashboardRoutes = [
   {
@@ -122,7 +122,14 @@ const dashboardRoutes = [
     layout: "/admin",
     disappear: true
   },
-  
+  {
+    path: "/multiimgcapcontent",
+    name: "Course Content",
+    icon: "pe-7s-map-marker",
+    component: MultiImgCapContent,
+    layout: "/admin",
+    disappear: true
+  },
 ];
 
 export default dashboardRoutes;

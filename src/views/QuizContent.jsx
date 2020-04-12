@@ -29,12 +29,15 @@ import upload from "assets/img/upload.png";
 
 class QuizContent extends Component {
     state = {
-        value: "",
+        theQuestion: null,
         checkOne: false,
-        // answerOne: "",
-        // answerTwp: "",
-        // answerThree: "",
-        // answerFour: "",
+        checkTwo: false,
+        checkThree: false,
+        checkFour: false,
+        answerOne: null,
+        answerTwo: null,
+        answerThree: null,
+        answerFour: null,
     };
 
     theQuestion = event => {
@@ -123,11 +126,6 @@ class QuizContent extends Component {
                                     </Link>
                                 </div>
                             </Col>
-
-
-
-
-
                             <Col md={10}>
                                 <div className="container-window" id="div-1" >
 
@@ -148,16 +146,17 @@ class QuizContent extends Component {
 
 
                                             <Col md={12}>
-                                                <label classname='text-input-quiz'>Check the correct answers</label>
+                                                <label className='quiz-guide'>Check the correct answers</label>
                                             </Col>
 
                                         </div>
                                         <Col md={12}>
                                             <input
+                                                className="answer-input"
                                                 type="text"
                                                 value={this.state.answerOne}
                                                 onChange={this.answerOne}
-                                                placeholder="answer 1"
+                                                placeholder="Answer 1"
                                                 name="answerOne"
                                             />
                                             <input type="checkbox"
@@ -171,10 +170,11 @@ class QuizContent extends Component {
 
                                         <Col md={12}>
                                             <input
+                                                className="answer-input"
                                                 type="text"
                                                 value={this.state.answerTwo}
                                                 onChange={this.answerTwo}
-                                                placeholder="answer 2"
+                                                placeholder="Answer 2"
                                                 name="answerTwo"
                                             />
                                             <input type="checkbox"
@@ -186,10 +186,11 @@ class QuizContent extends Component {
 
                                         <Col md={12}>
                                             <input
+                                                className="answer-input"
                                                 type="text"
                                                 value={this.state.answerThree}
                                                 onChange={this.answerThree}
-                                                placeholder="answer 3"
+                                                placeholder="Answer 3"
                                                 name="answerThree"
                                             />
                                             <input type="checkbox"
@@ -201,10 +202,11 @@ class QuizContent extends Component {
 
                                         <Col md={12}>
                                             <input
+                                                className="answer-input"
                                                 type="text"
                                                 value={this.state.answerFour}
                                                 onChange={this.answerFour}
-                                                placeholder="answer 4"
+                                                placeholder="Answer 4"
                                                 name="answerFour"
                                             />
                                             <input type="checkbox"
@@ -213,14 +215,14 @@ class QuizContent extends Component {
                                                 className="form-check-input"
                                             />
                                         </Col>
-                                        
-                                        <Col md={12}>
+
+                                        {/* <Col md={12}>
                                             <div className="form-group">
                                                 <button className="btn btn-primary">
                                                     Submit
                                                 </button>
                                             </div>
-                                        </Col>
+                                        </Col> */}
 
                                     </Row>
 

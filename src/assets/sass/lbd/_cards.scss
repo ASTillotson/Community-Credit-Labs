@@ -1,8 +1,22 @@
-.course-content .img-part .upload-btn{
+.course-content .full-input{
+    height: 600px;
+}
+.course-content .video-part iframe{
+    margin-left: 110px;
+}
+.course-content .answer-input{
+    margin-left: 130px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    width: 500px;
+    height: 35px;
+    font-size: 16px;
+}
+.course-content .img-part .upload-btn, .course-content .video-part .upload-btn{
     margin-top: 100px;
     margin-left: 300px;
 }
-.course-content .img-part img{
+.course-content .img-part img, .course-content .video-part{
     height: 350px;
     padding-top: 15px;
 }
@@ -18,6 +32,8 @@
     background-color: transparent;
     outline: none;
     border: none;
+    height: 200px;
+    margin-left: 35px;
     // overflow-wrap: break-word;
     // word-wrap: break-word;
     // hyphens: auto;
@@ -29,7 +45,8 @@
     background-color: transparent;
     outline: none;
     border: none;
-  
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 .video-uploader button, .image-uploader button{
     margin-top: -7px;

@@ -28,7 +28,12 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
 class FullTextContent extends Component {
-
+    state = {
+        text: null,
+    }
+    inputText = event => {
+        this.setState({ text: event.target.value });
+    };
     render() {
         return (
             <div className="course-content">
@@ -67,7 +72,12 @@ class FullTextContent extends Component {
                                             }
                                         ]}
                                     /> */}
-                                    <input className="text-input" placeholder="Enter Text Here"></input>
+                                    <textarea 
+                                        className="text-input full-input" 
+                                        placeholder="Enter Text Here"
+                                        value={this.state.text}
+                                        onChange={this.inputText}
+                                    />
                                 </div>
                             </Col>
 
