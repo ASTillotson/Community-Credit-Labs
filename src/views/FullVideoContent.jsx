@@ -41,16 +41,12 @@ class FullVideoContent extends Component {
     };
     
     fileSelectedHandler = event => {
-        this.setState({ videoEmbeddingCode: this.textInput.value, isOpen: false, enteredVideo: true});
-    };
-
-    fileUploaderHandler = () => {
-        //upload to database? 
+        this.setState({ videoEmbeddingCode: this.textInput.value, isOpen: false, enteredVideo: true });
     };
 
     createDangerousHTML = () => {
         return {__html: this.state.videoEmbeddingCode}
-    }
+    };
 
     render() {
         return (
@@ -89,13 +85,16 @@ class FullVideoContent extends Component {
                                                 <label>UPLOAD VIDEO</label>
                                                 <hr />
                                             </div>
+                                            <p className="input-descript">Paste the embedded code below</p>
+                                            {/* <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} /> */}
                                             <input type="String" ref={(input) => this.textInput = input}/>
                                             <hr />
                                             <Row>
-                                                <Col md={12}>
-                                                    <Button
-                                                        onClick={this.fileSelectedHandler}
-                                                        bsStyle="info" pullRight>
+                                                <Col md={8}>
+                                                    <p>NOTE: All files should be less than 4.0 GB</p>
+                                                </Col>
+                                                <Col md={4}>
+                                                    <Button bsStyle="info" pullRight onClick={this.fileSelectedHandler}>
                                                         Upload
                                                     </Button>
                                                 </Col>

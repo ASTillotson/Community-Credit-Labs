@@ -27,21 +27,25 @@ import Uploader from "components/PopUp/Uploader.jsx"
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
-class ImageCapContent extends Component {
+class MultiImgCapContent extends Component {
     constructor(props) {
         super(props)
-        this.handleChange = this.handleChange.bind(this)
+        this.handleFileChange = this.handleFileChange.bind(this)
     }
     state = {
-        isOpen: false,
+        isOpen: -1,
+        files: [null, null, null],
         text: null,
-        file: null,
     };
-    handleChange(event) {
-        this.setState({
-            file: URL.createObjectURL(event.target.files[0])
-        })
-    }
+    handleFileChange(event) {
+        if (this.state.isOpen > -1) {
+            const newFiles = [...this.state.files]; //copy
+            newFiles[this.state.isOpen] = URL.createObjectURL(event.target.files[0])
+            this.setState({
+                files: newFiles
+            })
+        }
+    };
     inputText = event => {
         this.setState({ text: event.target.value });
     };
@@ -76,34 +80,15 @@ class ImageCapContent extends Component {
                                 <div className="container-window video-cap" >
                                     <div className="img-part" id="div-1">
                                         <Row >
-                                            <Col md={12}>
-                                                <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" className="upload-btn">
-                                                    Upload Image
-                                            </Button>
-                                                <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                                                    <div className="video-uploader">
-                                                        <div className="uploader-title">
-                                                            <label>UPLOAD IMAGE</label>
-                                                            <hr />
-                                                        </div>
-                                                        <input type="file" className="custom-file-input" onChange={this.handleChange} />
-                                                        <hr />
-                                                        <Row>
-                                                            <Col md={8}>
-                                                                <p>NOTE: All files should be less than 4.0 GB</p>
-                                                            </Col>
-                                                            <Col md={4}>
-                                                                <Button
-                                                                    bsStyle="info" pullRight onClick={(e) => this.setState({ isOpen: false })}>
-                                                                    Upload
-                                                            </Button>
-                                                            </Col>
-                                                        </Row>
+                                            {this.state.files.map((f, idx) =>
+                                                <Col md={4} key={idx}>
+                                                    <Button onClick={(e) => this.setState({ isOpen: idx })} bsStyle="info" className="upload-btn uploads-btn">
+                                                        Upload Image
+                                                </Button>
 
-                                                    </div>
-                                                </Uploader>
-                                                <img className="img-upload" src={this.state.file} />
-                                            </Col>
+                                                    <img className="img-upload" src={this.state.files[idx]} />
+                                                </Col>
+                                            )}
                                         </Row>
                                     </div>
                                     <div className="text-part" id="div-2">
@@ -120,7 +105,28 @@ class ImageCapContent extends Component {
                                     </div>
                                 </div>
                             </Col>
+                            <Uploader isOpen={this.state.isOpen !== -1} onClose={(e) => this.setState({ isOpen: -1 })}>
+                                <div className="video-uploader">
+                                    <div className="uploader-title">
+                                        <label>UPLOAD IMAGE</label>
+                                        <hr />
+                                    </div>
+                                    <input type="file" className="custom-file-input" onChange={this.handleFileChange} />
+                                    <hr />
+                                    <Row>
+                                        <Col md={8}>
+                                            <p>NOTE: All files should be less than 4.0 GB</p>
+                                        </Col>
+                                        <Col md={4}>
+                                            <Button
+                                                bsStyle="info" pullRight onClick={(e) => this.setState({ isOpen: -1 })}>
+                                                Upload
+                                            </Button>
+                                        </Col>
+                                    </Row>
 
+                                </div>
+                            </Uploader>
                             <Col md={1}>
                                 <div className="next">
                                     <Link to='/admin/fullvideocontent'>
@@ -139,4 +145,4 @@ class ImageCapContent extends Component {
         );
     }
 }
-export default ImageCapContent;
+export default MultiImgCapContent;

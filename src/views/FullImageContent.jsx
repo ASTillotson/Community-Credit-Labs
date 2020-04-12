@@ -28,23 +28,28 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import upload from "assets/img/upload.png";
 
 class FullImageContent extends Component {
+    constructor(props){
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
     state = {
         isOpen: false,
         seen: false,
-        selectedFile: null
+        file: null,
     };
+
+    handleChange(event){
+        this.setState({
+            file:URL.createObjectURL(event.target.files[0])
+        })
+    }
     togglePop = () => {
         this.setState({
             seen: !this.state.seen
         });
     };
-    fileSelectedHandler = event => {
-        this.setState({ selectedFile: event.target.files[0] });
-    };
 
-    fileUploaderHandler = () => {
-        //upload to database? 
-    }
     render() {
         return (
             <div className="course-content">
@@ -72,8 +77,8 @@ class FullImageContent extends Component {
                             </Col>
 
                             <Col md={10}>
-                                <div className="container-window">
-                                    <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
+                                <div className="container-window" id="div-1">
+                                    <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" className="upload-btn" >
                                         Upload Image
                                     </Button>
                                     <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
@@ -82,8 +87,7 @@ class FullImageContent extends Component {
                                                 <label>UPLOAD IMAGE</label>
                                                 <hr />
                                             </div>
-                                            <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} />
-                                            
+                                            <input type="file" className="custom-file-input" onChange={this.handleChange}/>
                                             <hr />
                                             <Row>
                                                 <Col md={8}>
@@ -91,8 +95,7 @@ class FullImageContent extends Component {
                                                 </Col>
                                                 <Col md={4}>
                                                     <Button
-                                                        // onClick={this.fileUploadHandler}
-                                                        bsStyle="info" pullRight>
+                                                        bsStyle="info" pullRight onClick={(e) => this.setState({ isOpen: false })}>
                                                         Upload
                                                     </Button>
                                                 </Col>
@@ -100,6 +103,7 @@ class FullImageContent extends Component {
                                             
                                         </div>
                                     </Uploader>
+                                    <img className="img-upload" src={this.state.file}/>
                                 </div>
                             </Col>
 

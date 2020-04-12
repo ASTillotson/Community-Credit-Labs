@@ -1,32 +1,9 @@
 import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { Link } from 'react-router-dom';
-//import Dialog from "components/dialog.jsx";
-import template1 from "assets/img/page1.png";
-import template2 from "assets/img/page2.png";
-import template3 from "assets/img/page3.png";
 import plus from "assets/img/plus.png";
-
-
-import PopUp from "components/PopUp/PopUp.jsx";
 import { Card } from "components/Card/Card.jsx";
-import { StatsCard } from "components/StatsCard/StatsCard.jsx";
-import { Tasks } from "components/Tasks/Tasks.jsx";
-import {
-  dataPie,
-  legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar
-} from "variables/Variables.jsx";
 
 class CourseOutline extends Component {
   state = {
@@ -36,6 +13,7 @@ class CourseOutline extends Component {
   render() {
     const locState = this.props.location.state;
     const pages = [];
+
     for (let i = 0; i < locState.length; i++) {
       let options = locState[i];
       const cards = options.map((o, idx) =>
@@ -47,11 +25,49 @@ class CourseOutline extends Component {
             stats={o}
             content={
               <div className="outline-content">
-                <Link to='/admin/fullvideocontent'>
-                  <Button className='btn-simple-add' >
-                    <img src={plus} width="20px" height="20px" alt="..." />
-                  </Button>
-                </Link>
+                {o === "FULLSCREEN VIDEO" ?
+                  <Link to='/admin/fullvideocontent'>
+                    <Button className='btn-simple-add' >
+                      <img src={plus} width="20px" height="20px" alt="..." />
+                    </Button>
+                  </Link>
+                  : (o === "VIDEO WITH CAPTION" ?
+                    <Link to='/admin/videocapcontent'>
+                      <Button className='btn-simple-add' >
+                        <img src={plus} width="20px" height="20px" alt="..." />
+                      </Button>
+                    </Link>
+                    : (o === "IMAGE WITH TEXT" ?
+                      <Link to='/admin/imagecapcontent'>
+                        <Button className='btn-simple-add' >
+                          <img src={plus} width="20px" height="20px" alt="..." />
+                        </Button>
+                      </Link>
+                      : (o === "QUIZ CONTENT" ?
+                      <Link to='/admin/quizcontent'>
+                        <Button className='btn-simple-add' >
+                          <img src={plus} width="20px" height="20px" alt="..." />
+                        </Button>
+                      </Link>
+                      : (o === "IMAGES WITH TEXT" ?
+                      <Link to='/admin/multiimgcapcontent'>
+                        <Button className='btn-simple-add' >
+                          <img src={plus} width="20px" height="20px" alt="..." />
+                        </Button>
+                      </Link>
+                      : (o === "TEXT" ?
+                        <Link to='/admin/fulltextcontent'>
+                          <Button className='btn-simple-add' >
+                            <img src={plus} width="20px" height="20px" alt="..." />
+                          </Button>
+                        </Link> :
+                        <Link to='/admin/fullimagecontent'>
+                          <Button className='btn-simple-add' >
+                            <img src={plus} width="20px" height="20px" alt="..." />
+                          </Button>
+                        </Link>)))))
+                }
+                
               </div>
             } />
 

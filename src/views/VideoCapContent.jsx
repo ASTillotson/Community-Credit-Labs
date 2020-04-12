@@ -30,21 +30,20 @@ import upload from "assets/img/upload.png";
 class VideoCapContent extends Component {
     state = {
         isOpen: false,
-        seen: false,
-        selectedFile: null
+        videoEmbeddingCode: null,
+        enteredVideo: false,
+        text: null
     };
-    togglePop = () => {
-        this.setState({
-            seen: !this.state.seen
-        });
+    inputText = event => {
+        this.setState({ text: event.target.value });
     };
     fileSelectedHandler = event => {
-        this.setState({ selectedFile: event.target.files[0] });
+        this.setState({ videoEmbeddingCode: this.textInput.value, isOpen: false, enteredVideo: true });
+    };
+    createDangerousHTML = () => {
+        return { __html: this.state.videoEmbeddingCode }
     };
 
-    fileUploaderHandler = () => {
-        //upload to database? 
-    }
     render() {
         return (
             <div className="course-content">
@@ -73,42 +72,51 @@ class VideoCapContent extends Component {
 
                             <Col md={10}>
                                 <div className="container-window video-cap" >
-                                    <Row >
-                                        <Col md={12}>
-                                            <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
-                                                Upload Video
-                                        </Button>
-                                            <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                                                <div className="video-uploader">
-                                                    <div className="uploader-title">
-                                                        <label>UPLOAD VIDEO</label>
+                                    <div className="video-part" id="div-1">
+                                        <Row >
+                                            <Col md={12}>
+                                                {this.state.enteredVideo ? <div dangerouslySetInnerHTML={this.createDangerousHTML()} /> : <Button className="upload-btn" onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
+                                                    Upload Video
+                                            </Button>}
+                                                <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
+                                                    <div className="video-uploader">
+                                                        <div className="uploader-title">
+                                                            <label>UPLOAD VIDEO</label>
+                                                            <hr />
+                                                        </div>
+                                                        <p className="input-descript">Paste the embedded code below</p>
+                                                        {/* <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} /> */}
+                                                        <input type="String" ref={(input) => this.textInput = input} />
                                                         <hr />
-                                                    </div>
-                                                    <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} />
-
-                                                    <hr />
-                                                    <Row>
-                                                        <Col md={8}>
-                                                            <p>NOTE: All files should be less than 4.0 GB</p>
-                                                        </Col>
-                                                        <Col md={4}>
-                                                            <Button
-                                                                // onClick={this.fileUploadHandler}
-                                                                bsStyle="info" pullRight>
-                                                                Upload
+                                                        <Row>
+                                                            <Col md={8}>
+                                                                <p>NOTE: All files should be less than 4.0 GB</p>
+                                                            </Col>
+                                                            <Col md={4}>
+                                                                <Button
+                                                                    bsStyle="info" pullRight onClick={this.fileSelectedHandler}>
+                                                                    Upload
                                                     </Button>
-                                                        </Col>
-                                                    </Row>
+                                                            </Col>
+                                                        </Row>
 
-                                                </div>
-                                            </Uploader>
-                                        </Col>
-                                    </Row>
-                                    <Row >
-                                        <Col md={12}>
-                                            <input className="text-input" placeholder="Enter Text Here"></input>
-                                        </Col>
-                                    </Row>
+                                                    </div>
+                                                </Uploader>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    <div className="text-part" id="div-2">
+                                        <Row >
+                                            <Col md={12}>
+                                                <textarea
+                                                    className="text-input"
+                                                    placeholder="Enter Text Here"
+                                                    value={this.state.text}
+                                                    onChange={this.inputText}
+                                                />
+                                            </Col>
+                                        </Row>
+                                    </div>
                                 </div>
                             </Col>
 

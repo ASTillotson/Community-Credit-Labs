@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import { Grid,Row,Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
@@ -11,6 +10,7 @@ import template3 from "assets/img/template3.JPG";
 import template4 from "assets/img/template4.JPG";
 import template5 from "assets/img/template5.JPG";
 import template6 from "assets/img/template6.JPG";
+import template8 from "assets/img/template8.JPG";
 const templates = [
     {
         imgSrc: template1,
@@ -33,8 +33,12 @@ const templates = [
         label: "TEXT",
     },
     {
-        imgSrc: template6,
-        label: "NUMBER LIST",
+        imgSrc: template6, 
+        label: "QUIZ CONTENT",
+    },
+    {
+        imgSrc: template8, 
+        label: "IMAGES WITH TEXT",
     },
 ]
 class Section extends Component {  

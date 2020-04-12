@@ -1,7 +1,30 @@
-
+.course-content .full-input{
+    height: 600px;
+}
+.course-content .video-part iframe{
+    margin-left: 110px;
+}
+.course-content .answer-input{
+    margin-left: 130px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    width: 500px;
+    height: 35px;
+    font-size: 16px;
+}
+.course-content .img-part .upload-btn, .course-content .video-part .upload-btn{
+    margin-top: 100px;
+    margin-left: 300px;
+}
+.course-content .img-part img, .course-content .video-part{
+    height: 350px;
+    padding-top: 15px;
+}
+.img-part{
+    height: 350px;
+}
 .course-content .video-cap{
-    display: grid;
-    padding-left: 100px;
+    display: block;
 }
 .text-input{
     width: 90%;
@@ -9,9 +32,21 @@
     background-color: transparent;
     outline: none;
     border: none;
+    height: 200px;
+    margin-left: 35px;
     // overflow-wrap: break-word;
     // word-wrap: break-word;
     // hyphens: auto;
+}
+.text-input-quiz{
+    text-align: center;
+    width: 90%;
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 .video-uploader button, .image-uploader button{
     margin-top: -7px;
@@ -27,7 +62,9 @@
     margin-left: -15px;
 }
 .uploader{
-    box-shadow:2px 3px 5px #999;
+        -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        box-shadow: -10px 10px 5px 5000px rgba(0,0,0,0.75); 
         width: 40%;
         // maxWidth: '100%',
         margin: 0 auto;
@@ -200,7 +237,7 @@
     margin-bottom: 0px;
 }
 label {
-    width:150px;
+    width:250px;
     // padding-top:10px;
 }
 .row{
@@ -210,7 +247,9 @@ label {
 }
 .dialog{
     
-        box-shadow:2px 3px 5px #999;
+        -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.75);
+        box-shadow: -10px 10px 5px 5000px rgba(0,0,0,0.75); 
         width: 80%;
         // maxWidth: '100%',
         margin: 0 auto;
@@ -322,6 +361,15 @@ label {
         padding-left: 30px;
         padding-right: 30px;
     }
+}
+.course-content .img-upload{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.course-content .upload-btn{
+    position: absolute;
+    z-index: 99;
+    font-weight: 900;
 }
 .course-adding-content{
     padding:15px 15px 10px 15px;
