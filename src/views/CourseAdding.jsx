@@ -9,23 +9,32 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import Section from "components/Section/Section.jsx";
 
 class CourseAdding extends Component {
+
     constructor() {
         super();
         this.state = {
             showSection: 1,
             optionsInSections: [],
             courseTitle: "",
-            
+            sectionTitles: [""]
         }
     }
+
     _showSection = () => {
         this.setState({showSection: this.state.showSection + 1})
     }
+
     handlePageAdded = (i, selectedOption) => {
         const optionsInSections = [...this.state.optionsInSections];
         optionsInSections[i] = (optionsInSections[i] || []).concat([selectedOption]);
         this.setState({optionsInSections});
     }
+
+    handleChangeSectionTitle = (key, sectionTitle) => {
+        console.log(this.state)
+        this.setState({sectionTitles: this.state.sectionTitles[key] = sectionTitle});
+    }
+
     render() {
         const sections = [];
         for (let i = 0; i< this.state.showSection; i++){
@@ -36,12 +45,12 @@ class CourseAdding extends Component {
                     key={i}
                     selectedOptions={selectedOptions}
                     onPageAdded={(selectedOption) => this.handlePageAdded(i, selectedOption)}
-                    getSectionTitle={""}
+                    getSectionTitle={this.handleChangeSectionTitle}
                 />
-            )
+            );
         }
-        console.log(sections);
-        const courseCreateState = this.state.optionsInSections.map((selectedOptions) => ({Title: "", Pages: selectedOptions.map(o => o.label)}));
+        console.log(this.state.optionsInSections);
+        const courseCreateState = this.state.optionsInSections.map((selectedOptions) => ({Pages: selectedOptions.map(o => o.label)}));
         return (
             <div className="content add-content">
                 <Grid fluid>

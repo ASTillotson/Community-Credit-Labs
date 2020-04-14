@@ -46,12 +46,18 @@ class Section extends Component {
         isOpen: false,
         seen: false,
         selectedOption: null,
-        sectionTitle: ""
+        sectionTitle: "",
     };
 
     handleChange = selectedOption => {
         this.setState({selectedOption});
     };
+
+    handleSectionTitles = () => {
+        console.log("do we make it here");
+        this.props.getSectionTitle(this.props.key, this.state.sectionTitle);
+    };
+
     handleAddPage = () => {
         const state = this.state;
         if (state.selectedOption) {
@@ -63,7 +69,7 @@ class Section extends Component {
                 selectedOption : null,
             });
         }
-    }
+    };
 
     togglePop = () => {
         this.setState({
@@ -101,8 +107,7 @@ class Section extends Component {
                                                                 label: "Title Name:",
                                                                 type: "text",
                                                                 bsClass: "form-control",
-                                                                placeholder: "Title Name",
-                                                                onChange: (e) => { this.setState({ sectionTitle: e.target.value })}
+                                                                placeholder: "Title Name"
                                                             }
                                                         ]}
                                                     />
@@ -135,7 +140,8 @@ class Section extends Component {
                                                 label: "Section Name:",
                                                 type: "text",
                                                 bsClass: "form-control",
-                                                placeholder: "Section Name"
+                                                placeholder: "Section Name",
+                                                onChange: (e) => { this.setState({ sectionTitle: e.target.value })}
                                             }
                                         ]}
                                     />

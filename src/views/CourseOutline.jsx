@@ -11,9 +11,10 @@ class CourseOutline extends Component {
   }
 
   render() {
-    const locState = this.props.location.state;
+    {console.log(this.props.location.courseOutline);}
+    const locState = this.props.location.courseOutline;
+    {console.log(locState)}
     const pages = [];
-
     for (let i = 0; i < locState.length; i++) {
       let options = locState[i];
       const cards = options.map((o, idx) =>
