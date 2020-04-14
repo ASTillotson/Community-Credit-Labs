@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid,Row,Col } from "react-bootstrap";
+import { Grid, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
@@ -33,36 +33,61 @@ const templates = [
         label: "TEXT",
     },
     {
-        imgSrc: template6, 
+        imgSrc: template6,
         label: "QUIZ CONTENT",
     },
     {
-        imgSrc: template8, 
+        imgSrc: template8,
         label: "IMAGES WITH TEXT",
     },
-]
-class Section extends Component {  
+];
+
+const templateMap = templates.reduce((result, item, index, array) => {
+    const label = item.label;
+    result[label] = item.imgSrc;
+    return result;
+}, {});
+
+class Section extends Component {
     state = {
         isOpen: false,
         seen: false,
-        selectedOption: null,
+        selectedPage: null,
+        name: '',
+        sectionName: ''
     };
 
-    handleChange = selectedOption => {
-        this.setState({selectedOption});
+    handleChange = selectedPage => {
+        this.setState({ selectedPage });
     };
     handleAddPage = () => {
         const state = this.state;
-        if (state.selectedOption) {
+        if (state.selectedPage) {
             if (this.props.onPageAdded) {
-                this.props.onPageAdded(state.selectedOption);
+                this.props.onPageAdded(state.selectedPage.label, this.state.name);
             }
             this.setState({
                 isOpen: false,
-                selectedOption : null,
+                selectedPage: null,
+                name: '',
             });
         }
-    }
+    };
+
+    handleDeletePage = (i) => {
+        if (this.props.onPageDeleted) {
+            this.props.onPageDeleted(i);
+        }
+    };
+
+    handleDeleteSection = () => {
+        if (this.props.onSectionDeleted) {
+            this.props.onSectionDeleted();
+        }
+    };
+    handlePageName = (event) => {
+        this.setState({ name: event.target.value });
+    };
 
     togglePop = () => {
         this.setState({
@@ -70,11 +95,18 @@ class Section extends Component {
         });
     };
     render() {
-        const renderSelected = this.props.selectedOptions.map((t, index) =>(
-            <Col md={3} key={t.label}>
-                <p>{`Page ${index+1}`}</p>
-                <img className="templates-img" src={t.imgSrc}></img>
-                <label className="templates-label">{t.label}</label>
+        const renderSelected = this.props.section.pages.map((p, pageIndex) => (
+            <Col md={3} key={pageIndex}>
+                <Row>
+                    <Col md={6}>
+                        <p>{`Page ${pageIndex + 1} - ${p.name}`}</p>
+                    </Col>
+                    <Col md={6}>
+                        <i className="fa fa-close" onClick={() => { this.handleDeletePage(pageIndex) }}></i>
+                    </Col>
+                </Row>
+                <img className="templates-img" src={templateMap[p.template]}></img>
+                <label className="templates-label">{p.template}</label>
             </Col>
         ));
         return (
@@ -89,6 +121,7 @@ class Section extends Component {
                                         <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" pullRight fill >
                                             + New Page
                                         </Button>
+                                        <Button bsStyle="info" className="btn-delete" onClick={this.handleDeleteSection}>Delete</Button>
                                         <PopUp isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
                                             <div className="course-popup">
                                                 <div className="course-title">
@@ -99,7 +132,9 @@ class Section extends Component {
                                                                 label: "Title Name:",
                                                                 type: "text",
                                                                 bsClass: "form-control",
-                                                                placeholder: "Title Name"
+                                                                placeholder: "Title Name",
+                                                                value: this.state.name,
+                                                                onChange: this.handlePageName
                                                             }
                                                         ]}
                                                     />
@@ -110,17 +145,17 @@ class Section extends Component {
                                                     <Grid fluid>
                                                         <Row>
                                                             {templates.map(t => <Col md={2} key={t.label}>
-                                                                <a onClick={()=> this.handleChange(t)}>
-                                                                    <img  style={this.state.selectedOption === t ? {border:'1px solid #1A8A9A'}:null} src={t.imgSrc}></img>
+                                                                <a onClick={() => this.handleChange(t)}>
+                                                                    <img style={this.state.selectedPage === t ? { border: '1px solid #1A8A9A' } : null} src={t.imgSrc}></img>
                                                                 </a>
-                                                            <label>{t.label}</label>
+                                                                <label>{t.label}</label>
                                                             </Col>)}
                                                         </Row>
                                                     </Grid>
                                                 </div>
                                                 <hr />
-                                                    <Button bsStyle="info" pullRight fill onClick={this.handleAddPage}>
-                                                        + ADD PAGE
+                                                <Button bsStyle="info" pullRight fill onClick={this.handleAddPage}>
+                                                    + ADD PAGE
                                                     </Button>
                                             </div>
                                         </PopUp>
@@ -132,7 +167,9 @@ class Section extends Component {
                                                 label: "Section Name:",
                                                 type: "text",
                                                 bsClass: "form-control",
-                                                placeholder: "Section Name"
+                                                placeholder: "Section Name",
+                                                value: this.state.sectionName,
+                                                onChange: this.handleSectionName
                                             }
                                         ]}
                                     />

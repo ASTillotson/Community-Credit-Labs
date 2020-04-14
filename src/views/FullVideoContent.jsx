@@ -1,31 +1,10 @@
 import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
-import { Card } from "components/Card/Card.jsx";
-import { StatsCard } from "components/StatsCard/StatsCard.jsx";
-import { Tasks } from "components/Tasks/Tasks.jsx";
-import course1 from "assets/img/codingdojo.JPG";
-import course2 from "assets/img/jfs.png";
 import { Link } from 'react-router-dom';
 import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
-import {
-    dataPie,
-    legendPie,
-    dataSales,
-    optionsSales,
-    responsiveSales,
-    legendSales,
-    dataBar,
-    optionsBar,
-    responsiveBar,
-    legendBar
-} from "variables/Variables.jsx";
-import PopUp from "components/PopUp/PopUp.jsx";
 import Uploader from "components/PopUp/Uploader.jsx"
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import upload from "assets/img/upload.png";
 
 class FullVideoContent extends Component {
     state = {
@@ -48,11 +27,30 @@ class FullVideoContent extends Component {
     };
 
     render() {
+        const locState = this.props.location.state;
+        const sectionIndex = locState.sectionIndex;
+        const pageIndex = locState.pageIndex;
+        const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+
+        let videoSrc;
+        const page = course.sections[sectionIndex].pages[pageIndex];
+        if (this.state.videoEmbeddingCode) {
+            page.contents[0] = {            
+                content: this.state.videoEmbeddingCode,
+                contentType: 'video',
+            };
+            videoSrc = this.state.videoEmbeddingCode;
+        } else {
+            // check if the videoEmbeddingCode is set already
+            if (page.contents.length > 0) {
+                videoSrc = page.contents[0].content;
+            }
+        }
         return (
             <div className="course-content">
                 <div className="course-tabs">
                     <h4>Section 1: Introduction | Page 1
-                    <Link to='/admin/courseoutline'>
+                    <Link to={{ pathname: '/admin/courseoutline', state:course}}>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO OUTLINE
                             </Button>

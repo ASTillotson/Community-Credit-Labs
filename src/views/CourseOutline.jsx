@@ -11,66 +11,66 @@ class CourseOutline extends Component {
   }
 
   render() {
-    const locState = this.props.location.state;
-    const pages = [];
+    const course = this.props.location.state;
+    const pageDivs = [];
 
-    for (let i = 0; i < locState.length; i++) {
-      let options = locState[i];
-      const cards = options.map((o, idx) =>
-        <Col md={4}>
+    for (let i = 0; i < course.sections.length; i++) {
+      let pages = course.sections[i].pages;
+      const cards = pages.map((page, pageIndex) =>
+        <Col md={4} key={page.name}>
           <Card
-            category={`Page ${idx + 1}`}
-            stats={o}
+            category={`Page ${pageIndex + 1} - ${page.name}`}
+            stats={page.template}
             content={
               <div className="outline-content">
-                {o === "FULLSCREEN VIDEO" ?
-                  <Link to='/admin/fullvideocontent'>
+                {page.template === "FULLSCREEN VIDEO" ?
+                  <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex: i, pageIndex, course } }}>
                     <Button className='btn-simple-add' >
                       <img src={plus} width="20px" height="20px" alt="..." />
                     </Button>
                   </Link>
-                  : (o === "VIDEO WITH CAPTION" ?
-                    <Link to='/admin/videocapcontent'>
+                  : (page.template === "VIDEO WITH CAPTION" ?
+                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex: i, pageIndex, course } }}>
                       <Button className='btn-simple-add' >
                         <img src={plus} width="20px" height="20px" alt="..." />
                       </Button>
                     </Link>
-                    : (o === "IMAGE WITH TEXT" ?
-                      <Link to='/admin/imagecapcontent'>
+                    : (page.template === "IMAGE WITH TEXT" ?
+                      <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex: i, pageIndex, course } }}>
                         <Button className='btn-simple-add' >
                           <img src={plus} width="20px" height="20px" alt="..." />
                         </Button>
                       </Link>
-                      : (o === "QUIZ CONTENT" ?
-                      <Link to='/admin/quizcontent'>
-                        <Button className='btn-simple-add' >
-                          <img src={plus} width="20px" height="20px" alt="..." />
-                        </Button>
-                      </Link>
-                      : (o === "IMAGES WITH TEXT" ?
-                      <Link to='/admin/multiimgcapcontent'>
-                        <Button className='btn-simple-add' >
-                          <img src={plus} width="20px" height="20px" alt="..." />
-                        </Button>
-                      </Link>
-                      : (o === "TEXT" ?
-                        <Link to='/admin/fulltextcontent'>
+                      : (page.template === "QUIZ CONTENT" ?
+                        <Link to='/admin/quizcontent'>
                           <Button className='btn-simple-add' >
                             <img src={plus} width="20px" height="20px" alt="..." />
                           </Button>
-                        </Link> :
-                        <Link to='/admin/fullimagecontent'>
-                          <Button className='btn-simple-add' >
-                            <img src={plus} width="20px" height="20px" alt="..." />
-                          </Button>
-                        </Link>)))))
+                        </Link>
+                        : (page.template === "IMAGES WITH TEXT" ?
+                          <Link to='/admin/multiimgcapcontent'>
+                            <Button className='btn-simple-add' >
+                              <img src={plus} width="20px" height="20px" alt="..." />
+                            </Button>
+                          </Link>
+                          : (page.template === "TEXT" ?
+                            <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex: i, pageIndex, course } }}>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link> :
+                            <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex: i, pageIndex, course } }}>
+                              <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                              </Button>
+                            </Link>)))))
                 }
-                
+
               </div>
             } />
         </Col>);
-      pages.push(
-        <Row>
+      pageDivs.push(
+        <Row key={i}>
           <Col md={100} className="section-card">
             <Card
               title={`Section ${i + 1}: Introduction`}
@@ -87,7 +87,7 @@ class CourseOutline extends Component {
     return (
       <div className="content">
         <Grid fluid>
-          {pages}
+          {pageDivs}
           <h3>
             <Link to='/admin/courses'>
               <Button bsStyle="info" pullRight fill>

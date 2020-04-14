@@ -12,32 +12,67 @@ class CourseAdding extends Component {
     constructor() {
         super();
         this.state = {
-            showSection: 1,
-            optionsInSections: [],
+            course: {
+                name: '',
+                sections: [{
+                    name: 'Name 1',
+                    pages: [],
+                }],
+                edited_at: ''
+            }
         }
     }
+    handleCourseName = (event) => {
+        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        course.name = event.target.value;
+        this.setState({course});
+    };
+    
+
     _showSection = () => {
-        this.setState({showSection: this.state.showSection + 1})
+        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        course.sections = (course.sections || []).concat([{
+            name: 'Name x',
+            pages: [],
+        }]);
+        this.setState({ course });
+    };
+
+    handlePageAdded = (i, label, name) => {
+        // i in sections array
+        // label = template in page obj
+        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        course.sections[i].pages.push({
+            // new page obj
+            name,
+            template: label,
+            contents: [],
+        });
+        this.setState({ course })
     }
-    handlePageAdded = (i, selectedOption) => {
-        const optionsInSections = [...this.state.optionsInSections];
-        optionsInSections[i] = (optionsInSections[i] || []).concat([selectedOption]);
-        this.setState({optionsInSections});
+    handlePageDeleted = (sectionIndex, pageIndex) => {
+        // i in sections array
+        // label = template in page obj
+        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        course.sections[sectionIndex].pages.splice(pageIndex, 1);
+        this.setState({ course });
+    }
+    handleSectionDeleted = (i) => {
+        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        course.sections.splice(i, 1);
+        this.setState({ course });
     }
     render() {
-        const sections = [];
-        for (let i = 0; i< this.state.showSection; i++){
-            let selectedOptions = this.state.optionsInSections[i] || [];
-            sections.push(
-                <Section
-                    title={`Section ${i + 1}`}
-                    key={i}
-                    selectedOptions={selectedOptions}
-                    onPageAdded={(selectedOption) => this.handlePageAdded(i, selectedOption)}
-                />
-            )
-        }
-        const courseCreateState = this.state.optionsInSections.map(selectedOptions => selectedOptions.map(o => o.label));
+
+        const sections = this.state.course.sections.map((section, sectionIndex) =>
+            <Section
+                title={`Section ${sectionIndex + 1}`}
+                key={sectionIndex}
+                section={section}                
+                onPageAdded={(template, name) => this.handlePageAdded(sectionIndex, template, name)}
+                onPageDeleted={(pageIndex) => this.handlePageDeleted(sectionIndex, pageIndex)}
+                onSectionDeleted={() => this.handleSectionDeleted(sectionIndex)}
+            />);
         return (
             <div className="content add-content">
                 <Grid fluid>
@@ -54,7 +89,8 @@ class CourseAdding extends Component {
                                         type: "text",
                                         bsClass: "form-control",
                                         placeholder: "Course Name",
-
+                                        value: this.state.course.name,
+                                        onChange: this.handleCourseName
                                     }
                                 ]}
                             />
@@ -62,7 +98,7 @@ class CourseAdding extends Component {
                     </Row>
                     {sections}
                 </Grid>
-                <Link to={{ pathname: '/admin/courseoutline', state:courseCreateState}}>
+                <Link to={{ pathname: '/admin/courseoutline', state: this.state.course }}>
                     <Button bsStyle="info" pullRight fill type="submit" >
                         Create Course
                     </Button>
