@@ -31,19 +31,16 @@ class FullVideoContent extends Component {
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
         const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
-
-        let videoSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.videoEmbeddingCode) {
             page.contents[0] = {            
                 content: this.state.videoEmbeddingCode,
                 contentType: 'video',
             };
-            videoSrc = this.state.videoEmbeddingCode;
         } else {
             // check if the videoEmbeddingCode is set already
             if (page.contents.length > 0) {
-                videoSrc = page.contents[0].content;
+                this.setState({videoEmbeddingCode: page.contents[0].content, enteredVideo: true});
             }
         }
         return (
