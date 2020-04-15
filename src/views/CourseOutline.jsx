@@ -73,7 +73,7 @@ class CourseOutline extends Component {
         <Row key={i}>
           <Col md={100} className="section-card">
             <Card
-              title={`Section ${i + 1}: Introduction`}
+              title={`Section ${i + 1} - ${course.sections[i].name}`} 
               content={
                 <div className="outline-card">
                   {cards}

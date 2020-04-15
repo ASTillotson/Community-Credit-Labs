@@ -53,8 +53,7 @@ class Section extends Component {
         isOpen: false,
         seen: false,
         selectedPage: null,
-        name: '',
-        sectionName: ''
+        name: '', //page name
     };
 
     handleChange = selectedPage => {
@@ -73,6 +72,11 @@ class Section extends Component {
             });
         }
     };
+    handleSectionName = (event) => {
+        if(this.props.onSectionNameChange) {
+            this.props.onSectionNameChange(event.target.value);
+        }
+    }
 
     handleDeletePage = (i) => {
         if (this.props.onPageDeleted) {
@@ -168,7 +172,7 @@ class Section extends Component {
                                                 type: "text",
                                                 bsClass: "form-control",
                                                 placeholder: "Section Name",
-                                                value: this.state.sectionName,
+                                                value: this.props.section.name,
                                                 onChange: this.handleSectionName
                                             }
                                         ]}

@@ -15,7 +15,7 @@ class CourseAdding extends Component {
             course: {
                 name: '',
                 sections: [{
-                    name: 'Name 1',
+                    name: '',
                     pages: [],
                 }],
                 edited_at: ''
@@ -27,12 +27,16 @@ class CourseAdding extends Component {
         course.name = event.target.value;
         this.setState({course});
     };
-    
+    handleSectionName = (i, name) => {
+        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        course.sections[i].name = name;
+        this.setState({course});
+    };
 
     _showSection = () => {
         const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
         course.sections = (course.sections || []).concat([{
-            name: 'Name x',
+            name: '',
             pages: [],
         }]);
         this.setState({ course });
@@ -72,6 +76,7 @@ class CourseAdding extends Component {
                 onPageAdded={(template, name) => this.handlePageAdded(sectionIndex, template, name)}
                 onPageDeleted={(pageIndex) => this.handlePageDeleted(sectionIndex, pageIndex)}
                 onSectionDeleted={() => this.handleSectionDeleted(sectionIndex)}
+                onSectionNameChange={(name) => this.handleSectionName(sectionIndex, name)}
             />);
         return (
             <div className="content add-content">
