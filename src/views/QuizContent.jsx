@@ -6,6 +6,7 @@ import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
 
 class QuizContent extends Component {
+    
     state = {
         theQuestion: null,
         checkOne: false,
@@ -80,11 +81,33 @@ class QuizContent extends Component {
     // }
 
     render() {
+        const locState = this.props.location.state;
+        const sectionIndex = locState.sectionIndex;
+        const pageIndex = locState.pageIndex;
+        const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        if(!this.state.theQuestion) {
+            let oldState = course.sections[sectionIndex].pages[pageIndex].contents.content;
+            if(oldState){
+                this.setState({theQuestion: oldState.theQuestion,
+                    checkOne: oldState.checkOne,
+                    checkTwo: oldState.checkTwo,
+                    checkThree: oldState.checkThree,
+                    checkFour: oldState.checkFour,
+                    answerOne: oldState.answerOne,
+                    answerTwo: oldState.answerTwo,
+                    answerThree: oldState.answerThree,
+                    answerFour: oldState.answerFour
+                });
+            }
+        } else {
+            course.sections[sectionIndex].pages[pageIndex].contents = {content:this.state, contentType:"quiz"};
+        }
+
         return (
             <div className="course-content">
                 <div className="course-tabs">
                     <h4>Section 1: Introduction | Page 1
-                    <Link to='/admin/courseoutline'>
+                    <Link to={{ pathname: '/admin/courseoutline', state:course}}>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO OUTLINE
                             </Button>

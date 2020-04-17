@@ -13,7 +13,6 @@ class CourseOutline extends Component {
   render() {
     const course = this.props.location.state;
     const pageDivs = [];
-
     for (let i = 0; i < course.sections.length; i++) {
       let pages = course.sections[i].pages;
       const cards = pages.map((page, pageIndex) =>
@@ -42,7 +41,7 @@ class CourseOutline extends Component {
                         </Button>
                       </Link>
                       : (page.template === "QUIZ CONTENT" ?
-                        <Link to='/admin/quizcontent'>
+                        <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex: i, pageIndex, course } }}>
                           <Button className='btn-simple-add' >
                             <img src={plus} width="20px" height="20px" alt="..." />
                           </Button>
