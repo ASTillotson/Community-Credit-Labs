@@ -47,7 +47,7 @@ class CourseOutline extends Component {
                           </Button>
                         </Link>
                         : (page.template === "IMAGES WITH TEXT" ?
-                          <Link to='/admin/multiimgcapcontent'>
+                          <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex: i, pageIndex, course } }}>
                             <Button className='btn-simple-add' >
                               <img src={plus} width="20px" height="20px" alt="..." />
                             </Button>
@@ -72,7 +72,7 @@ class CourseOutline extends Component {
         <Row key={i}>
           <Col md={100} className="section-card">
             <Card
-              title={`Section ${i + 1} - ${course.sections[i].name}`} 
+              title={`Section ${i + 1} - ${course.sections[i].name}`}
               content={
                 <div className="outline-card">
                   {cards}

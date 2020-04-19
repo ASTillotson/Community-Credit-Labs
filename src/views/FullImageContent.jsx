@@ -34,7 +34,6 @@ class FullImageContent extends Component {
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
         const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
-
         let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.file) {
@@ -70,7 +69,7 @@ class FullImageContent extends Component {
                                     pageIndex > 0 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="previous">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex, course } }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                     <Button className='btn-previous'>
                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -78,7 +77,7 @@ class FullImageContent extends Component {
                                             </div>
                                             : (course.sections[sectionIndex].pages[pageIndex - 1].template === "VIDEO WITH CAPTION" ?
                                                 <div className="previous">
-                                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                         <Button className='btn-previous'>
                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                         </Button>
@@ -86,7 +85,7 @@ class FullImageContent extends Component {
                                                 </div>
                                                 : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGE WITH TEXT" ?
                                                     <div className="previous">
-                                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                             <Button className='btn-previous'>
                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                             </Button>
@@ -95,7 +94,7 @@ class FullImageContent extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                         <div className="previous">
-                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                 <Button className='btn-previous'>
                                                                     <img src={previous} width="20px" height="20px" alt="..." />
                                                                 </Button>
@@ -103,15 +102,15 @@ class FullImageContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGES WITH TEXT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                     <Button className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
                                                             </div>
-                                                            : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGES" ?
+                                                            : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
                                                                 <div className="previous">
-                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex, course } }}>
+                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                         <Button className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
@@ -119,7 +118,7 @@ class FullImageContent extends Component {
                                                                 </div>
                                                                 :
                                                                 <div className="previous">
-                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                         <Button className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
@@ -171,7 +170,7 @@ class FullImageContent extends Component {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex, course } }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                     <Button className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -179,7 +178,7 @@ class FullImageContent extends Component {
                                             </div>
                                             : (course.sections[sectionIndex].pages[pageIndex + 1].template === "VIDEO WITH CAPTION" ?
                                                 <div className="next">
-                                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                         <Button className='btn-next'>
                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                         </Button>
@@ -187,7 +186,7 @@ class FullImageContent extends Component {
                                                 </div>
                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGE WITH TEXT" ?
                                                     <div className="next">
-                                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                             <Button className='btn-next'>
                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                             </Button>
@@ -196,7 +195,7 @@ class FullImageContent extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                         <div className="next">
-                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                 <Button className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>
@@ -204,15 +203,15 @@ class FullImageContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGES WITH TEXT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
                                                             </div>
-                                                            : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGES" ?
+                                                            : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
                                                                 <div className="next">
-                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex, course } }}>
+                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                         <Button className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
@@ -220,7 +219,7 @@ class FullImageContent extends Component {
                                                                 </div>
                                                                 :
                                                                 <div className="next">
-                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex, course } }}>
+                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                         <Button className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
@@ -232,7 +231,7 @@ class FullImageContent extends Component {
                                                 )
                                             )
                                         :
-                                        <div className="previous"></div>
+                                        <div className="next"></div>
                                 }
                             </Col>
                         </Row>

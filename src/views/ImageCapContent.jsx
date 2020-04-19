@@ -60,13 +60,73 @@ class ImageCapContent extends Component {
                     <Grid fluid>
                         <Row>
                             <Col md={1}>
-                                <div className="previous">
-                                    <Link to='/admin/fulltextcontent'>
-                                        <Button className='btn-previous' >
-                                            <img src={previous} width="20px" height="20px" alt="..." />
-                                        </Button>
-                                    </Link>
-                                </div>
+                            {
+                                    pageIndex > 0 && course.sections[sectionIndex].pages.length > 1 ?
+                                        course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN VIDEO" ?
+                                            <div className="previous">
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                    <Button className='btn-previous'>
+                                                        <img src={previous} width="20px" height="20px" alt="..." />
+                                                    </Button>
+                                                </Link>
+                                            </div>
+                                            : (course.sections[sectionIndex].pages[pageIndex - 1].template === "VIDEO WITH CAPTION" ?
+                                                <div className="previous">
+                                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                        <Button className='btn-previous'>
+                                                            <img src={previous} width="20px" height="20px" alt="..." />
+                                                        </Button>
+                                                    </Link>
+                                                </div>
+                                                : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGE WITH TEXT" ?
+                                                    <div className="previous">
+                                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                            <Button className='btn-previous'>
+                                                                <img src={previous} width="20px" height="20px" alt="..." />
+                                                            </Button>
+
+                                                        </Link>
+                                                    </div>
+                                                    : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
+                                                        <div className="previous">
+                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Button className='btn-previous'>
+                                                                    <img src={previous} width="20px" height="20px" alt="..." />
+                                                                </Button>
+                                                            </Link>
+                                                        </div>
+                                                        : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGES WITH TEXT" ?
+                                                            <div className="previous">
+                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                    <Button className='btn-previous'>
+                                                                        <img src={previous} width="20px" height="20px" alt="..." />
+                                                                    </Button>
+                                                                </Link>
+                                                            </div>
+                                                            : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
+                                                                <div className="previous">
+                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                        <Button className='btn-previous'>
+                                                                            <img src={previous} width="20px" height="20px" alt="..." />
+                                                                        </Button>
+                                                                    </Link>
+                                                                </div>
+                                                                :
+                                                                <div className="previous">
+                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                        <Button className='btn-previous'>
+                                                                            <img src={previous} width="20px" height="20px" alt="..." />
+                                                                        </Button>
+                                                                    </Link>
+                                                                </div>
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        :
+                                        <div className="previous"></div>
+                                }
                             </Col>
 
                             <Col md={10}>
@@ -119,13 +179,73 @@ class ImageCapContent extends Component {
                             </Col>
 
                             <Col md={1}>
-                                <div className="next">
-                                    <Link to='/admin/fullvideocontent'>
-                                        <Button className='btn-next' >
-                                            <img src={next} width="20px" height="20px" alt="..." />
-                                        </Button>
-                                    </Link>
-                                </div>
+                            {
+                                    pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
+                                        course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
+                                            <div className="next">
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                    <Button className='btn-next'>
+                                                        <img src={next} width="20px" height="20px" alt="..." />
+                                                    </Button>
+                                                </Link>
+                                            </div>
+                                            : (course.sections[sectionIndex].pages[pageIndex + 1].template === "VIDEO WITH CAPTION" ?
+                                                <div className="next">
+                                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                        <Button className='btn-next'>
+                                                            <img src={next} width="20px" height="20px" alt="..." />
+                                                        </Button>
+                                                    </Link>
+                                                </div>
+                                                : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGE WITH TEXT" ?
+                                                    <div className="next">
+                                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                            <Button className='btn-next'>
+                                                                <img src={next} width="20px" height="20px" alt="..." />
+                                                            </Button>
+
+                                                        </Link>
+                                                    </div>
+                                                    : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
+                                                        <div className="next">
+                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Button className='btn-next'>
+                                                                    <img src={next} width="20px" height="20px" alt="..." />
+                                                                </Button>
+                                                            </Link>
+                                                        </div>
+                                                        : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGES WITH TEXT" ?
+                                                            <div className="next">
+                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                    <Button className='btn-next'>
+                                                                        <img src={next} width="20px" height="20px" alt="..." />
+                                                                    </Button>
+                                                                </Link>
+                                                            </div>
+                                                            : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
+                                                                <div className="next">
+                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                        <Button className='btn-next'>
+                                                                            <img src={next} width="20px" height="20px" alt="..." />
+                                                                        </Button>
+                                                                    </Link>
+                                                                </div>
+                                                                :
+                                                                <div className="next">
+                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                        <Button className='btn-next'>
+                                                                            <img src={next} width="20px" height="20px" alt="..." />
+                                                                        </Button>
+                                                                    </Link>
+                                                                </div>
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        :
+                                        <div className="next"></div>
+                                }
                             </Col>
                         </Row>
                     </Grid>
