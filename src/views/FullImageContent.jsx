@@ -45,7 +45,8 @@ class FullImageContent extends Component {
         } else {
             // check if the file is set already
             if (page.contents.length > 0) {
-                imgSrc = page.contents[0].content;
+                imgSrc = page.contents[0].content
+                this.setState({file: page.contents[0].content});
             }
         }
 

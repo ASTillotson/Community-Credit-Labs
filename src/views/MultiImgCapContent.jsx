@@ -34,19 +34,29 @@ class MultiImgCapContent extends Component {
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
         const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
-
-        let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
-        if (this.state.file) {
+        if ( this.state.files[0] !== null || this.state.files[1] !== null || this.state.files[2] !== null) {
             page.contents[0] = {            
-                content: this.state.file,
+                content: this.state.files,
                 contentType: 'image',
             };
-            imgSrc = this.state.file;
         } else {
             // check if the file is set already
-            if (page.contents.length > 0) {
-                imgSrc = page.contents[0].content;
+            if(page.contents[0]) {
+                if (page.contents[0].content[0] !== null || page.contents[0].content[1] !== null || page.contents[0].content[2] !== null) {
+                    this.setState({files: page.contents[0].content});
+                }
+            }
+        }
+        if (this.state.text) {
+            page.contents[1] = {            
+                content: this.state.text,
+                contentType: 'text'
+            };
+        } else {
+            // check if the text is set already
+            if (page.contents[1]) {
+                this.setState({text: page.contents[1].content});
             }
         }
         return (

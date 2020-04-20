@@ -32,15 +32,25 @@ class VideoCapContent extends Component {
         let videoSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.videoEmbeddingCode) {
-            page.contents[0] = {            
+            page.contents[0] = {
                 content: this.state.videoEmbeddingCode,
                 contentType: 'video',
             };
-            videoSrc = this.state.videoEmbeddingCode;
         } else {
-            // check if the file is set already
-            if (page.contents.length > 0) {
-                videoSrc = page.contents[0].content;
+            // check if the videoEmbeddingCode is set already
+            if (page.contents[0] != null) {
+                this.setState({ videoEmbeddingCode: page.contents[0].content, enteredVideo: true });
+            }
+        }
+        if (this.state.text) {
+            page.contents[1] = {            
+                content: this.state.text,
+                contentType: 'text'
+            };
+        } else {
+            // check if the text is set already
+            if (page.contents[1]) {
+                this.setState({text: page.contents[1].content});
             }
         }
         return (

@@ -17,19 +17,16 @@ class FullTextContent extends Component {
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
         const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
-
-        let text;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.text) {
             page.contents[0] = {            
                 content: this.state.text,
                 contentType: 'text',
             };
-            text = this.state.text;
         } else {
             // check if the text is set already
             if (page.contents.length > 0) {
-                text = page.contents[0].content;
+                this.setState({text: page.contents[0].content});
             }
         }
         return (
