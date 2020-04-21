@@ -55,7 +55,7 @@ class ImageCapContent extends Component {
         return (
             <div className="course-content">
                 <div className="course-tabs">
-                    <h4>Section 1: Introduction | Page 1
+                <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
                     <Link to={{ pathname: '/admin/courseoutline', state: course }}>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO OUTLINE
