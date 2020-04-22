@@ -7,6 +7,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
+import more from "assets/img/more.png";
 
 class Courses extends Component {
 
@@ -14,7 +15,7 @@ class Courses extends Component {
         return (
             <div className="course-content">
                 <Link to='/admin/addcourse'>
-                    <Button  bsStyle="info" pullRight fill type="submit">
+                    <Button bsStyle="info" pullRight fill type="submit">
                         + New Course
                     </Button>
                 </Link>
@@ -26,7 +27,7 @@ class Courses extends Component {
                                     <Col md={4}>
                                         <Card
                                             id="chartActivity"
-                                            title="Course1"
+                                            title="Course1" //{`Section ${i + 1} - ${course.sections[i].name}`}
                                             category="Published: YYYY-MM-DD"
                                             stats="Active"
                                             statsIcon="fa fa-check"
@@ -41,6 +42,9 @@ class Courses extends Component {
                                                     >
                                                         <img src={course1} alt="..." />
                                                     </a>
+                                                    <Link to='/admin/addcourse'>
+                                                        <a><img className="more" src={more} /></a>
+                                                    </Link>
                                                 </div>
                                             }
                                         />
@@ -64,28 +68,10 @@ class Courses extends Component {
                                                     >
                                                         <img src={course2} alt="..." />
                                                     </a>
-                                                </div>
-                                            }
-                                        />
-                                    </Col>
-                                    <Col md={4}>
-                                        <Card
-                                            id="chartActivity"
-                                            title="Course3"
-                                            category="Published: YYYY-MM-DD"
-                                            stats="Active"
-                                            statsIcon="fa fa-check"
-                                            content={
-                                                <div className="ct-chart">
-                                                    {/* <a
-                                                        className="img-holder switch-trigger"
-                                                        // onClick={() => {
-                                                        //     this.setState({ bgImage: imagine1 });
-                                                        //     this.props.handleImageClick(imagine1);
-                                                        // }}
-                                                    >
-                                                        <img src={course1} alt="..." />
-                                                    </a> */}
+
+                                                    <Link to='/admin/addcourse'>
+                                                        <a><img className="more" src={more} /></a>
+                                                    </Link>
                                                 </div>
                                             }
                                         />
