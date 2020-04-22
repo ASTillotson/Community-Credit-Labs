@@ -7,7 +7,7 @@ import {
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import Section from "components/Section/Section.jsx";
-
+import _ from "lodash";
 class CourseAdding extends Component {
     constructor() {
         super();
@@ -23,18 +23,21 @@ class CourseAdding extends Component {
         }
     }
     handleCourseName = (event) => {
-        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        const course = _.cloneDeep(this.state.course);
         course.name = event.target.value;
         this.setState({course});
     };
     handleSectionName = (i, name) => {
-        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        const course = _.cloneDeep(this.state.course);
         course.sections[i].name = name;
         this.setState({course});
     };
 
     _showSection = () => {
-        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        const course = _.cloneDeep(this.state.course);
         course.sections = (course.sections || []).concat([{
             name: '',
             pages: [],
@@ -45,7 +48,8 @@ class CourseAdding extends Component {
     handlePageAdded = (i, label, name) => {
         // i in sections array
         // label = template in page obj
-        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        const course = _.cloneDeep(this.state.course);
         course.sections[i].pages.push({
             // new page obj
             name,
@@ -57,12 +61,14 @@ class CourseAdding extends Component {
     handlePageDeleted = (sectionIndex, pageIndex) => {
         // i in sections array
         // label = template in page obj
-        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(this.state.course)); //deep 
+        const course = _.cloneDeep(this.state.course);
         course.sections[sectionIndex].pages.splice(pageIndex, 1);
         this.setState({ course });
     }
     handleSectionDeleted = (i) => {
-        const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone //_.deepCopy(this.state.course)
+        const course = _.cloneDeep(this.state.course);
         course.sections.splice(i, 1);
         this.setState({ course });
     }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
 import Uploader from "components/PopUp/Uploader.jsx"
-
+import _ from "lodash";
 class FullVideoContent extends Component {
     state = {
         isOpen: false,
@@ -30,7 +30,8 @@ class FullVideoContent extends Component {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.videoEmbeddingCode) {
             page.contents[0] = {

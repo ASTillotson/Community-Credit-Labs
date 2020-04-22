@@ -4,7 +4,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import { Link } from 'react-router-dom';
 import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
-
+import _ from "lodash";
 class QuizContent extends Component {
     
     state = {
@@ -84,7 +84,8 @@ class QuizContent extends Component {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        const course = _.cloneDeep(locState.course);
         if(!this.state.theQuestion) {
             let oldState = course.sections[sectionIndex].pages[pageIndex].contents.content;
             if(oldState){

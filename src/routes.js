@@ -53,7 +53,7 @@ const dashboardRoutes = [
   },
   {
     path: "/addcourse",
-    name: "Course Adding",
+    name: "Course Planner",
     icon: "pe-7s-news-paper",
     component: CoursesAdding,
     layout: "/admin",

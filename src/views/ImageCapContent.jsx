@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
 import Uploader from "components/PopUp/Uploader.jsx"
+import _ from "lodash";
 class ImageCapContent extends Component {
     constructor(props) {
         super(props)
@@ -28,7 +29,8 @@ class ImageCapContent extends Component {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
+        const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.file) {
             page.contents[0] = {            
