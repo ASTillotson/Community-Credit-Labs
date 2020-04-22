@@ -7,7 +7,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
-import more from "assets/img/more.png";
+import edit from "assets/img/edit.png";
 
 class Courses extends Component {
 
@@ -43,7 +43,7 @@ class Courses extends Component {
                                                         <img src={course1} alt="..." />
                                                     </a>
                                                     <Link to='/admin/addcourse'>
-                                                        <a><img className="more" src={more} /></a>
+                                                        <a><img className="edit" src={edit} /></a>
                                                     </Link>
                                                 </div>
                                             }
@@ -70,7 +70,7 @@ class Courses extends Component {
                                                     </a>
 
                                                     <Link to='/admin/addcourse'>
-                                                        <a><img className="more" src={more} /></a>
+                                                        <a><img className="edit" src={edit} /></a>
                                                     </Link>
                                                 </div>
                                             }
