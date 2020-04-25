@@ -13,6 +13,17 @@ class FullVideoContent extends Component {
         videoEmbeddingCode: null,
         enteredVideo: false
     };
+    flushState = () => {
+        if(this.props.location.state.flushState) {
+            this.props.location.state.flushState = false;
+            this.setState({
+                isOpen: false,
+                seen: false,
+                videoEmbeddingCode: null,
+                enteredVideo: false
+            });
+        }
+    }
     togglePop = () => {
         this.setState({
             seen: !this.state.seen
@@ -27,6 +38,8 @@ class FullVideoContent extends Component {
     };
 
     render() {
+        this.flushState();
+        console.log(this.state.videoEmbeddingCode);
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
@@ -48,7 +61,7 @@ class FullVideoContent extends Component {
             <div className="course-content">
                 <div className="course-tabs">
                 <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
-                    <Link to={{ pathname: '/admin/courseoutline', state: course }}>
+                    <Link to={{ pathname: '/admin/addcourse', state: {loadPropState: true, course: course } }}>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO OUTLINE
                             </Button>
@@ -64,7 +77,7 @@ class FullVideoContent extends Component {
                                     pageIndex > 0 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="previous">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, flushState: true } }}>
                                                     <Button className='btn-previous'>
                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -165,7 +178,7 @@ class FullVideoContent extends Component {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, flushState: true} }}>
                                                     <Button className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>

@@ -4,6 +4,8 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import PopUp from "components/PopUp/PopUp.jsx";
+import { Link } from 'react-router-dom';
+import plus from "assets/img/plus.png";
 import template1 from "assets/img/template1.JPG";
 import template2 from "assets/img/template2.JPG";
 import template3 from "assets/img/template3.JPG";
@@ -99,20 +101,61 @@ class Section extends Component {
         });
     };
     render() {
-        const renderSelected = this.props.section.pages.map((p, pageIndex) => (
-            <Col md={3} key={pageIndex}>
-                <Row>
-                    <Col md={6}>
-                        <p>{`Page ${pageIndex + 1} - ${p.name}`}</p>
-                    </Col>
-                    <Col md={6}>
-                        <i className="fa fa-close" onClick={() => { this.handleDeletePage(pageIndex) }}></i>
-                    </Col>
-                </Row>
-                <img className="templates-img" src={templateMap[p.template]}></img>
-                <label className="templates-label">{p.template}</label>
-            </Col>
-        ));
+        const course = this.props.course;
+        const sectionNumber = this.props.sectionNumber;
+        const renderSelected = this.props.section.pages.map((p, pageIndex) =>
+            <Col md={4} key={p.name}>
+            <Card
+                category={`Page ${pageIndex + 1} - ${p.name}`}
+                stats={p.template}
+                content={
+                <div className="outline-content">
+                    {p.template === "FULLSCREEN VIDEO" ?
+                    <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                        <Button className='btn-simple-add' >
+                        <img src={plus} width="20px" height="20px" alt="..." />
+                        </Button>
+                    </Link>
+                    : (p.template === "VIDEO WITH CAPTION" ?
+                        <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                        <Button className='btn-simple-add' >
+                            <img src={plus} width="20px" height="20px" alt="..." />
+                        </Button>
+                        </Link>
+                        : (p.template === "IMAGE WITH TEXT" ?
+                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                            <Button className='btn-simple-add' >
+                            <img src={plus} width="20px" height="20px" alt="..." />
+                            </Button>
+                        </Link>
+                        : (p.template === "QUIZ CONTENT" ?
+                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                            <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                            </Button>
+                            </Link>
+                            : (p.template === "IMAGES WITH TEXT" ?
+                            <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                <Button className='btn-simple-add' >
+                                <img src={plus} width="20px" height="20px" alt="..." />
+                                </Button>
+                            </Link>
+                            : (p.template === "TEXT" ?
+                                <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                <Button className='btn-simple-add' >
+                                    <img src={plus} width="20px" height="20px" alt="..." />
+                                </Button>
+                                </Link> :
+                                <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                <Button className='btn-simple-add' >
+                                    <img src={plus} width="20px" height="20px" alt="..." />
+                                </Button>
+                                </Link>)))))
+                    }
+                    <i className="fa fa-close" onClick={() => { this.handleDeletePage(pageIndex)}}></i>
+                </div>
+                } />
+            </Col>);
         return (
             <Row>
                 <Col md={12} className="new-card">

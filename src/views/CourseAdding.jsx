@@ -12,6 +12,7 @@ class CourseAdding extends Component {
     constructor() {
         super();
         this.state = {
+            loadPropState: false,
             course: {
                 name: '',
                 sections: [{
@@ -21,6 +22,15 @@ class CourseAdding extends Component {
                 edited_at: ''
             }
         }
+    }
+    loadPropsCourse = () => {
+        if(this.props.location.state) {
+            if(this.props.location.state.loadPropState) {
+                this.props.location.state.loadPropState = false;
+                this.setState({loadPropState: false, course: this.props.location.state.course})
+            }
+        }
+        
     }
     handleCourseName = (event) => {
         // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
@@ -73,12 +83,13 @@ class CourseAdding extends Component {
         this.setState({ course });
     }
     render() {
-
+        this.loadPropsCourse();
         const sections = this.state.course.sections.map((section, sectionIndex) =>
             <Section
                 title={`Section ${sectionIndex + 1}`}
-                key={sectionIndex}
-                section={section}                
+                sectionNumber={sectionIndex}
+                section={section}
+                course={_.cloneDeep(this.state.course)}               
                 onPageAdded={(template, name) => this.handlePageAdded(sectionIndex, template, name)}
                 onPageDeleted={(pageIndex) => this.handlePageDeleted(sectionIndex, pageIndex)}
                 onSectionDeleted={() => this.handleSectionDeleted(sectionIndex)}

@@ -17,7 +17,16 @@ class FullImageContent extends Component {
         seen: false,
         file: null,
     };
-
+    flushState = () => {
+        if(this.props.location.state.flushState) {
+            this.props.location.state.flushState = false;
+            this.setState({
+                isOpen: false,
+                seen: false,
+                file: null,
+            });
+        }
+    }
     handleChange(event) {
         this.setState({
             file: URL.createObjectURL(event.target.files[0])
@@ -30,6 +39,7 @@ class FullImageContent extends Component {
     };
 
     render() {
+        this.flushState();
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
@@ -55,7 +65,7 @@ class FullImageContent extends Component {
             <div className="course-content">
                 <div className="course-tabs">
                     <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
-                    <Link to={{ pathname: '/admin/courseoutline', state: course }}>
+                    <Link to={{ pathname: '/admin/addcourse', state: {loadPropState: true, course: course } }}>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO OUTLINE
                             </Button>
@@ -112,7 +122,7 @@ class FullImageContent extends Component {
                                                             </div>
                                                             : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
                                                                 <div className="previous">
-                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, flushState: true} }}>
                                                                         <Button className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
@@ -213,7 +223,7 @@ class FullImageContent extends Component {
                                                             </div>
                                                             : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
                                                                 <div className="next">
-                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, flushState: true} }}>
                                                                         <Button className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
