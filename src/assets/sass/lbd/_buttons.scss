@@ -1,3 +1,6 @@
+.content .outline-content .fa-close{
+    padding-left: 90px;
+}
 .section .btn-delete{
     margin-top: -65px;
     margin-right: -135px;
@@ -8,9 +11,10 @@
     text-decoration: underline;
 }
 .section .fa{
-    padding-left: 55px;
+    // padding-left: 60px;
     cursor: pointer;
     color: red;
+    margin-top: -160px;
 }
 .course-content .form-check-input{
     width: 15px;
@@ -103,7 +107,8 @@
 .btn-simple-add{
     border: 0;
     font-size: 16px;
-    padding: 8px 100px;
+    padding: 8px 20px;
+    margin-left: 100px;
 }
 
 // Apply the mixin to the buttons

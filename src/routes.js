@@ -21,7 +21,7 @@ import Courses from "views/Courses.jsx";
 import CoursesAdding from "views/CourseAdding.jsx";
 import CourseOutline from "views/CourseOutline.jsx";
 import FullVideoContent from "views/FullVideoContent.jsx";
-import CourseMedia from "views/CourseMedia.jsx";
+import CourseTaking from "views/CourseTaking.jsx";
 import FullImageContent from "views/FullImageContent.jsx";
 import FullTextContent from "views/FullTextContent.jsx";
 import VideoCapContent from "views/VideoCapContent.jsx";
@@ -67,13 +67,14 @@ const dashboardRoutes = [
     layout: "/admin",
     disappear: true
   },
-  // {
-  //   path: "/coursemedia",
-  //   name: "Course Media",
-  //   icon: "pe-7s-map-marker",
-  //   component: CourseMedia,
-  //   layout: "/admin"
-  // },
+  {
+    path: "/coursetaking",
+    name: "Course Taking",
+    icon: "pe-7s-map-marker",
+    component: CourseTaking,
+    layout: "/admin",
+    disappear: true
+  },
   {
     path: "/fullvideocontent",
     name: "Course Content",

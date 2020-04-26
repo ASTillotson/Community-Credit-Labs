@@ -67,7 +67,7 @@ class FullImageContent extends Component {
                     <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
                     <Link to={{ pathname: '/admin/addcourse', state: {loadPropState: true, course: course } }}>
                             <Button bsStyle="info" pullRight fill type="submit">
-                                BACK TO OUTLINE
+                                BACK TO PLANNER
                             </Button>
                         </Link>
                     </h4>
