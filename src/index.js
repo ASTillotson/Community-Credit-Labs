@@ -27,7 +27,8 @@ import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
 
-import AdminLayout from "layouts/Admin.jsx";
+import AdminLayout from "layouts/AdminLayout.jsx";
+import UserLayout from "layouts/UserLayout.jsx";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -35,6 +36,10 @@ ReactDOM.render(
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
       <Redirect from="/" to="/admin/dashboard" />
     </Switch>
+    {/* <Switch>
+      <Route path="/user" render={props => <UserLayout {...props} />} />
+      <Redirect from="/" to="/user/courses" />
+    </Switch> */}
   </BrowserRouter>,
   document.getElementById("root")
 );
