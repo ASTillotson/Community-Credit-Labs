@@ -42,6 +42,10 @@ const templates = [
         imgSrc: template8,
         label: "IMAGES WITH TEXT",
     },
+    {
+        imgSrc: template8,
+        label: "HORIZONTAL IMAGES WITH TEXT",
+    },
 ];
 
 const templateMap = templates.reduce((result, item, index, array) => {
@@ -140,6 +144,12 @@ class Section extends Component {
                                                         <img src={plus} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
+                                                : (p.template === "HORIZONTAL IMAGES WITH TEXT" ?
+                                                <Link to={{ pathname: '/admin/horizontalmultiimgs', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                                    <Button className='btn-simple-add' >
+                                                        <img src={plus} width="20px" height="20px" alt="..." />
+                                                    </Button>
+                                                </Link>
                                                 : (p.template === "TEXT" ?
                                                     <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
                                                         <Button className='btn-simple-add' >
@@ -150,7 +160,7 @@ class Section extends Component {
                                                         <Button className='btn-simple-add' >
                                                             <img src={plus} width="20px" height="20px" alt="..." />
                                                         </Button>
-                                                    </Link>)))))
+                                                    </Link>))))))
                             }
                             <i className="fa fa-close" onClick={() => { this.handleDeletePage(pageIndex) }}></i>
                         </div>

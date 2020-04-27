@@ -14,7 +14,7 @@ class FullVideoContent extends Component {
         enteredVideo: false
     };
     flushState = () => {
-        if(this.props.location.state.flushState) {
+        if (this.props.location.state.flushState) {
             this.props.location.state.flushState = false;
             this.setState({
                 isOpen: false,
@@ -60,8 +60,8 @@ class FullVideoContent extends Component {
         return (
             <div className="course-content">
                 <div className="course-tabs">
-                <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
-                    <Link to={{ pathname: '/admin/addcourse', state: {loadPropState: true, course: course } }}>
+                    <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
+                        <Link to={{ pathname: '/admin/addcourse', state: { loadPropState: true, course: course } }}>
                             <Button bsStyle="info" pullRight fill type="submit">
                                 BACK TO PLANNER
                             </Button>
@@ -108,30 +108,39 @@ class FullVideoContent extends Component {
                                                                 </Button>
                                                             </Link>
                                                         </div>
-                                                        : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGES WITH TEXT" ?
+                                                        : (course.sections[sectionIndex].pages[pageIndex - 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                     <Button className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
                                                             </div>
-                                                            : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
+                                                            : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGES WITH TEXT" ?
                                                                 <div className="previous">
-                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                    <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                         <Button className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
                                                                 </div>
-                                                                :
-                                                                <div className="previous">
-                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                                        <Button className='btn-previous'>
-                                                                            <img src={previous} width="20px" height="20px" alt="..." />
-                                                                        </Button>
-                                                                    </Link>
-                                                                </div>
+                                                                : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
+                                                                    <div className="previous">
+                                                                        <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                            <Button className='btn-previous'>
+                                                                                <img src={previous} width="20px" height="20px" alt="..." />
+                                                                            </Button>
+                                                                        </Link>
+                                                                    </div>
+                                                                    :
+                                                                    <div className="previous">
+                                                                        <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                            <Button className='btn-previous'>
+                                                                                <img src={previous} width="20px" height="20px" alt="..." />
+                                                                            </Button>
+                                                                        </Link>
+                                                                    </div>
+                                                                )
                                                             )
                                                         )
                                                     )
@@ -174,11 +183,11 @@ class FullVideoContent extends Component {
                             </Col>
 
                             <Col md={1}>
-                            {
+                                {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, flushState: true} }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, flushState: true } }}>
                                                     <Button className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -201,38 +210,47 @@ class FullVideoContent extends Component {
 
                                                         </Link>
                                                     </div>
-                                                    : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
+                                                    : (course.sections[sectionIndex].pages[pageIndex + 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
-                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                            <Link to={{ pathname: '/admin/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                 <Button className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>
                                                             </Link>
                                                         </div>
-                                                        : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGES WITH TEXT" ?
+                                                        : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
                                                             </div>
-                                                            : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
+                                                            : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGES WITH TEXT" ?
                                                                 <div className="next">
-                                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                    <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                         <Button className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
                                                                 </div>
-                                                                :
-                                                                <div className="next">
-                                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                        <Button className='btn-next'>
-                                                                            <img src={next} width="20px" height="20px" alt="..." />
-                                                                        </Button>
-                                                                    </Link>
-                                                                </div>
+                                                                : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
+                                                                    <div className="next">
+                                                                        <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                            <Button className='btn-next'>
+                                                                                <img src={next} width="20px" height="20px" alt="..." />
+                                                                            </Button>
+                                                                        </Link>
+                                                                    </div>
+                                                                    :
+                                                                    <div className="next">
+                                                                        <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                            <Button className='btn-next'>
+                                                                                <img src={next} width="20px" height="20px" alt="..." />
+                                                                            </Button>
+                                                                        </Link>
+                                                                    </div>
+                                                                )
                                                             )
                                                         )
                                                     )

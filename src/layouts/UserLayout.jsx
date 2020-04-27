@@ -51,7 +51,7 @@ class UserLayout extends Component {
   };
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/user") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -115,7 +115,7 @@ class UserLayout extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Sidebar {...this.props} routes={routes.filter(r => !r.disappear)} image={this.state.image}
+        <Sidebar {...this.props} routes={routes.filter(r => !r.disappear && r.layout === '/user')} image={this.state.image}
         color={this.state.color}
         hasImage={this.state.hasImage}/>
         <div id="main-panel" className="main-panel" ref="mainPanel">

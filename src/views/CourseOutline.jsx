@@ -46,6 +46,12 @@ class CourseOutline extends Component {
                             <img src={plus} width="20px" height="20px" alt="..." />
                           </Button>
                         </Link>
+                        : (page.template === "HORIZONTAL IMAGES WITH TEXT" ?
+                        <Link to={{ pathname: '/admin/horizontalmultiimgs', state: { sectionIndex: i, pageIndex, course } }}>
+                          <Button className='btn-simple-add' >
+                            <img src={plus} width="20px" height="20px" alt="..." />
+                          </Button>
+                        </Link>
                         : (page.template === "IMAGES WITH TEXT" ?
                           <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex: i, pageIndex, course } }}>
                             <Button className='btn-simple-add' >
@@ -62,7 +68,7 @@ class CourseOutline extends Component {
                               <Button className='btn-simple-add' >
                                 <img src={plus} width="20px" height="20px" alt="..." />
                               </Button>
-                            </Link>)))))
+                            </Link>))))))
                 }
 
               </div>

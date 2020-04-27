@@ -24,25 +24,25 @@ class CourseAdding extends Component {
         }
     }
     loadPropsCourse = () => {
-        if(this.props.location.state) {
-            if(this.props.location.state.loadPropState) {
+        if (this.props.location.state) {
+            if (this.props.location.state.loadPropState) {
                 this.props.location.state.loadPropState = false;
-                this.setState({loadPropState: false, course: this.props.location.state.course})
+                this.setState({ loadPropState: false, course: this.props.location.state.course })
             }
         }
-        
+
     }
     handleCourseName = (event) => {
         // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
         const course = _.cloneDeep(this.state.course);
         course.name = event.target.value;
-        this.setState({course});
+        this.setState({ course });
     };
     handleSectionName = (i, name) => {
         // const course = JSON.parse(JSON.stringify(this.state.course)); //deep clone
         const course = _.cloneDeep(this.state.course);
         course.sections[i].name = name;
-        this.setState({course});
+        this.setState({ course });
     };
 
     _showSection = () => {
@@ -89,7 +89,7 @@ class CourseAdding extends Component {
                 title={`Section ${sectionIndex + 1}`}
                 sectionNumber={sectionIndex}
                 section={section}
-                course={_.cloneDeep(this.state.course)}               
+                course={_.cloneDeep(this.state.course)}
                 onPageAdded={(template, name) => this.handlePageAdded(sectionIndex, template, name)}
                 onPageDeleted={(pageIndex) => this.handlePageDeleted(sectionIndex, pageIndex)}
                 onSectionDeleted={() => this.handleSectionDeleted(sectionIndex)}
@@ -120,9 +120,24 @@ class CourseAdding extends Component {
                     </Row>
                     {sections}
                 </Grid>
-                <Link to={{ pathname: '/admin/courseoutline', state: this.state.course }}>
+                {/* <Link to={{ pathname: '/admin/courseoutline', state: this.state.course }}>
                     <Button bsStyle="info" pullRight fill type="submit" >
                         Create Course
+                    </Button>
+                </Link> */}
+                <Link to='/admin/courses'>
+                    <Button bsStyle="info" pullRight fill>
+                        Publish
+                    </Button>
+                </Link>
+                <Link to='/admin/courses'>
+                    <Button bsStyle="info" pullRight fill>
+                        Preview
+                    </Button>
+                </Link>
+                <Link to='/admin/courses'>
+                    <Button bsStyle="info" pullRight fill>
+                        Save
                     </Button>
                 </Link>
             </div>

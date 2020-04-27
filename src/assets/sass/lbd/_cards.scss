@@ -36,6 +36,10 @@
     height: 35px;
     font-size: 16px;
 }
+.course-content .img-text img{
+    height: 195px;
+    padding-top: 15px;
+}
 .course-content .img-part .upload-btn, .course-content .video-part .upload-btn{
     margin-top: 100px;
     margin-left: 300px;
@@ -394,6 +398,10 @@ label {
     position: absolute;
     z-index: 99;
     font-weight: 900;
+}
+.course-content .uploads-btn{
+    margin-top: 90px;
+    margin-left: 140px;
 }
 .course-adding-content{
     padding:15px 15px 10px 15px;

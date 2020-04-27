@@ -28,6 +28,8 @@ import VideoCapContent from "views/VideoCapContent.jsx";
 import ImageCapContent from "views/ImageCapContent.jsx";
 import QuizContent from "views/QuizContent.jsx";
 import MultiImgCapContent from "views/MultiImgCapContent.jsx";
+import HorizontalMultiImgs from "views/HorizontalMultiImgs.jsx";
+import UserCourse from "views/UserCourse.jsx";
 
 const dashboardRoutes = [
   {
@@ -72,8 +74,16 @@ const dashboardRoutes = [
     name: "Course Taking",
     icon: "pe-7s-map-marker",
     component: CourseTaking,
-    layout: "/admin",
+    layout: "/user", //user
     disappear: true
+  },
+  {
+    path: "/usercourse",
+    name: "Courses",
+    icon: "pe-7s-note2",
+    component: UserCourse,
+    layout: "/user", //user,
+    disappear: false
   },
   {
     path: "/fullvideocontent",
@@ -128,6 +138,14 @@ const dashboardRoutes = [
     name: "Course Content",
     icon: "pe-7s-map-marker",
     component: MultiImgCapContent,
+    layout: "/admin",
+    disappear: true
+  },
+  {
+    path: "/horizontalmultiimgs", 
+    name: "Course Content",
+    icon: "pe-7s-map-marker",
+    component: HorizontalMultiImgs,
     layout: "/admin",
     disappear: true
   },

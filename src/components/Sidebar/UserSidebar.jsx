@@ -6,7 +6,7 @@ import UserCard from "../UserCard/UserCard";
 import logo from "assets/img/ccl.png";
 import Button from "components/CustomButton/CustomButton.jsx";
 
-import avatar from "assets/img/faces/face-8.JPG";
+import avatar from "assets/img/faces/face-0.jpg";
 
 class Sidebar extends Component {
   constructor(props) {
