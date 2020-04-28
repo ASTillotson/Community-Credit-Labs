@@ -115,48 +115,48 @@ class Section extends Component {
                     content={
                         <div className="outline-content">
                             {p.template === "FULLSCREEN VIDEO" ?
-                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                     <Button className='btn-simple-add' >
                                         <img src={plus} width="20px" height="20px" alt="..." />
                                     </Button>
                                 </Link>
                                 : (p.template === "VIDEO WITH CAPTION" ?
-                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                    <Link to={{ pathname: '/admin/videocapcontent', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                         <Button className='btn-simple-add' >
                                             <img src={plus} width="20px" height="20px" alt="..." />
                                         </Button>
                                     </Link>
                                     : (p.template === "IMAGE WITH TEXT" ?
-                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                        <Link to={{ pathname: '/admin/imagecapcontent', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                             <Button className='btn-simple-add' >
                                                 <img src={plus} width="20px" height="20px" alt="..." />
                                             </Button>
                                         </Link>
                                         : (p.template === "QUIZ CONTENT" ?
-                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex: sectionNumber, pageIndex, course, loadPropState: true } }}>
                                                 <Button className='btn-simple-add' >
                                                     <img src={plus} width="20px" height="20px" alt="..." />
                                                 </Button>
                                             </Link>
                                             : (p.template === "IMAGES WITH TEXT" ?
-                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                                <Link to={{ pathname: '/admin/multiimgcapcontent', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                                     <Button className='btn-simple-add' >
                                                         <img src={plus} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
                                                 : (p.template === "HORIZONTAL IMAGES WITH TEXT" ?
-                                                <Link to={{ pathname: '/admin/horizontalmultiimgs', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                                <Link to={{ pathname: '/admin/horizontalmultiimgs', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                                     <Button className='btn-simple-add' >
                                                         <img src={plus} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
                                                 : (p.template === "TEXT" ?
-                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                                    <Link to={{ pathname: '/admin/fulltextcontent', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                                         <Button className='btn-simple-add' >
                                                             <img src={plus} width="20px" height="20px" alt="..." />
                                                         </Button>
                                                     </Link> :
-                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex: sectionNumber, pageIndex, course } }}>
+                                                    <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex: sectionNumber, pageIndex, course} }}>
                                                         <Button className='btn-simple-add' >
                                                             <img src={plus} width="20px" height="20px" alt="..." />
                                                         </Button>

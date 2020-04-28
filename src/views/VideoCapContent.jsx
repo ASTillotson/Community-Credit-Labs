@@ -11,7 +11,7 @@ class VideoCapContent extends Component {
         isOpen: false,
         videoEmbeddingCode: null,
         enteredVideo: false,
-        text: null
+        text: ""
     };
     flushState = () => {
         if (this.props.location.state.flushState) {
@@ -20,7 +20,7 @@ class VideoCapContent extends Component {
                 isOpen: false,
                 videoEmbeddingCode: null,
                 enteredVideo: false,
-                text: null
+                text: ""
             });
         }
     }
@@ -39,10 +39,7 @@ class VideoCapContent extends Component {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
-
-        let videoSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.videoEmbeddingCode) {
             page.contents[0] = {
@@ -120,7 +117,7 @@ class VideoCapContent extends Component {
                                                             </div>
                                                             : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                                 <div className="previous">
-                                                                    <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                    <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, loadPropState: true } }}>
                                                                         <Button className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
@@ -250,7 +247,7 @@ class VideoCapContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, loadPropState: true } }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>

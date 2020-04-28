@@ -7,14 +7,13 @@ import previous from "assets/img/previous.png";
 import _ from "lodash";
 class FullTextContent extends Component {
     state = {
-        text: null
+        text: ""
     }
     flushState = () => {
         if (this.props.location.state.flushState) {
-            console.log("we made it");
             this.props.location.state.flushState = false;
             this.setState({
-                text: null
+                text: ""
             });
         }
     }
@@ -22,12 +21,10 @@ class FullTextContent extends Component {
         this.setState({ text: event.target.value });
     };
     render() {
-        console.log("what");
         this.flushState();
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.text) {
@@ -86,7 +83,7 @@ class FullTextContent extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                         <div className="previous">
-                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, loadPropState: true } }}>
                                                                 <Button className='btn-previous'>
                                                                     <img src={previous} width="20px" height="20px" alt="..." />
                                                                 </Button>
@@ -184,7 +181,7 @@ class FullTextContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, loadPropState: true } }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>

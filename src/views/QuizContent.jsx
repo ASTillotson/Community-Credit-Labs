@@ -8,15 +8,15 @@ import _ from "lodash";
 class QuizContent extends Component {
 
     state = {
-        theQuestion: null,
+        theQuestion: "",
         checkOne: false,
         checkTwo: false,
         checkThree: false,
         checkFour: false,
-        answerOne: null,
-        answerTwo: null,
-        answerThree: null,
-        answerFour: null,
+        answerOne: "",
+        answerTwo: "",
+        answerThree: "",
+        answerFour: "",
     };
 
     theQuestion = event => {
@@ -65,6 +65,22 @@ class QuizContent extends Component {
         console.log(this.state);
     }
 
+    flushState = () => {
+        if (this.props.location.state.flushState) {
+            this.props.location.state.flushState = false;
+            this.setState({
+                theQuestion: "",
+                checkOne: false,
+                checkTwo: false,
+                checkThree: false,
+                checkFour: false,
+                answerOne: "",
+                answerTwo: "",
+                answerThree: "",
+                answerFour: ""
+            });
+        }
+    }
     // Convert checked values into String.//
     //______
     //  onSubmit = (e) => {
@@ -81,12 +97,13 @@ class QuizContent extends Component {
     // }
 
     render() {
+        this.flushState();
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
-        if (!this.state.theQuestion) {
+        if (locState.loadPropState) {
+            locState.loadPropState = false;
             let oldState = course.sections[sectionIndex].pages[pageIndex].contents.content;
             if (oldState) {
                 this.setState({
@@ -158,7 +175,7 @@ class QuizContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, loadPropState: true, flushState: true} }}>
                                                                     <Button className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
@@ -339,7 +356,7 @@ class QuizContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, loadPropState: true, flushState: true} }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>

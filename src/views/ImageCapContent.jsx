@@ -13,7 +13,7 @@ class ImageCapContent extends Component {
     }
     state = {
         isOpen: false,
-        text: null,
+        text: "",
         file: null,
     };
     flushState = () => {
@@ -21,7 +21,7 @@ class ImageCapContent extends Component {
             this.props.location.state.flushState = false;
             this.setState({
                 isOpen: false,
-                text: null,
+                text: "",
                 file: null,
             });
         }
@@ -40,7 +40,6 @@ class ImageCapContent extends Component {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
-        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.file) {
@@ -118,7 +117,7 @@ class ImageCapContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, loadPropState: true } }}>
                                                                     <Button className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
@@ -246,7 +245,7 @@ class ImageCapContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, loadPropState: true } }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
