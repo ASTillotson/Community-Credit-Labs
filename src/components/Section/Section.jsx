@@ -13,6 +13,7 @@ import template4 from "assets/img/template4.JPG";
 import template5 from "assets/img/template5.JPG";
 import template6 from "assets/img/template6.JPG";
 import template8 from "assets/img/template8.JPG";
+import template9 from "assets/img/template9.JPG";
 const templates = [
     {
         imgSrc: template1,
@@ -43,7 +44,7 @@ const templates = [
         label: "IMAGES WITH TEXT",
     },
     {
-        imgSrc: template8,
+        imgSrc: template9,
         label: "HORIZONTAL IMAGES WITH TEXT",
     },
 ];
