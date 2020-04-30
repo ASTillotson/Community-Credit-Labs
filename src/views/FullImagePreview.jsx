@@ -6,12 +6,16 @@ import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
 import Uploader from "components/PopUp/Uploader.jsx"
 import _ from "lodash";
-class FullVideoContent extends Component {
+class FullImagePreview extends Component {
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
     state = {
         isOpen: false,
         seen: false,
-        videoEmbeddingCode: null,
-        enteredVideo: false
+        file: null,
     };
     flushState = () => {
         if (this.props.location.state.flushState) {
@@ -19,22 +23,19 @@ class FullVideoContent extends Component {
             this.setState({
                 isOpen: false,
                 seen: false,
-                videoEmbeddingCode: null,
-                enteredVideo: false
+                file: null,
             });
         }
+    }
+    handleChange(event) {
+        this.setState({
+            file: URL.createObjectURL(event.target.files[0])
+        })
     }
     togglePop = () => {
         this.setState({
             seen: !this.state.seen
         });
-    };
-    fileSelectedHandler = event => {
-        this.setState({ videoEmbeddingCode: this.textInput.value, isOpen: false, enteredVideo: true });
-    };
-
-    createDangerousHTML = () => {
-        return { __html: this.state.videoEmbeddingCode }
     };
 
     render() {
@@ -42,19 +43,24 @@ class FullVideoContent extends Component {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
+        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
+        let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
-        if (this.state.videoEmbeddingCode) {
+        if (this.state.file) {
             page.contents[0] = {
-                content: this.state.videoEmbeddingCode,
-                contentType: 'video',
+                content: this.state.file,
+                contentType: 'image',
             };
+            imgSrc = this.state.file;
         } else {
-            // check if the videoEmbeddingCode is set already
+            // check if the file is set already
             if (page.contents.length > 0) {
-                this.setState({ videoEmbeddingCode: page.contents[0].content, enteredVideo: true });
+                imgSrc = page.contents[0].content
+                this.setState({ file: page.contents[0].content });
             }
         }
+
         return (
             <div className="course-content">
                 <div className="course-tabs">
@@ -75,7 +81,7 @@ class FullVideoContent extends Component {
                                     pageIndex > 0 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="previous">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, flushState: true } }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                     <Button className='btn-previous'>
                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -100,7 +106,7 @@ class FullVideoContent extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                         <div className="previous">
-                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                            <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, loadPropState: true } }}>
                                                                 <Button className='btn-previous'>
                                                                     <img src={previous} width="20px" height="20px" alt="..." />
                                                                 </Button>
@@ -124,7 +130,7 @@ class FullVideoContent extends Component {
                                                                 </div>
                                                                 : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="previous">
-                                                                        <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                        <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex - 1, course, flushState: true } }}>
                                                                             <Button className='btn-previous'>
                                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                                             </Button>
@@ -150,26 +156,25 @@ class FullVideoContent extends Component {
                             </Col>
 
                             <Col md={10}>
-                                <div className="container-window">
-                                    {this.state.enteredVideo ? <div dangerouslySetInnerHTML={this.createDangerousHTML()} /> : <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" >
-                                        Upload Video
-                                    </Button>}
+                                <div className="container-window" id="div-1">
+                                    <Button onClick={(e) => this.setState({ isOpen: true })} bsStyle="info" className="upload-btn" >
+                                        Upload Image
+                                    </Button>
                                     <Uploader isOpen={this.state.isOpen} onClose={(e) => this.setState({ isOpen: false })}>
-                                        <div className="video-uploader">
+                                        <div className="image-uploader">
                                             <div className="uploader-title">
-                                                <label>UPLOAD VIDEO</label>
+                                                <label>UPLOAD IMAGE</label>
                                                 <hr />
                                             </div>
-                                            <p className="input-descript">Paste the embedded code below</p>
-                                            {/* <input type="file" className="custom-file-input" onChange={this.fileselectedHandler} /> */}
-                                            <input type="String" ref={(input) => this.textInput = input} />
+                                            <input type="file" className="custom-file-input" onChange={this.handleChange} />
                                             <hr />
                                             <Row>
                                                 <Col md={8}>
                                                     <p>NOTE: All files should be less than 4.0 GB</p>
                                                 </Col>
                                                 <Col md={4}>
-                                                    <Button bsStyle="info" pullRight onClick={this.fileSelectedHandler}>
+                                                    <Button
+                                                        bsStyle="info" pullRight onClick={(e) => this.setState({ isOpen: false })}>
                                                         Upload
                                                     </Button>
                                                 </Col>
@@ -177,6 +182,7 @@ class FullVideoContent extends Component {
 
                                         </div>
                                     </Uploader>
+                                    <img className="img-upload" src={imgSrc} />
                                 </div>
                             </Col>
 
@@ -185,7 +191,7 @@ class FullVideoContent extends Component {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, flushState: true } }}>
+                                                <Link to={{ pathname: '/admin/fullvideocontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                     <Button className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -218,7 +224,7 @@ class FullVideoContent extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
-                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                <Link to={{ pathname: '/admin/quizcontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, loadPropState: true } }}>
                                                                     <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
@@ -234,7 +240,7 @@ class FullVideoContent extends Component {
                                                                 </div>
                                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="next">
-                                                                        <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                                        <Link to={{ pathname: '/admin/fullimagecontent', state: { sectionIndex, pageIndex: pageIndex + 1, course, flushState: true } }}>
                                                                             <Button className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
@@ -267,4 +273,4 @@ class FullVideoContent extends Component {
         );
     }
 }
-export default FullVideoContent;
+export default FullImagePreview;

@@ -30,6 +30,8 @@ import QuizContent from "views/QuizContent.jsx";
 import MultiImgCapContent from "views/MultiImgCapContent.jsx";
 import HorizontalMultiImgs from "views/HorizontalMultiImgs.jsx";
 import UserCourse from "views/UserCourse.jsx";
+import FullVideoPreview from "views/FullVideoPreview.jsx";
+import FullImagePreview from "views/FullImagePreview.jsx";
 
 const dashboardRoutes = [
   {
@@ -75,6 +77,20 @@ const dashboardRoutes = [
     icon: "pe-7s-map-marker",
     component: CourseTaking,
     layout: "/user", //user
+    disappear: true
+  },
+  {
+    path: "/fullvideopreview",
+    name: "Preview Screens",
+    component: FullVideoPreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
+    path: "/fullimagepreview",
+    name: "Preview Screens",
+    component: FullImagePreview,
+    layout: "/user",
     disappear: true
   },
   {
