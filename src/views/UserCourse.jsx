@@ -26,7 +26,7 @@ class UserCourse extends Component {
             sections: [
                 {name:"section1", 
                 pages: [
-                    {contents: { content: <iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>, contentType: "video"},
+                    {contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video"},
                     name: "",
                     template: "FULLSCREEN VIDEO"},
                     {contents: { content: course1, contentType: "image"},

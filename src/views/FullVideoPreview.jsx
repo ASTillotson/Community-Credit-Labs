@@ -8,7 +8,8 @@ import Uploader from "components/PopUp/Uploader.jsx"
 import _ from "lodash";
 class FullVideoPreview extends Component {
     state = {
-        videoEmbeddingCode: null
+        videoEmbeddingCode: null,
+        setVideo: false
     };
 
     createDangerousHTML = () => {
@@ -17,12 +18,15 @@ class FullVideoPreview extends Component {
 
     render() {
         const locState = this.props.location.state;
+        console.log(locState);
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
-        if (page.contents.length > 0) {
-            this.setState({ videoEmbeddingCode: page.contents[0].content});
+        console.log(page.contents.content);
+        if (page.contents.content && !this.state.setVideo) {
+            console.log("wemadeit");
+            this.setState({ videoEmbeddingCode: page.contents.content, setVideo: true});
         }
         return (
             <div className="course-content">
