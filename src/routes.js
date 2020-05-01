@@ -32,6 +32,7 @@ import HorizontalMultiImgs from "views/HorizontalMultiImgs.jsx";
 import UserCourse from "views/UserCourse.jsx";
 import FullVideoPreview from "views/FullVideoPreview.jsx";
 import FullImagePreview from "views/FullImagePreview.jsx";
+import FullTextPreview from "views/FullTextPreview.jsx";
 
 const dashboardRoutes = [
   {
@@ -83,6 +84,13 @@ const dashboardRoutes = [
     path: "/fullvideopreview",
     name: "Preview Screens",
     component: FullVideoPreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
+    path: "/fulltextpreview",
+    name: "Preview Screens",
+    component: FullTextPreview,
     layout: "/user",
     disappear: true
   },
