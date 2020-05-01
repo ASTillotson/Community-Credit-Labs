@@ -35,12 +35,13 @@ class VideoCapPreview extends Component {
         return (
             <div className="course-content">
                 <div className="course-tabs">
-                    <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
+                    {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
+                    <h4>{course.name}</h4>
                     <p className="percentage">{Math.round(this.state.percentage)}%</p>
                         <React.Fragment>
                             <ProgressBar percentage={this.state.percentage} />
                         </React.Fragment>
-                    </h4>
+                    
                     <hr />
                 </div>
                 <div className="container">
@@ -125,7 +126,7 @@ class VideoCapPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={10}>
+                            <Col md={7}>
                                 <div className="container-window video-cap" >
                                     <div className="video-part" id="div-1">
                                         <Row >
@@ -143,9 +144,7 @@ class VideoCapPreview extends Component {
                                     </div>
                                 </div>
                             </Col>
-                            <Col md={3}>
-                                    <CourseSidebar course={course.sections} />
-                            </Col>
+                            
                             <Col md={1}>
                                 {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
@@ -223,6 +222,9 @@ class VideoCapPreview extends Component {
                                         :
                                         <div className="next"></div>
                                 }
+                            </Col>
+                            <Col md={3}>
+                                    <CourseSidebar course={course.sections} />
                             </Col>
                         </Row>
                     </Grid>

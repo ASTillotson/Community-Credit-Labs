@@ -1,3 +1,22 @@
+.tab-content .card .course-img, .course-tabs .card .course-img{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.document-upload .footer{
+    height: 0;
+}
+.document-upload .card{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.document-upload hr{
+    margin-top: 15px;
+}
+.document-upload p{
+    font-size: 13px;
+    color: #808080;
+    font-weight: 600;
+}
 .section .page-card .card{
     width: 300px;
     height: 180px;
@@ -20,7 +39,7 @@
     padding-right: 0px;
     float: right;
     cursor: pointer;
-    margin-top: 43px;
+    margin-top: 20px;
 }
 .course-content .full-input{
     height: 600px;

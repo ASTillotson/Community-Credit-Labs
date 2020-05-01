@@ -17,7 +17,7 @@ class FullVideoPreview extends Component {
     createDangerousHTML = () => {
         return { __html: this.state.videoEmbeddingCode }
     };
-
+    
     render() {
         const locState = this.props.location.state;
         console.log(locState);
@@ -30,15 +30,18 @@ class FullVideoPreview extends Component {
             console.log("wemadeit");
             this.setState({ videoEmbeddingCode: page.contents.content, setVideo: true});
         }
+        
+        // console.log(course.reduce((sum, obj) => sum + obj.pages.length, 0));
         return (
             <div className="course-content">
                 <div className="course-tabs">
-                    <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
+                    {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}</h4> */}
+                    <h4>{course.name}</h4>
                     <p className="percentage">{Math.round(this.state.percentage)}%</p>
                         <React.Fragment>
                             <ProgressBar percentage={this.state.percentage} />
                         </React.Fragment>
-                    </h4>
+                    
                     <hr />
                 </div>
                 <div className="container">
@@ -123,14 +126,12 @@ class FullVideoPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={10}>
-                                <div className="container-window">
+                            <Col md={7}>
+                                <div className="container-window display-window">
                                      <div dangerouslySetInnerHTML={this.createDangerousHTML()} /> 
                                 </div>
                             </Col>
-                            <Col md={3}>
-                                    <CourseSidebar course={course.sections} />
-                            </Col>
+                            
                             <Col md={1}>
                                 {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
@@ -208,6 +209,9 @@ class FullVideoPreview extends Component {
                                         :
                                         <div className="next"></div>
                                 }
+                            </Col>
+                            <Col md={3}>
+                                    <CourseSidebar course={course.sections} />
                             </Col>
                         </Row>
                     </Grid>

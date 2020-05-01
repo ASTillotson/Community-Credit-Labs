@@ -8,6 +8,7 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import Section from "components/Section/Section.jsx";
 import _ from "lodash";
+import { Card } from "components/Card/Card.jsx";
 class CourseAdding extends Component {
     constructor() {
         super();
@@ -19,7 +20,8 @@ class CourseAdding extends Component {
                     name: '',
                     pages: [],
                 }],
-                edited_at: ''
+                edited_at: '',
+                documents: [],
             }
         }
     }
@@ -82,7 +84,19 @@ class CourseAdding extends Component {
         course.sections.splice(i, 1);
         this.setState({ course });
     }
+
+    handleFileChange(event) {
+        // console.log(event.target.files[0]);
+        // console.log(event.target.files[1]);
+        const course = _.cloneDeep(this.state.course);
+        // course.documents = URL.createObjectURL(event.target.files[0]);       
+        // this.setState({ course });
+        course.documents = [...this.state.course.documents, ...event.target.files];
+        this.setState({ course });
+    }
+
     render() {
+        // console.log(this.state.course.documents[0].name);
         this.loadPropsCourse();
         const sections = this.state.course.sections.map((section, sectionIndex) =>
             <Section
@@ -95,6 +109,13 @@ class CourseAdding extends Component {
                 onSectionDeleted={() => this.handleSectionDeleted(sectionIndex)}
                 onSectionNameChange={(name) => this.handleSectionName(sectionIndex, name)}
             />);
+
+        let uploadedFiles = null;
+        if (this.state.course.documents.length) {
+            uploadedFiles = this.state.course.documents.map((document) => document.name).join(', ');
+            // docName = this.state.course.documents[0].name
+        }
+
         return (
             <div className="content add-content">
                 <Grid fluid>
@@ -103,6 +124,7 @@ class CourseAdding extends Component {
                             <Button onClick={this._showSection} bsStyle="info" pullRight fill >
                                 + New Section
                             </Button>
+
                             <FormInputs
                                 ncols={["col-md-10 course-label"]}
                                 properties={[
@@ -125,6 +147,14 @@ class CourseAdding extends Component {
                         Create Course
                     </Button>
                 </Link> */}
+                <div className="document-upload">
+                    <Card
+                        title={<input type="file" className="custom-file-input" onChange={this.handleFileChange.bind(this)} multiple />}
+                        content={
+                            <p>Uploaded Files: {uploadedFiles}</p>
+                        }
+                    />
+                </div>
                 <Link to='/admin/courses'>
                     <Button bsStyle="info" pullRight fill>
                         Publish

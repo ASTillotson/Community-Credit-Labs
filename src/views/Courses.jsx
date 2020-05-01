@@ -8,6 +8,7 @@ import { Card } from "components/Card/Card.jsx";
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
 import edit from "assets/img/edit.png";
+import course from "../assets/img/course.png";
 
 class Courses extends Component {
 
@@ -32,7 +33,7 @@ class Courses extends Component {
                                             stats="Active"
                                             statsIcon="fa fa-check"
                                             content={
-                                                <div className="ct-chart">
+                                                <div className="ct-chart course-img">
                                                     <a
                                                         className="img-holder switch-trigger"
                                                     // onClick={() => {
@@ -40,7 +41,7 @@ class Courses extends Component {
                                                     //     this.props.handleImageClick(imagine1);
                                                     // }}
                                                     >
-                                                        <img src={course1} alt="..." />
+                                                        <img src={course} alt="..." />
                                                     </a>
                                                     <Link to='/admin/addcourse'>
                                                         <a><img className="edit" src={edit} /></a>
@@ -58,7 +59,7 @@ class Courses extends Component {
                                             stats="Active"
                                             statsIcon="fa fa-check"
                                             content={
-                                                <div className="ct-chart">
+                                                <div className="ct-chart course-img">
                                                     <a
                                                         className="img-holder switch-trigger"
                                                     // onClick={() => {
@@ -66,7 +67,7 @@ class Courses extends Component {
                                                     //     this.props.handleImageClick(imagine1);
                                                     // }}
                                                     >
-                                                        <img src={course2} alt="..." />
+                                                        <img src={course} alt="..." />
                                                     </a>
 
                                                     <Link to='/admin/addcourse'>
@@ -90,16 +91,19 @@ class Courses extends Component {
                                             stats="Draft"
                                             statsIcon="fa fa-refresh"
                                             content={
-                                                <div className="ct-chart">
-                                                    {/* <a
+                                                <div className="ct-chart course-img">
+                                                   <a
                                                         className="img-holder switch-trigger"
-                                                        // onClick={() => {
-                                                        //     this.setState({ bgImage: imagine1 });
-                                                        //     this.props.handleImageClick(imagine1);
-                                                        // }}
+                                                    // onClick={() => {
+                                                    //     this.setState({ bgImage: imagine1 });
+                                                    //     this.props.handleImageClick(imagine1);
+                                                    // }}
                                                     >
-                                                        <img src={course1} alt="..." />
-                                                    </a> */}
+                                                        <img src={course} alt="..." />
+                                                    </a>
+                                                    <Link to='/admin/addcourse'>
+                                                        <a><img className="edit" src={edit} /></a>
+                                                    </Link>
                                                 </div>
                                             }
                                         />
@@ -118,16 +122,19 @@ class Courses extends Component {
                                             stats="Expired"
                                             statsIcon="fa fa-clock-o"
                                             content={
-                                                <div className="ct-chart">
-                                                    {/* <a
+                                                <div className="ct-chart course-img">
+                                                    <a
                                                         className="img-holder switch-trigger"
-                                                        // onClick={() => {
-                                                        //     this.setState({ bgImage: imagine1 });
-                                                        //     this.props.handleImageClick(imagine1);
-                                                        // }}
+                                                    // onClick={() => {
+                                                    //     this.setState({ bgImage: imagine1 });
+                                                    //     this.props.handleImageClick(imagine1);
+                                                    // }}
                                                     >
-                                                        <img src={course1} alt="..." />
-                                                    </a> */}
+                                                        <img src={course} alt="..." />
+                                                    </a>
+                                                    <Link to='/admin/addcourse'>
+                                                        <a><img className="edit" src={edit} /></a>
+                                                    </Link>
                                                 </div>
                                             }
                                         />

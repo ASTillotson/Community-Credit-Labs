@@ -25,6 +25,7 @@ import {
 } from "variables/Variables.jsx";
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
+import courseImg from "../assets/img/course.png";
 
 class Dashboard extends Component {
   createLegend(json) {
@@ -114,7 +115,7 @@ class Dashboard extends Component {
                                 //     this.props.handleImageClick(imagine1);
                                 // }}
                                 >
-                                  <img src={course1} alt="..." />
+                                  <img src={courseImg} alt="..." />
                                 </a>
                               </div>
                             }
@@ -137,7 +138,7 @@ class Dashboard extends Component {
                                 //     this.props.handleImageClick(imagine1);
                                 // }}
                                 >
-                                  <img src={course2} alt="..." />
+                                  <img src={courseImg} alt="..." />
                                 </a>
                               </div>
                             }
@@ -150,6 +151,19 @@ class Dashboard extends Component {
                             category="Published: YYYY-MM-DD"
                             stats="Active"
                             statsIcon="fa fa-check"
+                            content={
+                              <div className="recent-img">
+                                <a
+                                  className="img-holder switch-trigger"
+                                // onClick={() => {
+                                //     this.setState({ bgImage: imagine1 });
+                                //     this.props.handleImageClick(imagine1);
+                                // }}
+                                >
+                                  <img src={courseImg} alt="..." />
+                                </a>
+                              </div>
+                            }
                           />
                         </Col>
                       </Row>

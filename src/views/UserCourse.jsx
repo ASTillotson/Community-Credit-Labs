@@ -9,6 +9,7 @@ import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
 import edit from "assets/img/edit.png";
 import _ from "lodash";
+import course from "../assets/img/course.png";
 
 class UserCourse extends Component {
     constructor() {
@@ -24,7 +25,7 @@ class UserCourse extends Component {
             edited_at: "",
             name: "Course Name",
             sections: [
-                {name:"section1", 
+                {name:"Section1", 
                 pages: [
                     {contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video"},
                     name: "aaaaaaa",
@@ -36,7 +37,7 @@ class UserCourse extends Component {
                     name: "afasdfasdf",
                     template: "TEXT"}]
                     }, 
-                {name:"section2",
+                {name:"Section2",
                 pages: [
                     {contents: [],
                     name: "afafsdfasf",
@@ -91,9 +92,9 @@ class UserCourse extends Component {
                                         stats="Active"
                                         statsIcon="fa fa-check"
                                         content={
-                                            <div className="ct-chart">
+                                            <div className="ct-chart course-img">
                                                 <a className="img-holder switch-trigger" onClick={this.getCourse}>
-                                                        <img src={course1} alt="..." />
+                                                        <img src={course} alt="..." />
                                                         
                                                 </a>
                                             </div>

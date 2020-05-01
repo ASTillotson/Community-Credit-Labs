@@ -26,12 +26,13 @@ class FullTextPreview extends Component {
         return (
             <div className="course-content">
                 <div className="course-tabs">
-                    <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
+                    {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
+                    <h4>{course.name}</h4>
                     <p className="percentage">{Math.round(this.state.percentage)}%</p>
                         <React.Fragment>
                             <ProgressBar percentage={this.state.percentage} />
                         </React.Fragment>
-                    </h4>
+                    
                     <hr />
                 </div>
                 <div className="container">
@@ -116,14 +117,12 @@ class FullTextPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={10}>
-                                <div className="container-window">
+                            <Col md={7}>
+                                <div className="container-window display-window">
                                      <span>{this.state.text}</span>
                                 </div>
                             </Col>
-                            <Col md={3}>
-                                    <CourseSidebar course={course.sections} />
-                            </Col>
+                            
                             <Col md={1}>
                                 {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
@@ -201,6 +200,9 @@ class FullTextPreview extends Component {
                                         :
                                         <div className="next"></div>
                                 }
+                            </Col>
+                            <Col md={3}>
+                                    <CourseSidebar course={course.sections} />
                             </Col>
                         </Row>
                     </Grid>
