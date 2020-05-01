@@ -27,19 +27,19 @@ class UserCourse extends Component {
                 {name:"section1", 
                 pages: [
                     {contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video"},
-                    name: "",
+                    name: "aaaaaaa",
                     template: "FULLSCREEN VIDEO"},
                     {contents: { content: course1, contentType: "image"},
-                    name: "",
+                    name: "asdfasdfasd",
                     template:"FULLSCREEN IMAGE"},
                     {contents: { content: "asdfasdfasdfasdf", contentType: "text"},
-                    name: "",
+                    name: "afasdfasdf",
                     template: "TEXT"}]
                     }, 
                 {name:"section2",
                 pages: [
                     {contents: [],
-                    name: "",
+                    name: "afafsdfasf",
                     template: "IMAGE WITH TEXT"}]}]
         };
         const course = JSON.parse(JSON.stringify(courseUnreadable));

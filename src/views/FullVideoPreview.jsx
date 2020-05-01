@@ -4,7 +4,9 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import { Link } from 'react-router-dom';
 import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
-import Uploader from "components/PopUp/Uploader.jsx"
+import Uploader from "components/PopUp/Uploader.jsx";
+import ProgressBar from "components/ProgressBar/ProgressBar.jsx";
+import CourseSidebar from "components/Sidebar/CourseSidebar.jsx";
 import _ from "lodash";
 class FullVideoPreview extends Component {
     state = {
@@ -32,6 +34,10 @@ class FullVideoPreview extends Component {
             <div className="course-content">
                 <div className="course-tabs">
                     <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}
+                    <p className="percentage">{Math.round(this.state.percentage)}%</p>
+                        <React.Fragment>
+                            <ProgressBar percentage={this.state.percentage} />
+                        </React.Fragment>
                     </h4>
                     <hr />
                 </div>
@@ -122,7 +128,9 @@ class FullVideoPreview extends Component {
                                      <div dangerouslySetInnerHTML={this.createDangerousHTML()} /> 
                                 </div>
                             </Col>
-
+                            <Col md={3}>
+                                    <CourseSidebar course={course.sections} />
+                            </Col>
                             <Col md={1}>
                                 {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
