@@ -33,6 +33,7 @@ import UserCourse from "views/UserCourse.jsx";
 import FullVideoPreview from "views/FullVideoPreview.jsx";
 import FullImagePreview from "views/FullImagePreview.jsx";
 import FullTextPreview from "views/FullTextPreview.jsx";
+import VideoCapPreview from "views/VideoCapPreview.jsx";
 
 const dashboardRoutes = [
   {
@@ -91,6 +92,13 @@ const dashboardRoutes = [
     path: "/fulltextpreview",
     name: "Preview Screens",
     component: FullTextPreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
+    path: "/videocappreview",
+    name: "Preview Screens",
+    component: VideoCapPreview,
     layout: "/user",
     disappear: true
   },
