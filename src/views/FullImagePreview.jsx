@@ -38,6 +38,7 @@ class FullImagePreview extends Component {
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (page.contents.content && !this.state.setImage) {
             imgSrc = page.contents.content
+            console.log(imgSrc);
             this.setState({ file: page.contents.content, setImage: true });
         }
 
@@ -109,7 +110,7 @@ class FullImagePreview extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                     <Button  className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
@@ -185,7 +186,7 @@ class FullImagePreview extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex + 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
-                                                            <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                            <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                 <Button  className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>

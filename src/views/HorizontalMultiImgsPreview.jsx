@@ -8,22 +8,19 @@ import Uploader from "components/PopUp/Uploader.jsx";
 import ProgressBar from "components/ProgressBar/ProgressBar.jsx";
 import CourseSidebar from "components/Sidebar/CourseSidebar.jsx";
 import _ from "lodash";
-class VideoCapPreview extends Component {
-    constructor() {
-        super();
-        this.state = {
-            percentage: 0
-        }
+class HorizontalMultiImgsPreview extends Component {
+    constructor(props) {
+        super(props)
     }
     state = {
+        setFiles: false,
         setText: false,
-        setVideo: false,
-        videoEmbeddingCode: null,
-        text: "",
+        files: [null, null, null],
+        text: ""
     };
-
-    createDangerousHTML = () => {
-        return { __html: this.state.videoEmbeddingCode }
+    
+    inputText = event => {
+        this.setState({ text: event.target.value });
     };
 
     render() {
@@ -32,8 +29,8 @@ class VideoCapPreview extends Component {
         const pageIndex = locState.pageIndex;
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
-        if (page.contents[0] && !this.state.setVideo) {
-            this.setState({ videoEmbeddingCode: page.contents[0].content, setVideo: true});
+        if (page.contents[0] && !this.state.setFiles) {
+            this.setState({ videoEmbeddingCode: page.contents[0].content, setFiles: true});
         }
         if (page.contents[1] && !this.state.setText) {
             this.setState({ text: page.contents[1].content, setText: true})
@@ -132,20 +129,19 @@ class VideoCapPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={7}>
+                            <Col md={10}>
                                 <div className="container-window video-cap" >
-                                    <div className="video-part" id="div-1">
+                                    <div className="img-text" id="div-1">
                                         <Row >
-                                            <Col md={12}>
-                                                <div dangerouslySetInnerHTML={this.createDangerousHTML()} />
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div className="text-part" id="div-2">
-                                        <Row >
-                                            <Col md={12}>
-                                                <span>{this.state.text}</span>
-                                            </Col>
+                                            {this.state.files.map((f, idx) =>
+                                                <Col md={7} key={idx}>
+                                                    <img className="img-upload" src={this.state.files[idx]} />
+                                                </Col>
+                                            )}
+                                                <Col md={5}>
+                                                    <span>{this.state.text}</span>
+                                                </Col>
+                                            
                                         </Row>
                                     </div>
                                 </div>
@@ -241,4 +237,4 @@ class VideoCapPreview extends Component {
         );
     }
 }
-export default VideoCapPreview;
+export default HorizontalMultiImgsPreview; 

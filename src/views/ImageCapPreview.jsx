@@ -8,46 +8,62 @@ import Uploader from "components/PopUp/Uploader.jsx";
 import ProgressBar from "components/ProgressBar/ProgressBar.jsx";
 import CourseSidebar from "components/Sidebar/CourseSidebar.jsx";
 import _ from "lodash";
-class VideoCapPreview extends Component {
-    constructor() {
-        super();
-        this.state = {
-            percentage: 0
-        }
+class ImageCapPreview extends Component {
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
     }
     state = {
+        setImage: false,
         setText: false,
-        setVideo: false,
-        videoEmbeddingCode: null,
         text: "",
+        file: null,
     };
 
-    createDangerousHTML = () => {
-        return { __html: this.state.videoEmbeddingCode }
-    };
+    handleChange(event) {
+        this.setState({
+            file: URL.createObjectURL(event.target.files[0])
+        })
+    }
 
     render() {
         const locState = this.props.location.state;
         const sectionIndex = locState.sectionIndex;
         const pageIndex = locState.pageIndex;
+        // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
+        let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
-        if (page.contents[0] && !this.state.setVideo) {
-            this.setState({ videoEmbeddingCode: page.contents[0].content, setVideo: true});
+        if (page.contents[0].content && !this.state.setImage) {
+            imgSrc = page.contents.content
+            this.setState({ file: page.contents.content, setImage: true });
         }
-        if (page.contents[1] && !this.state.setText) {
-            this.setState({ text: page.contents[1].content, setText: true})
+        if (page.contents[1].content && !this.state.setText) {
+            this.setState({ text: page.contents.content, setText: true});
         }
+        let count = 0;
+        let pageIdx;
+        for (let s = 0; s <= sectionIndex; s++) {
+            if (s == sectionIndex) {
+                pageIdx = pageIndex
+            } else {
+                pageIdx = course.sections[sectionIndex].pages.length
+            }
+            for (let p = 0; p < pageIdx; p++) {
+                count++;
+            }
+        }
+        let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
+
         return (
             <div className="course-content course-display">
                 <div className="course-tabs">
-                    {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
                     <h4>{course.name}</h4>
-                    <p className="percentage">{Math.round(this.state.percentage)}%</p>
-                        <React.Fragment>
-                            <ProgressBar percentage={this.state.percentage} />
-                        </React.Fragment>
-                    
+                    <p className="percentage">{Math.round(percentage)}%</p>
+                    <React.Fragment>
+                        <ProgressBar percentage={percentage} />
+                    </React.Fragment>
+
                     <hr />
                 </div>
                 <div className="container">
@@ -58,7 +74,7 @@ class VideoCapPreview extends Component {
                                     pageIndex > 0 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="previous">
-                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex - 1, course} }}>
+                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                     <Button  className='btn-previous'>
                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -132,12 +148,12 @@ class VideoCapPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={7}>
+                            <Col md={10}>
                                 <div className="container-window video-cap" >
-                                    <div className="video-part" id="div-1">
+                                    <div className="img-part" id="div-1">
                                         <Row >
                                             <Col md={12}>
-                                                <div dangerouslySetInnerHTML={this.createDangerousHTML()} />
+                                                <img className="img-upload" src={this.state.file} />
                                             </Col>
                                         </Row>
                                     </div>
@@ -150,13 +166,12 @@ class VideoCapPreview extends Component {
                                     </div>
                                 </div>
                             </Col>
-                            
                             <Col md={1}>
                                 {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex + 1, course} }}>
+                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                     <Button  className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>
@@ -230,7 +245,7 @@ class VideoCapPreview extends Component {
                                 }
                             </Col>
                             <Col md={3}>
-                                    <CourseSidebar course={course.sections} />
+                                <CourseSidebar course={course.sections} />
                             </Col>
                         </Row>
                     </Grid>
@@ -241,4 +256,4 @@ class VideoCapPreview extends Component {
         );
     }
 }
-export default VideoCapPreview;
+export default ImageCapPreview;

@@ -107,7 +107,7 @@ class FullVideoPreview extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                     <Button className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
@@ -184,7 +184,7 @@ class FullVideoPreview extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex + 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
-                                                            <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                            <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                 <Button  className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>

@@ -29,12 +29,22 @@ class UserCourse extends Component {
                     name: "Section1",
                     pages: [
                         {
+                            contents: [{ content: "", contentType: "image" }, {content: "asdfaf", contentType: "text" }],
+                            name: "asdfasdfasd",
+                            template: "IMAGE WITH TEXT"
+                        },
+                        {
                             contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },
                             name: "aaaaaaa",
                             template: "FULLSCREEN VIDEO"
                         },
                         {
-                            contents: { content: course1, contentType: "image" },
+                            contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },
+                            name: "asdfasdfasd",
+                            template: "VIDEO WITH CAPTION"
+                        },
+                        {
+                            contents: { content: '', contentType: "image" },
                             name: "asdfasdfasd",
                             template: "FULLSCREEN IMAGE"
                         },
@@ -42,7 +52,22 @@ class UserCourse extends Component {
                             contents: { content: "asdfasdfasdfasdf", contentType: "text" },
                             name: "afasdfasdf",
                             template: "TEXT"
-                        }]
+                        },
+                        {
+                            contents: { content: {answerOne:"quer",answerTwo:"quer",answerThree:"quer",answerFour: "quer",checkOne:true,checkTwo:true,checkThree:true,checkFour:true,theQuestion:"quer"}, contentType: "quiz" },
+                            name: "asdfasdfasd",
+                            template: "QUIZ CONTENT"
+                        },
+                        {
+                            contents: [{ content: ["blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null, "blob:http://localhost:3000/42260ea3-31cf-41ef-ab14-d7dac873cfaa"], contentType: "image" },{content: "qwerqwerqwer", contentType: "text"}],
+                            name: "asdfasdfasd",
+                            template: "IMAGES WITH TEXT"
+                        },
+                        {
+                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "qwerqwerqwer", contentType: "text"}],
+                            name: "asdfasdfasd",
+                            template: "HORIZONTAL IMAGES WITH TEXT"
+                        },]
                 },
                 {
                     name: "Section2",

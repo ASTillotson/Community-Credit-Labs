@@ -26,7 +26,6 @@ class FullTextPreview extends Component {
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (page.contents.content && !this.state.setText) {
-            console.log("wemadeit");
             this.setState({ text: page.contents.content, setText: true});
         }
         let count = 0;
@@ -41,8 +40,6 @@ class FullTextPreview extends Component {
                 count++;
             }
         }
-        console.log(pageIdx);
-        console.log(count);
         let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
         return (
             <div className="course-content course-display">
@@ -97,7 +94,7 @@ class FullTextPreview extends Component {
                                                         </div>
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                             <div className="previous">
-                                                                <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                                <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
                                                                     <Button  className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
@@ -174,7 +171,7 @@ class FullTextPreview extends Component {
                                                     </div>
                                                     : (course.sections[sectionIndex].pages[pageIndex + 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
-                                                            <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                            <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
                                                                 <Button  className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>

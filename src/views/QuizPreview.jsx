@@ -4,27 +4,86 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import { Link } from 'react-router-dom';
 import next from "assets/img/next.png";
 import previous from "assets/img/previous.png";
-import Uploader from "components/PopUp/Uploader.jsx";
 import ProgressBar from "components/ProgressBar/ProgressBar.jsx";
 import CourseSidebar from "components/Sidebar/CourseSidebar.jsx";
 import _ from "lodash";
-class VideoCapPreview extends Component {
-    constructor() {
-        super();
-        this.state = {
-            percentage: 0
-        }
-    }
+class QuizPreview extends Component {
+
     state = {
-        setText: false,
-        setVideo: false,
-        videoEmbeddingCode: null,
-        text: "",
+        theQuestion: "",
+        checkOne: false,
+        checkTwo: false,
+        checkThree: false,
+        checkFour: false,
+        answerOne: "",
+        answerTwo: "",
+        answerThree: "",
+        answerFour: "",
     };
 
-    createDangerousHTML = () => {
-        return { __html: this.state.videoEmbeddingCode }
+    theQuestion = event => {
+        this.setState({ theQuestion: event.target.value });
     };
+    answerOne = event => {
+        this.setState({ answerOne: event.target.value });
+    };
+
+    toggleCheckOne = () => {
+        this.setState(prevState => ({
+            checkOne: !prevState.checkOne,
+        }));
+    }
+
+    answerTwo = event => {
+        this.setState({ answerTwo: event.target.value });
+    };
+
+    toggleCheckTwo = () => {
+        this.setState(prevState => ({
+            checkTwo: !prevState.checkTwo,
+        }));
+    }
+
+    answerThree = event => {
+        this.setState({ answerThree: event.target.value });
+    };
+
+    toggleCheckThree = () => {
+        this.setState(prevState => ({
+            checkThree: !prevState.checkThree,
+        }));
+    }
+    answerFour = event => {
+        this.setState({ answerFour: event.target.value });
+    };
+
+    toggleCheckFour = () => {
+        this.setState(prevState => ({
+            checkFour: !prevState.checkFour,
+        }));
+    }
+
+    componentDidUpdate() {
+        console.log(this.state);
+    }
+
+    flushState = () => {
+        if (this.props.location.state.flushState) {
+            this.props.location.state.flushState = false;
+            this.setState({
+                theQuestion: "",
+                checkOne: false,
+                checkTwo: false,
+                checkThree: false,
+                checkFour: false,
+                answerOne: "",
+                answerTwo: "",
+                answerThree: "",
+                answerFour: ""
+            });
+        }
+    }
+    
 
     render() {
         const locState = this.props.location.state;
@@ -32,20 +91,30 @@ class VideoCapPreview extends Component {
         const pageIndex = locState.pageIndex;
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
-        if (page.contents[0] && !this.state.setVideo) {
-            this.setState({ videoEmbeddingCode: page.contents[0].content, setVideo: true});
+        if (page.contents.content && !this.state.setText) {
+            this.setState({ text: page.contents.content, setText: true});
         }
-        if (page.contents[1] && !this.state.setText) {
-            this.setState({ text: page.contents[1].content, setText: true})
+        let count = 0;
+        let pageIdx;
+        for (let s = 0; s <= sectionIndex; s++) {
+            if (s == sectionIndex) {
+                pageIdx = pageIndex 
+            } else {
+                pageIdx = course.sections[sectionIndex].pages.length
+            }
+            for (let p = 0; p < pageIdx; p++) {
+                count++;
+            }
         }
+        let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
         return (
             <div className="course-content course-display">
                 <div className="course-tabs">
                     {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
                     <h4>{course.name}</h4>
-                    <p className="percentage">{Math.round(this.state.percentage)}%</p>
+                    <p className="percentage">{Math.round(percentage)}%</p>
                         <React.Fragment>
-                            <ProgressBar percentage={this.state.percentage} />
+                            <ProgressBar percentage={percentage} />
                         </React.Fragment>
                     
                     <hr />
@@ -132,22 +201,106 @@ class VideoCapPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={7}>
-                                <div className="container-window video-cap" >
-                                    <div className="video-part" id="div-1">
-                                        <Row >
+                            <Col md={10}>
+                                <div className="container-window" id="div-1" >
+
+                                    <Row >
+                                        <div classname="uploader-title">
+
+
                                             <Col md={12}>
-                                                <div dangerouslySetInnerHTML={this.createDangerousHTML()} />
+                                                <input
+                                                    className="text-input-quiz"
+                                                    value={this.state.theQuestion}
+                                                    onChange={this.theQuestion}
+                                                    placeholder="Type question here"
+                                                    name="theQuestion"
+
+                                                />
                                             </Col>
-                                        </Row>
-                                    </div>
-                                    <div className="text-part" id="div-2">
-                                        <Row >
+
+
                                             <Col md={12}>
-                                                <span>{this.state.text}</span>
+                                                <label className='quiz-guide'>Check the correct answers</label>
                                             </Col>
-                                        </Row>
-                                    </div>
+
+                                        </div>
+                                        <Col md={12}>
+                                            <input
+                                                className="answer-input"
+                                                type="text"
+                                                value={this.state.answerOne}
+                                                onChange={this.answerOne}
+                                                placeholder="Answer 1"
+                                                name="answerOne"
+                                            />
+                                            <input type="checkbox"
+                                                checked={this.state.checkOne}
+                                                onChange={this.toggleCheckOne}
+                                                className="form-check-input"
+                                            />
+
+                                        </Col>
+
+
+                                        <Col md={12}>
+                                            <input
+                                                className="answer-input"
+                                                type="text"
+                                                value={this.state.answerTwo}
+                                                onChange={this.answerTwo}
+                                                placeholder="Answer 2"
+                                                name="answerTwo"
+                                            />
+                                            <input type="checkbox"
+                                                checked={this.state.checkTwo}
+                                                onChange={this.toggleCheckTwo}
+                                                className="form-check-input"
+                                            />
+                                        </Col>
+
+                                        <Col md={12}>
+                                            <input
+                                                className="answer-input"
+                                                type="text"
+                                                value={this.state.answerThree}
+                                                onChange={this.answerThree}
+                                                placeholder="Answer 3"
+                                                name="answerThree"
+                                            />
+                                            <input type="checkbox"
+                                                checked={this.state.checkThree}
+                                                onChange={this.toggleCheckThree}
+                                                className="form-check-input"
+                                            />
+                                        </Col>
+
+                                        <Col md={12}>
+                                            <input
+                                                className="answer-input"
+                                                type="text"
+                                                value={this.state.answerFour}
+                                                onChange={this.answerFour}
+                                                placeholder="Answer 4"
+                                                name="answerFour"
+                                            />
+                                            <input type="checkbox"
+                                                checked={this.state.checkFour}
+                                                onChange={this.toggleCheckFour}
+                                                className="form-check-input"
+                                            />
+                                        </Col>
+
+                                        {/* <Col md={12}>
+                                            <div className="form-group">
+                                                <button className="btn btn-primary">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </Col> */}
+
+                                    </Row>
+
                                 </div>
                             </Col>
                             
@@ -206,7 +359,7 @@ class VideoCapPreview extends Component {
                                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fullimagepreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                            <Button  className='btn-next'>
+                                                                            <Button className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -214,7 +367,7 @@ class VideoCapPreview extends Component {
                                                                     :
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fulltextpreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                            <Button  className='btn-next'>
+                                                                            <Button className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -241,4 +394,4 @@ class VideoCapPreview extends Component {
         );
     }
 }
-export default VideoCapPreview;
+export default QuizPreview;

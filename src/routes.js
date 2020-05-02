@@ -34,6 +34,10 @@ import FullVideoPreview from "views/FullVideoPreview.jsx";
 import FullImagePreview from "views/FullImagePreview.jsx";
 import FullTextPreview from "views/FullTextPreview.jsx";
 import VideoCapPreview from "views/VideoCapPreview.jsx";
+import ImageCapPreview from "views/ImageCapPreview.jsx";
+import QuizPreview from "views/QuizPreview.jsx";
+import MultiImgCapPreview from "views/MultiImgCapPreview.jsx";
+import HorizontalMultiImgsPreview from "views/HorizontalMultiImgsPreview.jsx";
 
 const dashboardRoutes = [
   {
@@ -96,6 +100,27 @@ const dashboardRoutes = [
     disappear: true
   },
   {
+    path: "/imagecappreview",
+    name: "Preview Screens",
+    component: ImageCapPreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
+    path: "/multiimgcappreview",
+    name: "Preview Screens",
+    component: MultiImgCapPreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
+    path: "/quizpreview",
+    name: "Preview Screens",
+    component: QuizPreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
     path: "/videocappreview",
     name: "Preview Screens",
     component: VideoCapPreview,
@@ -106,6 +131,13 @@ const dashboardRoutes = [
     path: "/fullimagepreview",
     name: "Preview Screens",
     component: FullImagePreview,
+    layout: "/user",
+    disappear: true
+  },
+  {
+    path: "/horizontalmultiimgspreview",
+    name: "Preview Screens",
+    component: HorizontalMultiImgsPreview,
     layout: "/user",
     disappear: true
   },
