@@ -58,7 +58,7 @@ class FullImagePreview extends Component {
         let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
 
         return (
-            <div className="course-content course-preview">
+            <div className="course-content course-display">
                 <div className="course-tabs">
                     <h4>{course.name}</h4>
                     <p className="percentage">{Math.round(percentage)}%</p>

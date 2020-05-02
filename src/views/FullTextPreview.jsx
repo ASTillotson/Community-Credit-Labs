@@ -45,7 +45,7 @@ class FullTextPreview extends Component {
         console.log(count);
         let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
         return (
-            <div className="course-content course-preview">
+            <div className="course-content course-display">
                 <div className="course-tabs">
                     {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
                     <h4>{course.name}</h4>

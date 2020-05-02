@@ -39,7 +39,7 @@ class VideoCapPreview extends Component {
             this.setState({ text: page.contents[1].content, setText: true})
         }
         return (
-            <div className="course-content course-preview">
+            <div className="course-content course-display">
                 <div className="course-tabs">
                     {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
                     <h4>{course.name}</h4>
