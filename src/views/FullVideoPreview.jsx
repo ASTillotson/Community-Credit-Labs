@@ -9,9 +9,16 @@ import ProgressBar from "components/ProgressBar/ProgressBar.jsx";
 import CourseSidebar from "components/Sidebar/CourseSidebar.jsx";
 import _ from "lodash";
 class FullVideoPreview extends Component {
+    constructor() {
+        super();
+        // this.state = {
+        //     percentage: 0
+        // }
+    }
     state = {
         videoEmbeddingCode: null,
-        setVideo: false
+        setVideo: false,
+        
     };
 
     createDangerousHTML = () => {
@@ -30,16 +37,31 @@ class FullVideoPreview extends Component {
             console.log("wemadeit");
             this.setState({ videoEmbeddingCode: page.contents.content, setVideo: true});
         }
-        
-        // console.log(course.reduce((sum, obj) => sum + obj.pages.length, 0));
+        console.log(this.state.percentage);
+        console.log(course.sections.reduce((sum, obj) => sum + obj.pages.length, 0));
+        let count = 0;
+        let pageIdx;
+        for (let s = 0; s <= sectionIndex; s++) {
+            if (s == sectionIndex) {
+                pageIdx = pageIndex
+            } else {
+                pageIdx = course.sections[sectionIndex].pages.length
+            }
+            for (let p = 0; p < pageIdx; p++) {
+                count++;
+            }
+        }
+        console.log(pageIdx);
+        console.log(count);
+        let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
         return (
-            <div className="course-content">
+            <div className="course-content course-preview">
                 <div className="course-tabs">
                     {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name}</h4> */}
                     <h4>{course.name}</h4>
-                    <p className="percentage">{Math.round(this.state.percentage)}%</p>
+                    <p className="percentage">{Math.round(percentage)}%</p>
                         <React.Fragment>
-                            <ProgressBar percentage={this.state.percentage} />
+                            <ProgressBar percentage={percentage} />
                         </React.Fragment>
                     
                     <hr />
@@ -146,7 +168,7 @@ class FullVideoPreview extends Component {
                                             : (course.sections[sectionIndex].pages[pageIndex + 1].template === "VIDEO WITH CAPTION" ?
                                                 <div className="next">
                                                     <Link to={{ pathname: '/user/videocappreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                        <Button className='btn-next'>
+                                                        <Button  className='btn-next'>
                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                         </Button>
                                                     </Link>
@@ -154,7 +176,7 @@ class FullVideoPreview extends Component {
                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGE WITH TEXT" ?
                                                     <div className="next">
                                                         <Link to={{ pathname: '/user/imagecappreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                            <Button className='btn-next'>
+                                                            <Button  className='btn-next'>
                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                             </Button>
 
@@ -163,7 +185,7 @@ class FullVideoPreview extends Component {
                                                     : (course.sections[sectionIndex].pages[pageIndex + 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
                                                             <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                <Button className='btn-next'>
+                                                                <Button  className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>
                                                             </Link>
@@ -171,7 +193,7 @@ class FullVideoPreview extends Component {
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
                                                                 <Link to={{ pathname: '/user/quizpreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                    <Button className='btn-next'>
+                                                                    <Button  className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
@@ -179,7 +201,7 @@ class FullVideoPreview extends Component {
                                                             : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGES WITH TEXT" ?
                                                                 <div className="next">
                                                                     <Link to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                        <Button className='btn-next'>
+                                                                        <Button  className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
@@ -187,7 +209,7 @@ class FullVideoPreview extends Component {
                                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fullimagepreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                            <Button className='btn-next'>
+                                                                            <Button  className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -195,7 +217,7 @@ class FullVideoPreview extends Component {
                                                                     :
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fulltextpreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                            <Button className='btn-next'>
+                                                                            <Button  className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>

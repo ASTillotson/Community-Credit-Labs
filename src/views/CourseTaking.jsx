@@ -43,7 +43,7 @@ class CourseTaking extends Component {
     }
 
     render() {
-        console.log(course.reduce((sum, obj) => sum + obj.pages.length, 0)); //get how many pages in the entire course obj
+        // console.log(course.reduce((sum, obj) => sum + obj.pages.length, 0)); //get how many pages in the entire course obj
         return (
             <div>
                 <div className="course-content course-display">

@@ -12,6 +12,10 @@ class FullImagePreview extends Component {
     constructor(props) {
         super(props)
         this.handleChange = this.handleChange.bind(this)
+        // this.state = {
+        //     percentage: 0
+        // }
+
     }
 
     state = {
@@ -36,16 +40,32 @@ class FullImagePreview extends Component {
             imgSrc = page.contents.content
             this.setState({ file: page.contents.content, setImage: true });
         }
-        
+
+        let count = 0;
+        let pageIdx;
+        for (let s = 0; s <= sectionIndex; s++) {
+            if (s == sectionIndex) {
+                pageIdx = pageIndex
+            } else {
+                pageIdx = course.sections[sectionIndex].pages.length
+            }
+            for (let p = 0; p < pageIdx; p++) {
+                count++;
+            }
+        }
+        console.log(pageIdx);
+        console.log(count);
+        let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
+
         return (
-            <div className="course-content">
+            <div className="course-content course-preview">
                 <div className="course-tabs">
                     <h4>{course.name}</h4>
-                    <p className="percentage">{Math.round(this.state.percentage)}%</p>
-                        <React.Fragment>
-                            <ProgressBar percentage={this.state.percentage} />
-                        </React.Fragment>
-                    
+                    <p className="percentage">{Math.round(percentage)}%</p>
+                    <React.Fragment>
+                        <ProgressBar percentage={percentage} />
+                    </React.Fragment>
+
                     <hr />
                 </div>
                 <div className="container">
@@ -56,8 +76,8 @@ class FullImagePreview extends Component {
                                     pageIndex > 0 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="previous">
-                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex - 1, course} }}>
-                                                    <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
+                                                    <Button  className='btn-previous'>
                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
@@ -65,7 +85,7 @@ class FullImagePreview extends Component {
                                             : (course.sections[sectionIndex].pages[pageIndex - 1].template === "VIDEO WITH CAPTION" ?
                                                 <div className="previous">
                                                     <Link to={{ pathname: '/user/videocappreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                        <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                        <Button  className='btn-previous'>
                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                         </Button>
                                                     </Link>
@@ -73,7 +93,7 @@ class FullImagePreview extends Component {
                                                 : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGE WITH TEXT" ?
                                                     <div className="previous">
                                                         <Link to={{ pathname: '/user/imagecappreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                            <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                            <Button  className='btn-previous'>
                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                             </Button>
 
@@ -82,7 +102,7 @@ class FullImagePreview extends Component {
                                                     : (course.sections[sectionIndex].pages[pageIndex - 1].template === "QUIZ CONTENT" ?
                                                         <div className="previous">
                                                             <Link to={{ pathname: '/user/quizpreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                                <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                                <Button  className='btn-previous'>
                                                                     <img src={previous} width="20px" height="20px" alt="..." />
                                                                 </Button>
                                                             </Link>
@@ -90,7 +110,7 @@ class FullImagePreview extends Component {
                                                         : (course.sections[sectionIndex].pages[pageIndex - 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                             <div className="previous">
                                                                 <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                                    <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                                    <Button  className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
@@ -98,7 +118,7 @@ class FullImagePreview extends Component {
                                                             : (course.sections[sectionIndex].pages[pageIndex - 1].template === "IMAGES WITH TEXT" ?
                                                                 <div className="previous">
                                                                     <Link to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                                        <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                                        <Button  className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
@@ -106,7 +126,7 @@ class FullImagePreview extends Component {
                                                                 : (course.sections[sectionIndex].pages[pageIndex - 1].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="previous">
                                                                         <Link to={{ pathname: '/user/fullimagepreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                                            <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                                            <Button  className='btn-previous'>
                                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -114,7 +134,7 @@ class FullImagePreview extends Component {
                                                                     :
                                                                     <div className="previous">
                                                                         <Link to={{ pathname: '/user/fulltextpreview', state: { sectionIndex, pageIndex: pageIndex - 1, course } }}>
-                                                                            <Button onClick={() => this.setState({ percentage: this.state.percentage - 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-previous'>
+                                                                            <Button  className='btn-previous'>
                                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -140,8 +160,8 @@ class FullImagePreview extends Component {
                                     pageIndex !== course.sections[sectionIndex].pages.length - 1 && course.sections[sectionIndex].pages.length > 1 ?
                                         course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex + 1, course} }}>
-                                                    <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
+                                                    <Button  className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
@@ -149,7 +169,7 @@ class FullImagePreview extends Component {
                                             : (course.sections[sectionIndex].pages[pageIndex + 1].template === "VIDEO WITH CAPTION" ?
                                                 <div className="next">
                                                     <Link to={{ pathname: '/user/videocappreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                        <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                        <Button  className='btn-next'>
                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                         </Button>
                                                     </Link>
@@ -157,7 +177,7 @@ class FullImagePreview extends Component {
                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGE WITH TEXT" ?
                                                     <div className="next">
                                                         <Link to={{ pathname: '/user/imagecappreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                            <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                            <Button  className='btn-next'>
                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                             </Button>
 
@@ -166,7 +186,7 @@ class FullImagePreview extends Component {
                                                     : (course.sections[sectionIndex].pages[pageIndex + 1].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
                                                             <Link to={{ pathname: '/user/horizontalmultiimgs', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                                <Button  className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>
                                                             </Link>
@@ -174,7 +194,7 @@ class FullImagePreview extends Component {
                                                         : (course.sections[sectionIndex].pages[pageIndex + 1].template === "QUIZ CONTENT" ?
                                                             <div className="next">
                                                                 <Link to={{ pathname: '/user/quizpreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                    <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                                    <Button  className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
@@ -182,7 +202,7 @@ class FullImagePreview extends Component {
                                                             : (course.sections[sectionIndex].pages[pageIndex + 1].template === "IMAGES WITH TEXT" ?
                                                                 <div className="next">
                                                                     <Link to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                        <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                                        <Button  className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
@@ -190,7 +210,7 @@ class FullImagePreview extends Component {
                                                                 : (course.sections[sectionIndex].pages[pageIndex + 1].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fullimagepreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                            <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                                            <Button  className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -198,7 +218,7 @@ class FullImagePreview extends Component {
                                                                     :
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fulltextpreview', state: { sectionIndex, pageIndex: pageIndex + 1, course } }}>
-                                                                            <Button onClick={() => this.setState({ percentage: this.state.percentage + 100 / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0) })}className='btn-next'>
+                                                                            <Button  className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -214,7 +234,7 @@ class FullImagePreview extends Component {
                                 }
                             </Col>
                             <Col md={3}>
-                                    <CourseSidebar course={course.sections} />
+                                <CourseSidebar course={course.sections} />
                             </Col>
                         </Row>
                     </Grid>

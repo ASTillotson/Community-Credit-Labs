@@ -25,64 +25,76 @@ class UserCourse extends Component {
             edited_at: "",
             name: "Course Name",
             sections: [
-                {name:"Section1", 
-                pages: [
-                    {contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video"},
-                    name: "aaaaaaa",
-                    template: "FULLSCREEN VIDEO"},
-                    {contents: { content: course1, contentType: "image"},
-                    name: "asdfasdfasd",
-                    template:"FULLSCREEN IMAGE"},
-                    {contents: { content: "asdfasdfasdfasdf", contentType: "text"},
-                    name: "afasdfasdf",
-                    template: "TEXT"}]
-                    }, 
-                {name:"Section2",
-                pages: [
-                    {contents: [],
-                    name: "afafsdfasf",
-                    template: "IMAGE WITH TEXT"}]}]
+                {
+                    name: "Section1",
+                    pages: [
+                        {
+                            contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },
+                            name: "aaaaaaa",
+                            template: "FULLSCREEN VIDEO"
+                        },
+                        {
+                            contents: { content: course1, contentType: "image" },
+                            name: "asdfasdfasd",
+                            template: "FULLSCREEN IMAGE"
+                        },
+                        {
+                            contents: { content: "asdfasdfasdfasdf", contentType: "text" },
+                            name: "afasdfasdf",
+                            template: "TEXT"
+                        }]
+                },
+                {
+                    name: "Section2",
+                    pages: [
+                        {
+                            contents: [],
+                            name: "afafsdfasf",
+                            template: "IMAGE WITH TEXT"
+                        }]
+                }
+            ]
         };
         const course = JSON.parse(JSON.stringify(courseUnreadable));
         //const course = _.cloneDeep(courseUnreadable);
         console.log(course.sections[0].pages[0].template);
-                course.sections[0].pages[0].template === "FULLSCREEN VIDEO" ?
-                this.setState({renderTarget: <Redirect push to={{ pathname: '/user/fullvideopreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                    : (course.sections[0].pages[0].template === "VIDEO WITH CAPTION" ?
-                    this.setState({renderTarget: <Redirect to={{ pathname: '/user/videocappreview', state: { sectionIndex: 0, pageIndex: 0, course} }}/>})
-                        : (course.sections[0].pages[0].template === "IMAGE WITH TEXT" ?
-                        this.setState({renderTarget: <Redirect to={{ pathname: '/user/imagecappreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                            : (course.sections[0].pages[0].template === "HORIZONTAL IMAGES WITH TEXT" ?
-                            this.setState({renderTarget: <Redirect to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                                : (course.sections[0].pages[0].template === "QUIZ CONTENT" ?
-                                this.setState({renderTarget: <Redirect to={{ pathname: '/user/quizpreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                                    : (course.sections[0].pages[0].template === "IMAGES WITH TEXT" ?
-                                    this.setState({renderTarget: <Redirect to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                                        : (course.sections[0].pages[0].template === "FULLSCREEN IMAGE" ?
-                                        this.setState({renderTarget: <Redirect to={{ pathname: '/user/fullimagepreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                                            :
-                                        this.setState({renderTarget: <Redirect to={{ pathname: '/user/fulltextpreview', state: { sectionIndex: 0, pageIndex: 0, course } }}/>})
-                                        )
-                                    )
+        course.sections[0].pages[0].template === "FULLSCREEN VIDEO" ?
+            this.setState({ renderTarget: <Redirect push to={{ pathname: '/user/fullvideopreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+            : (course.sections[0].pages[0].template === "VIDEO WITH CAPTION" ?
+                this.setState({ renderTarget: <Redirect to={{ pathname: '/user/videocappreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+                : (course.sections[0].pages[0].template === "IMAGE WITH TEXT" ?
+                    this.setState({ renderTarget: <Redirect to={{ pathname: '/user/imagecappreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+                    : (course.sections[0].pages[0].template === "HORIZONTAL IMAGES WITH TEXT" ?
+                        this.setState({ renderTarget: <Redirect to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+                        : (course.sections[0].pages[0].template === "QUIZ CONTENT" ?
+                            this.setState({ renderTarget: <Redirect to={{ pathname: '/user/quizpreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+                            : (course.sections[0].pages[0].template === "IMAGES WITH TEXT" ?
+                                this.setState({ renderTarget: <Redirect to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+                                : (course.sections[0].pages[0].template === "FULLSCREEN IMAGE" ?
+                                    this.setState({ renderTarget: <Redirect to={{ pathname: '/user/fullimagepreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
+                                    :
+                                    this.setState({ renderTarget: <Redirect to={{ pathname: '/user/fulltextpreview', state: { sectionIndex: 0, pageIndex: 0, course } }} /> })
                                 )
                             )
                         )
-                    );
-        
+                    )
+                )
+            );
+
     }
 
     render() {
         const renderTarget = this.state.renderTarget;
-        if(renderTarget) {
+        if (renderTarget) {
             return renderTarget;
         } else {
             return (
-                
+
                 <div className="course-content">
                     <div className="course-tabs">
-                    
+
                         <Grid fluid>
-                            
+
                             <Row>
                                 <Col md={4}>
                                     <Card
@@ -94,8 +106,8 @@ class UserCourse extends Component {
                                         content={
                                             <div className="ct-chart course-img">
                                                 <a className="img-holder switch-trigger" onClick={this.getCourse}>
-                                                        <img src={course} alt="..." />
-                                                        
+                                                    <img src={course} alt="..." />
+
                                                 </a>
                                             </div>
                                         }
