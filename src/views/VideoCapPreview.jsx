@@ -11,9 +11,9 @@ import _ from "lodash";
 class VideoCapPreview extends Component {
     constructor() {
         super();
-        this.state = {
-            percentage: 0
-        }
+        // this.state = {
+        //     percentage: 0
+        // }
     }
     state = {
         setText: false,
@@ -38,14 +38,27 @@ class VideoCapPreview extends Component {
         if (page.contents[1] && !this.state.setText) {
             this.setState({ text: page.contents[1].content, setText: true})
         }
+        let count = 0;
+        let pageIdx;
+        for (let s = 0; s <= sectionIndex; s++) {
+            if (s == sectionIndex) {
+                pageIdx = pageIndex 
+            } else {
+                pageIdx = course.sections[sectionIndex].pages.length
+            }
+            for (let p = 0; p < pageIdx; p++) {
+                count++;
+            }
+        }
+        let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
         return (
             <div className="course-content course-display">
                 <div className="course-tabs">
                     {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
                     <h4>{course.name}</h4>
-                    <p className="percentage">{Math.round(this.state.percentage)}%</p>
+                    <p className="percentage">{Math.round(percentage)}%</p>
                         <React.Fragment>
-                            <ProgressBar percentage={this.state.percentage} />
+                            <ProgressBar percentage={percentage} />
                         </React.Fragment>
                     
                     <hr />
@@ -133,7 +146,7 @@ class VideoCapPreview extends Component {
                             </Col>
 
                             <Col md={7}>
-                                <div className="container-window video-cap" >
+                                <div className="container-window video-cap display-window" >
                                     <div className="video-part" id="div-1">
                                         <Row >
                                             <Col md={12}>

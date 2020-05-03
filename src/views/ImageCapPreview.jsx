@@ -148,12 +148,12 @@ class ImageCapPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={10}>
-                                <div className="container-window video-cap" >
-                                    <div className="img-part" id="div-1">
+                            <Col md={7}>
+                                <div className="container-window video-cap display-window" >
+                                    <div className="img-part" id="div-1" >
                                         <Row >
                                             <Col md={12}>
-                                                <img className="img-upload" src={this.state.file} />
+                                                <img className="img-upload" style={{marginTop: "0px", width: "510px"}} src={this.state.file} />
                                             </Col>
                                         </Row>
                                     </div>

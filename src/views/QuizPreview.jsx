@@ -201,8 +201,8 @@ class QuizPreview extends Component {
                                 }
                             </Col>
 
-                            <Col md={10}>
-                                <div className="container-window" id="div-1" >
+                            <Col md={7}>
+                                <div className="container-window display-window" id="div-1" >
 
                                     <Row >
                                         <div classname="uploader-title">

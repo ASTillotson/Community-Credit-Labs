@@ -153,7 +153,7 @@ class FullImagePreview extends Component {
 
                             <Col md={7}>
                                 <div className="container-window display-window">
-                                    <img className="img-upload" src={imgSrc} />
+                                    <img className="img-upload" style={{marginTop: "0px", marginLeft: "0px"}}src={imgSrc} />
                                 </div>
                             </Col>
                             <Col md={1}>
