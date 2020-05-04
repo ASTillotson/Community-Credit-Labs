@@ -32,6 +32,7 @@ class VideoCapPreview extends Component {
         const pageIndex = locState.pageIndex;
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
+        console.log(page);
         if (page.contents[0] && !this.state.setVideo) {
             this.setState({ videoEmbeddingCode: page.contents[0].content, setVideo: true});
         }

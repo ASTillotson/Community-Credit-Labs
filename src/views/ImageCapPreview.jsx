@@ -34,12 +34,13 @@ class ImageCapPreview extends Component {
         const course = _.cloneDeep(locState.course);
         let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
+        console.log(page);
         if (page.contents[0].content && !this.state.setImage) {
             imgSrc = page.contents.content
-            this.setState({ file: page.contents.content, setImage: true });
+            this.setState({ file: page.contents[0].content, setImage: true });
         }
         if (page.contents[1].content && !this.state.setText) {
-            this.setState({ text: page.contents.content, setText: true});
+            this.setState({ text: page.contents[1].content, setText: true});
         }
         let count = 0;
         let pageIdx;
