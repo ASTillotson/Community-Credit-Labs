@@ -86,12 +86,10 @@ class CourseAdding extends Component {
     }
 
     handleFileChange(event) {
-        // console.log(event.target.files[0]);
-        // console.log(event.target.files[1]);
         const course = _.cloneDeep(this.state.course);
-        // course.documents = URL.createObjectURL(event.target.files[0]);       
-        // this.setState({ course });
-        course.documents = [...this.state.course.documents, ...event.target.files];
+        // course.documents = URL.createObjectURL(event.target.files[0]);      
+        // course.documents = [...this.state.course.documents, ...event.target.files];
+        course.documents = [...event.target.files];
         this.setState({ course });
     }
 
