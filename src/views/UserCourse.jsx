@@ -73,7 +73,7 @@ class UserCourse extends Component {
                     name: "Section2",
                     pages: [
                         {
-                            contents: [],
+                            contents: [{content: null, contentType: "image"}, {content: "adfhngtjgg", contentType: "text"}],
                             name: "Page 1",
                             template: "IMAGE WITH TEXT"
                         }]
