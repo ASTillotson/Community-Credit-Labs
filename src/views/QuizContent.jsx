@@ -252,6 +252,7 @@ class QuizContent extends Component {
                                                 checked={this.state.checkOne}
                                                 onChange={this.toggleCheckOne}
                                                 className="form-check-input"
+                                                disabled={this.state.checkTwo == true ? true : this.state.checkThree == true ? true : this.state.checkFour == true ? true : false}
                                             />
 
                                         </Col>
@@ -270,6 +271,7 @@ class QuizContent extends Component {
                                                 checked={this.state.checkTwo}
                                                 onChange={this.toggleCheckTwo}
                                                 className="form-check-input"
+                                                disabled={this.state.checkOne == true ? true : this.state.checkThree == true ? true : this.state.checkFour == true ? true : false}
                                             />
                                         </Col>
 
@@ -286,6 +288,7 @@ class QuizContent extends Component {
                                                 checked={this.state.checkThree}
                                                 onChange={this.toggleCheckThree}
                                                 className="form-check-input"
+                                                disabled={this.state.checkTwo == true ? true : this.state.checkOne == true ? true : this.state.checkFour == true ? true : false}
                                             />
                                         </Col>
 
@@ -302,6 +305,7 @@ class QuizContent extends Component {
                                                 checked={this.state.checkFour}
                                                 onChange={this.toggleCheckFour}
                                                 className="form-check-input"
+                                                disabled={this.state.checkTwo == true ? true : this.state.checkThree == true ? true : this.state.checkOne == true ? true : false}
                                             />
                                         </Col>
 

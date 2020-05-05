@@ -51,8 +51,6 @@ class FullVideoPreview extends Component {
                 count++;
             }
         }
-        console.log(pageIdx);
-        console.log(count);
         let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;
         let prevSect = null;
         let prevPage = null;

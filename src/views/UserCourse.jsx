@@ -29,7 +29,7 @@ class UserCourse extends Component {
                     name: "Section1",
                     pages: [
                         {
-                            contents: [{ content: "", contentType: "image" }, {content: "asdfaf", contentType: "text" }],
+                            contents: [{ content: "", contentType: "image" }, {content: "This is a text area.", contentType: "text" }],
                             name: "Page 1",
                             template: "IMAGE WITH TEXT"
                         },
@@ -39,7 +39,7 @@ class UserCourse extends Component {
                             template: "FULLSCREEN VIDEO"
                         },
                         {
-                            contents: [{ content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },{content: "asdfqwfv", contentType: "text"}],
+                            contents: [{ content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 3",
                             template: "VIDEO WITH CAPTION"
                         },
@@ -49,22 +49,22 @@ class UserCourse extends Component {
                             template: "FULLSCREEN IMAGE"
                         },
                         {
-                            contents: { content: "asdfasdfasdfasdf", contentType: "text" },
+                            contents: { content: "This is a text area.", contentType: "text" },
                             name: "Page 5",
                             template: "TEXT"
                         },
                         {
-                            contents: { content: {answerOne:"quer",answerTwo:"quer",answerThree:"quer",answerFour: "quer",checkOne:true,checkTwo:true,checkThree:true,checkFour:true,theQuestion:"quer"}, contentType: "quiz" },
+                            contents: { content: {answerOne:"A",answerTwo:"B",answerThree:"C",answerFour: "D",checkOne:true,checkTwo:false,checkThree:false,checkFour:false,theQuestion:"This is the Question?"}, contentType: "quiz" },
                             name: "Page 6",
                             template: "QUIZ CONTENT"
                         },
                         {
-                            contents: [{ content: ["blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null, "blob:http://localhost:3000/42260ea3-31cf-41ef-ab14-d7dac873cfaa"], contentType: "image" },{content: "qwerqwerqwer", contentType: "text"}],
+                            contents: [{ content: ["blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null, "blob:http://localhost:3000/42260ea3-31cf-41ef-ab14-d7dac873cfaa"], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 7",
                             template: "IMAGES WITH TEXT"
                         },
                         {
-                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "qwerqwerqwer", contentType: "text"}],
+                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 8",
                             template: "HORIZONTAL IMAGES WITH TEXT"
                         },]
@@ -73,10 +73,16 @@ class UserCourse extends Component {
                     name: "Section2",
                     pages: [
                         {
-                            contents: [{content: null, contentType: "image"}, {content: "adfhngtjgg", contentType: "text"}],
+                            contents: [{content: null, contentType: "image"}, {content: "This is a text area.", contentType: "text"}],
                             name: "Page 1",
                             template: "IMAGE WITH TEXT"
-                        }]
+                        },
+                        {
+                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
+                            name: "Page 2",
+                            template: "HORIZONTAL IMAGES WITH TEXT"
+                        },
+                    ]
                 }
             ]
         };

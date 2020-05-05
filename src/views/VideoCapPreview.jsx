@@ -186,7 +186,7 @@ class VideoCapPreview extends Component {
                                     <div className="video-part" id="div-1">
                                         <Row >
                                             <Col md={12}>
-                                                <div dangerouslySetInnerHTML={this.createDangerousHTML()} />
+                                                <div className="video-display" dangerouslySetInnerHTML={this.createDangerousHTML()} />
                                             </Col>
                                         </Row>
                                     </div>

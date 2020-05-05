@@ -18,7 +18,7 @@ class HorizontalMultiImgsPreview extends Component {
         files: [null, null, null],
         text: ""
     };
-    
+
     inputText = event => {
         this.setState({ text: event.target.value });
     };
@@ -30,16 +30,16 @@ class HorizontalMultiImgsPreview extends Component {
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (page.contents[0] && !this.state.setFiles) {
-            this.setState({ videoEmbeddingCode: page.contents[0].content, setFiles: true});
+            this.setState({ videoEmbeddingCode: page.contents[0].content, setFiles: true });
         }
         if (page.contents[1] && !this.state.setText) {
-            this.setState({ text: page.contents[1].content, setText: true})
+            this.setState({ text: page.contents[1].content, setText: true })
         }
         let count = 0;
         let pageIdx;
         for (let s = 0; s <= sectionIndex; s++) {
             if (s == sectionIndex) {
-                pageIdx = pageIndex 
+                pageIdx = pageIndex
             } else {
                 pageIdx = course.sections[sectionIndex].pages.length
             }
@@ -53,29 +53,29 @@ class HorizontalMultiImgsPreview extends Component {
         let nextSect = null;
         let nextPage = null;
         // are we at the last page, and is there 1 more section
-        if(pageIndex == course.sections[sectionIndex].pages.length - 1 && sectionIndex < course.sections.length - 1) {
+        if (pageIndex == course.sections[sectionIndex].pages.length - 1 && sectionIndex < course.sections.length - 1) {
             nextSect = sectionIndex + 1;
             nextPage = 0;
             prevSect = sectionIndex;
             prevPage = pageIndex - 1;
-        // are we at the first page and not on the first section
+            // are we at the first page and not on the first section
         } else if (pageIndex == 0 && sectionIndex != 0) {
             prevSect = sectionIndex - 1;
             prevPage = course.sections[prevSect].pages.length - 1;
             //make sure theres another page
-            if(course.sections[sectionIndex].pages.length - 1 != pageIndex) {
+            if (course.sections[sectionIndex].pages.length - 1 != pageIndex) {
                 nextSect = sectionIndex;
                 nextPage = pageIndex + 1;
             }
-        // are we at the first page of the first section
+            // are we at the first page of the first section
         } else if (pageIndex == 0 && sectionIndex == 0) {
             nextSect = sectionIndex;
             nextPage = pageIndex + 1;
-        // are we at the last page of the last section and are there no more sections
+            // are we at the last page of the last section and are there no more sections
         } else if (pageIndex == course.sections[sectionIndex].pages.length - 1 && sectionIndex == course.sections.length - 1) {
             prevSect = sectionIndex;
             prevPage = pageIndex - 1;
-        // every page inbetween
+            // every page inbetween
         } else {
             nextSect = sectionIndex;
             nextPage = pageIndex + 1;
@@ -88,10 +88,10 @@ class HorizontalMultiImgsPreview extends Component {
                     {/* <h4>Section {sectionIndex + 1} - {course.sections[sectionIndex].name} || Page {pageIndex + 1} - {course.sections[sectionIndex].pages[pageIndex].name} */}
                     <h4>{course.name}</h4>
                     <p className="percentage">{Math.round(percentage)}%</p>
-                        <React.Fragment>
-                            <ProgressBar percentage={percentage} />
-                        </React.Fragment>
-                    
+                    <React.Fragment>
+                        <ProgressBar percentage={percentage} />
+                    </React.Fragment>
+
                     <hr />
                 </div>
                 <div className="container">
@@ -102,8 +102,8 @@ class HorizontalMultiImgsPreview extends Component {
                                     prevPage !== null || prevSect !== null ?
                                         course.sections[prevSect].pages[prevPage].template === "FULLSCREEN VIDEO" ?
                                             <div className="previous">
-                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course} }}>
-                                                    <Button  className='btn-previous'>
+                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
+                                                    <Button className='btn-previous'>
                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
@@ -111,7 +111,7 @@ class HorizontalMultiImgsPreview extends Component {
                                             : (course.sections[prevSect].pages[prevPage].template === "VIDEO WITH CAPTION" ?
                                                 <div className="previous">
                                                     <Link to={{ pathname: '/user/videocappreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                        <Button  className='btn-previous'>
+                                                        <Button className='btn-previous'>
                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                         </Button>
                                                     </Link>
@@ -119,7 +119,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                 : (course.sections[prevSect].pages[prevPage].template === "IMAGE WITH TEXT" ?
                                                     <div className="previous">
                                                         <Link to={{ pathname: '/user/imagecappreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                            <Button  className='btn-previous'>
+                                                            <Button className='btn-previous'>
                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                             </Button>
 
@@ -128,7 +128,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                     : (course.sections[prevSect].pages[prevPage].template === "QUIZ CONTENT" ?
                                                         <div className="previous">
                                                             <Link to={{ pathname: '/user/quizpreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                                <Button  className='btn-previous'>
+                                                                <Button className='btn-previous'>
                                                                     <img src={previous} width="20px" height="20px" alt="..." />
                                                                 </Button>
                                                             </Link>
@@ -136,7 +136,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                         : (course.sections[prevSect].pages[prevPage].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                             <div className="previous">
                                                                 <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                                    <Button  className='btn-previous'>
+                                                                    <Button className='btn-previous'>
                                                                         <img src={previous} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
@@ -144,7 +144,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                             : (course.sections[prevSect].pages[prevPage].template === "IMAGES WITH TEXT" ?
                                                                 <div className="previous">
                                                                     <Link to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                                        <Button  className='btn-previous'>
+                                                                        <Button className='btn-previous'>
                                                                             <img src={previous} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
@@ -152,7 +152,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                                 : (course.sections[prevSect].pages[prevPage].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="previous">
                                                                         <Link to={{ pathname: '/user/fullimagepreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                                            <Button  className='btn-previous'>
+                                                                            <Button className='btn-previous'>
                                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -160,7 +160,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                                     :
                                                                     <div className="previous">
                                                                         <Link to={{ pathname: '/user/fulltextpreview', state: { sectionIndex: prevSect, pageIndex: prevPage, course } }}>
-                                                                            <Button  className='btn-previous'>
+                                                                            <Button className='btn-previous'>
                                                                                 <img src={previous} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -182,25 +182,25 @@ class HorizontalMultiImgsPreview extends Component {
                                         <Row >
                                             {this.state.files.map((f, idx) =>
                                                 <Col md={7} key={idx}>
-                                                    <img className="img-upload" style={{marginTop: "0px", width:"300px", height:"167px"}} src={this.state.files[idx]} />
+                                                    <img className="img-upload" style={{ marginTop: "-7px", width: "300px", height: "167px" }} src={this.state.files[idx]} />
                                                 </Col>
                                             )}
-                                                <Col md={5}>
-                                                    <span>{this.state.text}</span>
-                                                </Col>
-                                            
+                                            <Col md={5} style={{position: "absolute", marginLeft: "320px", marginTop: "10px"}}>
+                                                <span >{this.state.text}</span>
+                                            </Col>
+
                                         </Row>
                                     </div>
                                 </div>
                             </Col>
-                            
+
                             <Col md={1}>
                                 {
                                     nextPage !== null || nextSect !== null ?
                                         course.sections[nextSect].pages[nextPage].template === "FULLSCREEN VIDEO" ?
                                             <div className="next">
-                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course} }}>
-                                                    <Button  className='btn-next'>
+                                                <Link to={{ pathname: '/user/fullvideopreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
+                                                    <Button className='btn-next'>
                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                     </Button>
                                                 </Link>
@@ -208,7 +208,7 @@ class HorizontalMultiImgsPreview extends Component {
                                             : (course.sections[nextSect].pages[nextPage].template === "VIDEO WITH CAPTION" ?
                                                 <div className="next">
                                                     <Link to={{ pathname: '/user/videocappreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                        <Button  className='btn-next'>
+                                                        <Button className='btn-next'>
                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                         </Button>
                                                     </Link>
@@ -216,7 +216,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                 : (course.sections[nextSect].pages[nextPage].template === "IMAGE WITH TEXT" ?
                                                     <div className="next">
                                                         <Link to={{ pathname: '/user/imagecappreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                            <Button  className='btn-next'>
+                                                            <Button className='btn-next'>
                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                             </Button>
 
@@ -225,7 +225,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                     : (course.sections[nextSect].pages[nextPage].template === "HORIZONTAL IMAGES WITH TEXT" ?
                                                         <div className="next">
                                                             <Link to={{ pathname: '/user/horizontalmultiimgspreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                                <Button  className='btn-next'>
+                                                                <Button className='btn-next'>
                                                                     <img src={next} width="20px" height="20px" alt="..." />
                                                                 </Button>
                                                             </Link>
@@ -233,7 +233,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                         : (course.sections[nextSect].pages[nextPage].template === "QUIZ CONTENT" ?
                                                             <div className="next">
                                                                 <Link to={{ pathname: '/user/quizpreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                                    <Button  className='btn-next'>
+                                                                    <Button className='btn-next'>
                                                                         <img src={next} width="20px" height="20px" alt="..." />
                                                                     </Button>
                                                                 </Link>
@@ -241,7 +241,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                             : (course.sections[nextSect].pages[nextPage].template === "IMAGES WITH TEXT" ?
                                                                 <div className="next">
                                                                     <Link to={{ pathname: '/user/multiimgcappreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                                        <Button  className='btn-next'>
+                                                                        <Button className='btn-next'>
                                                                             <img src={next} width="20px" height="20px" alt="..." />
                                                                         </Button>
                                                                     </Link>
@@ -249,7 +249,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                                 : (course.sections[nextSect].pages[nextPage].template === "FULLSCREEN IMAGE" ?
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fullimagepreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                                            <Button  className='btn-next'>
+                                                                            <Button className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -257,7 +257,7 @@ class HorizontalMultiImgsPreview extends Component {
                                                                     :
                                                                     <div className="next">
                                                                         <Link to={{ pathname: '/user/fulltextpreview', state: { sectionIndex: nextSect, pageIndex: nextPage, course } }}>
-                                                                            <Button  className='btn-next'>
+                                                                            <Button className='btn-next'>
                                                                                 <img src={next} width="20px" height="20px" alt="..." />
                                                                             </Button>
                                                                         </Link>
@@ -273,7 +273,7 @@ class HorizontalMultiImgsPreview extends Component {
                                 }
                             </Col>
                             <Col md={3}>
-                                    <CourseSidebar course={course.sections} />
+                                <CourseSidebar course={course.sections} />
                             </Col>
                         </Row>
                     </Grid>

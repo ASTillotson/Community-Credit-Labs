@@ -176,12 +176,13 @@ class HorizontalMultiImgs extends Component {
                                                     <img className="img-upload" src={this.state.files[idx]} />
                                                 </Col>
                                             )}
-                                                <Col md={5}>
+                                                <Col md={5} style={{position: "absolute", marginLeft: "450px", marginTop: "10px"}}>
                                                     <textarea
                                                         className="text-input"
                                                         placeholder="Enter Text Here"
                                                         value={this.state.text}
                                                         onChange={this.inputText}
+                                                        style={{height: "570px"}}
                                                     />
                                                 </Col>
                                             
