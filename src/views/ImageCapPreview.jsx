@@ -47,10 +47,10 @@ class ImageCapPreview extends Component {
             if (s == sectionIndex) {
                 pageIdx = pageIndex
             } else {
-                pageIdx = course.sections[sectionIndex].pages.length
+                pageIdx = course.sections[s].pages.length
             }
             for (let p = 0; p < pageIdx; p++) {
-                count++;
+                count++; 
             }
         }
         let percentage = (count / course.sections.reduce((sum, obj) => sum + obj.pages.length, 0)) * 100;

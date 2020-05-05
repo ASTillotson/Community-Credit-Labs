@@ -235,7 +235,7 @@ class QuizContent extends Component {
 
 
                                             <Col md={12}>
-                                                <label className='quiz-guide'>Check the correct answers</label>
+                                                <label className='quiz-guide'>Select the correct answers</label>
                                             </Col>
 
                                         </div>

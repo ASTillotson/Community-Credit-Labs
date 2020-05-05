@@ -86,7 +86,7 @@ class QuizPreview extends Component {
             if (s == sectionIndex) {
                 pageIdx = pageIndex
             } else {
-                pageIdx = course.sections[sectionIndex].pages.length
+                pageIdx = course.sections[s].pages.length
             }
             for (let p = 0; p < pageIdx; p++) {
                 count++;
@@ -271,7 +271,7 @@ class QuizPreview extends Component {
                                                 <h4 style={{ textAlign: "center" }}>{question}</h4>
                                             </Col>
                                             <Col md={12}>
-                                                <label className='quiz-guide'>Check the correct answers
+                                                <label className='quiz-guide'>Select the correct answers
                                                 {result}
                                                 </label>
                                             </Col>
