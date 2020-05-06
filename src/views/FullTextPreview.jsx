@@ -34,7 +34,7 @@ class FullTextPreview extends Component {
             if (s == sectionIndex) {
                 pageIdx = pageIndex 
             } else {
-                pageIdx = course.sections[s].pages.length
+                pageIdx = course.sections[sectionIndex].pages.length
             }
             for (let p = 0; p < pageIdx; p++) {
                 count++;
@@ -171,7 +171,7 @@ class FullTextPreview extends Component {
 
                             <Col md={7}>
                                 <div className="container-window display-window">
-                                     <span style={{padding: "10px", fontSize: "20px"}}>{this.state.text}</span>
+                                     <span>{this.state.text}</span>
                                 </div>
                             </Col>
                             

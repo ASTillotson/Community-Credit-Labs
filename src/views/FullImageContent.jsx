@@ -29,7 +29,9 @@ class FullImageContent extends Component {
     }
     handleChange(event) {
         this.setState({
-            file: URL.createObjectURL(event.target.files[0])
+            file: URL.createObjectURL(event.target.files[0]),
+            fileObj: event.target.files[0]
+
         })
     }
     togglePop = () => {
@@ -48,9 +50,11 @@ class FullImageContent extends Component {
         let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (this.state.file) {
+            console.log(this.state.fileObj)
             page.contents[0] = {
                 content: this.state.file,
                 contentType: 'image',
+                contentFile: this.state.fileObj
             };
             imgSrc = this.state.file;
         } else {

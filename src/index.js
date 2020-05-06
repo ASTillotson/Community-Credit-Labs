@@ -13,6 +13,9 @@ import "./assets/css/pe-icon-7-stroke.css";
 import AdminLayout from "layouts/AdminLayout.jsx";
 import UserLayout from "layouts/UserLayout.jsx";
 
+import awsmobile from './aws-exports'
+import Amplify from "aws-amplify";
+Amplify.configure(awsmobile);
 ReactDOM.render(
   <BrowserRouter>
     <Switch>

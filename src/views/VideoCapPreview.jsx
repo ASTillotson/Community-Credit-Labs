@@ -45,7 +45,7 @@ class VideoCapPreview extends Component {
             if (s == sectionIndex) {
                 pageIdx = pageIndex 
             } else {
-                pageIdx = course.sections[s].pages.length
+                pageIdx = course.sections[sectionIndex].pages.length
             }
             for (let p = 0; p < pageIdx; p++) {
                 count++;

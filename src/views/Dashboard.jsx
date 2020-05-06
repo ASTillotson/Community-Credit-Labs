@@ -26,8 +26,26 @@ import {
 import course1 from "assets/img/codingdojo.JPG";
 import course2 from "assets/img/jfs.png";
 import courseImg from "../assets/img/course.png";
+import amplify, { API, graphqlOperation, Storage } from 'aws-amplify'
+import { listCoursesAll, getCourseComplete } from 'graphql/queries'
+import { getCourse } from 'graphql/queries'
+
 
 class Dashboard extends Component {
+  state = { course: null, filter: 'Active' }
+
+  async componentDidMount() {
+    try {
+      const { data: { listCourses: { items }}} = await API.graphql(graphqlOperation(listCoursesAll))
+      for (let i = 0; i < items.length; i++) {
+        const { data: { listCourses: { items }}} = await API.graphql(graphqlOperation(listCoursesAll))
+      }
+      this.setState({ course: items })
+    } catch (err) {
+      console.log('error fetching notes...', err)
+    }
+  }
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -39,6 +57,7 @@ class Dashboard extends Component {
     return legend;
   }
   render() {
+    console.log(this.state.course)
     return (
       <div className="content">
         <Grid fluid>

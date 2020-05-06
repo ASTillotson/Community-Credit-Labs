@@ -23,59 +23,64 @@ class UserCourse extends Component {
         //backend function gets us a course object
         const courseUnreadable = {
             edited_at: "",
-            name: "Introduction to CCL",
+            name: "Course Name",
             sections: [
                 {
-                    name: "Section 1 : Introduction to CCL",
+                    name: "Section1",
                     pages: [
                         {
-                            contents: [{ content: "https://cdn.discordapp.com/attachments/697175176353415268/707395550542037032/unknown.png", contentType: "image" }, {content: "Community  Credit  Lab  exists  to  facilitate  access  to  affordablefinancial products and services for underserved communities.", contentType: "text" }],
+                            contents: [{ content: "", contentType: "image" }, {content: "This is a text area.", contentType: "text" }],
                             name: "Page 1",
                             template: "IMAGE WITH TEXT"
                         },
                         {
-                            contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/EhagRQtrzGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },
+                            contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },
                             name: "Page 2",
                             template: "FULLSCREEN VIDEO"
                         },
                         {
-                            contents: [{ content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/EhagRQtrzGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },{content: "Our  partnerships  are  centered  on  removing  economic  barriers  andenabling  financial  stability.", contentType: "text"}],
+                            contents: [{ content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ze0kq-ROeaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 3",
                             template: "VIDEO WITH CAPTION"
                         },
                         {
-                            contents: { content: 'https://cdn.discordapp.com/attachments/697175176353415268/707395409735319552/unknown.png', contentType: "image" },
+                            contents: { content: '', contentType: "image" },
                             name: "Page 4",
                             template: "FULLSCREEN IMAGE"
                         },
                         {
-                            contents: { content: "Credit  Discussions:  to  support  prospective  borrowers  effectively as they consider taking on debt; Consumer  Lending:  to  facilitate  access  to  affordable  financial products and services that improve economic and social wellbeing; and Credit Reporting: to build and improve credit scores.", contentType: "text" },
+                            contents: { content: "This is a text area.", contentType: "text" },
                             name: "Page 5",
                             template: "TEXT"
                         },
                         {
-                            contents: [{ content: ["https://media.discordapp.net/attachments/697175176353415268/707397088559890432/unknown.png", "https://media.discordapp.net/attachments/697175176353415268/707397167186182184/unknown.png", "https://media.discordapp.net/attachments/697175176353415268/707397241752780870/unknown.png"], contentType: "image" },{content: "All  partnership  ideas  to  help  build  credit  and  provide  affordableaccess to credit for underserved communities are welcome.", contentType: "text"}],
+                            contents: { content: {answerOne:"A",answerTwo:"B",answerThree:"C",answerFour: "D",checkOne:true,checkTwo:false,checkThree:false,checkFour:false,theQuestion:"This is the Question?"}, contentType: "quiz" },
+                            name: "Page 6",
+                            template: "QUIZ CONTENT"
+                        },
+                        {
+                            contents: [{ content: ["blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null, "blob:http://localhost:3000/42260ea3-31cf-41ef-ab14-d7dac873cfaa"], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 7",
                             template: "IMAGES WITH TEXT"
                         },
                         {
-                            contents: [{ content: ["https://media.discordapp.net/attachments/697175176353415268/707397088559890432/unknown.png", "https://media.discordapp.net/attachments/697175176353415268/707397167186182184/unknown.png", "https://media.discordapp.net/attachments/697175176353415268/707397241752780870/unknown.png"], contentType: "image" },{content: "The  Fair  Fight  Bond  Fund  (FFBF)  was  established  by  the  Washington  Immigrant  SolidarityNetwork (WAISN) in 2018 in response to the increase in immigrants detained at the NorthwestDetention Center in Tacoma, Washington. Immigrants detained are exposed to inhumane andunjust living conditions as they await their immigration proceedings (up to 4-years). The vastmajority of people are being detained for their desire to live and belong in the United States.The  FFBF  supports  people  who  cannot  afford  the  high  price  of  bonds.  The  FFBF  posts  bondand WAISN connects people to relevant legal and support services. As cases are closed, FFBFapplies for bond funds to be returned.", contentType: "text"}],
+                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 8",
                             template: "HORIZONTAL IMAGES WITH TEXT"
-                        },
-                        {
-                            contents: { content: {answerOne:"Affordable credit",answerTwo:"Organizations",answerThree:"Programs",answerFour: "Workshops",checkOne:true,checkTwo:false,checkThree:false,checkFour:false,theQuestion:"CCL exists to facilitate access to ______ for underserved communities."}, contentType: "quiz" },
-                            name: "Page 6",
-                            template: "QUIZ CONTENT"
                         },]
                 },
                 {
-                    name: "Section 2: Our Partners",
+                    name: "Section2",
                     pages: [
                         {
-                            contents: [{content: "https://media.discordapp.net/attachments/697175176353415268/707396185249415228/unknown.png", contentType: "image"}, {content: "Community Credit Lab is partnering with Jewish Family Service of Seattle toprovide  access  to  0%  interest  loans  to  support  living  expenses  forcommunity members enrolled in the coding bootcamp with Coding Dojo.", contentType: "text"}],
+                            contents: [{content: null, contentType: "image"}, {content: "This is a text area.", contentType: "text"}],
                             name: "Page 1",
                             template: "IMAGE WITH TEXT"
+                        },
+                        {
+                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
+                            name: "Page 2",
+                            template: "HORIZONTAL IMAGES WITH TEXT"
                         },
                     ]
                 }

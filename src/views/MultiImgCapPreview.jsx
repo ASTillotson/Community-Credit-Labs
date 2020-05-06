@@ -30,7 +30,7 @@ class MultiImgCapPreview extends Component {
         const course = _.cloneDeep(locState.course);
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (page.contents[0] && !this.state.setFiles) {
-            this.setState({ files: page.contents[0].content, setFiles: true});
+            this.setState({ videoEmbeddingCode: page.contents[0].content, setFiles: true});
         }
         if (page.contents[1] && !this.state.setText) {
             this.setState({ text: page.contents[1].content, setText: true})
@@ -41,7 +41,7 @@ class MultiImgCapPreview extends Component {
             if (s == sectionIndex) {
                 pageIdx = pageIndex 
             } else {
-                pageIdx = course.sections[s].pages.length
+                pageIdx = course.sections[sectionIndex].pages.length
             }
             for (let p = 0; p < pageIdx; p++) {
                 count++;
