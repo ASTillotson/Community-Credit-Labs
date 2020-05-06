@@ -171,7 +171,7 @@ class FullTextPreview extends Component {
 
                             <Col md={7}>
                                 <div className="container-window display-window">
-                                     <span>{this.state.text}</span>
+                                     <span style={{padding: "10px", fontSize: "20px"}}>{this.state.text}</span>
                                 </div>
                             </Col>
                             
