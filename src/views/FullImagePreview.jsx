@@ -34,13 +34,10 @@ class FullImagePreview extends Component {
         const pageIndex = locState.pageIndex;
         // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
-        let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (page.contents.content && !this.state.setImage) {
-            imgSrc = page.contents.content
             this.setState({ file: page.contents.content, setImage: true });
         }
-
         let count = 0;
         let pageIdx;
         for (let s = 0; s <= sectionIndex; s++) {
@@ -183,7 +180,7 @@ class FullImagePreview extends Component {
 
                             <Col md={7}>
                                 <div className="container-window display-window">
-                                    <img className="img-upload" style={{marginTop: "0px", marginLeft: "0px"}}src={imgSrc} />
+                                    <img className="img-upload" style={{marginTop: "0px", marginLeft: "0px"}}src={this.state.file} />
                                 </div>
                             </Col>
                             <Col md={1}>

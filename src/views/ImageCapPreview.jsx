@@ -32,10 +32,8 @@ class ImageCapPreview extends Component {
         const pageIndex = locState.pageIndex;
         // const course = JSON.parse(JSON.stringify(locState.course)); //deep clone
         const course = _.cloneDeep(locState.course);
-        let imgSrc;
         const page = course.sections[sectionIndex].pages[pageIndex];
         if (page.contents[0].content && !this.state.setImage) {
-            imgSrc = page.contents.content
             this.setState({ file: page.contents[0].content, setImage: true });
         }
         if (page.contents[1].content && !this.state.setText) {

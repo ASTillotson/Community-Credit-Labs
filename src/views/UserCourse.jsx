@@ -29,7 +29,7 @@ class UserCourse extends Component {
                     name: "Section1",
                     pages: [
                         {
-                            contents: [{ content: "", contentType: "image" }, {content: "This is a text area.", contentType: "text" }],
+                            contents: [{ content: "https://ccl985605d4e97c4fb7937ee5ca5d4907a2201726-prod.s3.us-east-1.amazonaws.com/public/images/31f15f5-ad22-8b2-4b46-886615474e.jpg", contentType: "image" }, {content: "This is a text area.", contentType: "text" }],
                             name: "Page 1",
                             template: "IMAGE WITH TEXT"
                         },
@@ -44,7 +44,7 @@ class UserCourse extends Component {
                             template: "VIDEO WITH CAPTION"
                         },
                         {
-                            contents: { content: '', contentType: "image" },
+                            contents: { content: 'https://ccl985605d4e97c4fb7937ee5ca5d4907a2201726-prod.s3.us-east-1.amazonaws.com/public/images/31f15f5-ad22-8b2-4b46-886615474e.jpg', contentType: "image" },
                             name: "Page 4",
                             template: "FULLSCREEN IMAGE"
                         },
@@ -59,12 +59,12 @@ class UserCourse extends Component {
                             template: "QUIZ CONTENT"
                         },
                         {
-                            contents: [{ content: ["blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null, "blob:http://localhost:3000/42260ea3-31cf-41ef-ab14-d7dac873cfaa"], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
+                            contents: [{ content: ["blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", "https://ccl985605d4e97c4fb7937ee5ca5d4907a2201726-prod.s3.us-east-1.amazonaws.com/public/images/31f15f5-ad22-8b2-4b46-886615474e.jpg", "blob:http://localhost:3000/42260ea3-31cf-41ef-ab14-d7dac873cfaa"], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 7",
                             template: "IMAGES WITH TEXT"
                         },
                         {
-                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", null], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
+                            contents: [{ content: [null, "blob:http://localhost:3000/3df38fbb-5c5a-4105-943f-59898549abf5", "https://ccl985605d4e97c4fb7937ee5ca5d4907a2201726-prod.s3.us-east-1.amazonaws.com/public/images/31f15f5-ad22-8b2-4b46-886615474e.jpg"], contentType: "image" },{content: "This is a text area.", contentType: "text"}],
                             name: "Page 8",
                             template: "HORIZONTAL IMAGES WITH TEXT"
                         },]
