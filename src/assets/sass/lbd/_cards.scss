@@ -1,3 +1,19 @@
+.download-link a{
+    bottom: 50px;
+    position: absolute;
+    color: #1A8A9A;
+    left: 28px;
+    text-decoration: underline;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+}
+.pdf-display iframe{
+    height: 400px;
+    width: 500px;
+    margin-top: -70px;
+    margin-left: -150px;
+}
 .course-content .video-part .video-display iframe{
     margin-left: 0px;
     width: 528px;
