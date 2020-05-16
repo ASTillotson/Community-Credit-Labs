@@ -21,6 +21,7 @@ import ImageCapPreview from "views/ImageCapPreview.jsx";
 import QuizPreview from "views/QuizPreview.jsx";
 import MultiImgCapPreview from "views/MultiImgCapPreview.jsx";
 import HorizontalMultiImgsPreview from "views/HorizontalMultiImgsPreview.jsx";
+import DemoCourse from "views/Course.jsx";
 
 const dashboardRoutes = [
   {
@@ -28,7 +29,8 @@ const dashboardRoutes = [
     name: "Dashboard",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/admin",
+    disappear: true
   },
   {
     path: "/courses",
@@ -42,7 +44,16 @@ const dashboardRoutes = [
     name: "Users",
     icon: "pe-7s-user",
     component: TableList,
-    layout: "/admin"
+    layout: "/admin",
+    disappear: true
+  },
+  {
+    path: "/course",
+    name: "Courses",
+    icon: "pe-7s-note2",
+    component: DemoCourse,
+    layout: "/admin",
+    disappear: true
   },
   {
     path: "/addcourse",
@@ -62,7 +73,7 @@ const dashboardRoutes = [
   },
   {
     path: "/coursetaking",
-    name: "Course Taking",
+    name: "Course",
     icon: "pe-7s-map-marker",
     component: CourseTaking,
     layout: "/user", //user
@@ -70,56 +81,56 @@ const dashboardRoutes = [
   },
   {
     path: "/fullvideopreview",
-    name: "Preview Screens",
+    name: "Course",
     component: FullVideoPreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/fulltextpreview",
-    name: "Preview Screens",
+    name: "Course",
     component: FullTextPreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/imagecappreview",
-    name: "Preview Screens",
+    name: "Course",
     component: ImageCapPreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/multiimgcappreview",
-    name: "Preview Screens",
+    name: "Course",
     component: MultiImgCapPreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/quizpreview",
-    name: "Preview Screens",
+    name: "Course",
     component: QuizPreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/videocappreview",
-    name: "Preview Screens",
+    name: "Course",
     component: VideoCapPreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/fullimagepreview",
-    name: "Preview Screens",
+    name: "Course",
     component: FullImagePreview,
     layout: "/user",
     disappear: true
   },
   {
     path: "/horizontalmultiimgspreview",
-    name: "Preview Screens",
+    name: "Course",
     component: HorizontalMultiImgsPreview,
     layout: "/user",
     disappear: true

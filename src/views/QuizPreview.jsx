@@ -152,6 +152,8 @@ class QuizPreview extends Component {
 
         let result;
         let correctAnswer;
+        let cert_btn;
+        let complete_statement;
         if (checkOne == true) {
             correctAnswer = answerOne
         } else if (checkTwo == true) {
@@ -167,6 +169,12 @@ class QuizPreview extends Component {
             } else {
                 result = <p style={{ color: "red", fontSize: "14px" }}>Your answer is wrong. The correct answer is {correctAnswer}.</p>
             }
+        }
+        if(this.state.checkOne == true && this.state.submitted == true){
+            complete_statement = <div><p style={{ fontSize: "14px", marginTop: "10px", textAlign: "center", color: "green" }}>Congratulations! You have completed the course.</p><p style={{ fontSize: "14px",marginTop: "-10px", textAlign: "center", color: "green" }}> Click the button below to get your certificate.</p></div>
+            cert_btn = <Link to='/user/coursetaking'><button className="btn btn-fill" style={{ float: "right", marginTop: "20px", color: "white", textDecoration: 'none' }} >
+            Get your Certificate
+        </button></Link>
         }
         return (
             <div className="course-content course-display">
@@ -345,9 +353,11 @@ class QuizPreview extends Component {
 
                                         <Col md={12}>
                                             <div >
-                                                <button className="btn btn-primary" style={{ float: "right", marginTop: "60px" }} onClick={() => this.handleAnswerCheck()}>
+                                                {complete_statement}
+                                                <button className="btn btn-primary" style={{ marginTop: "20px" }} onClick={() => this.handleAnswerCheck()}>
                                                     Check My Answer
                                                 </button>
+                                                {cert_btn}
                                             </div>
                                         </Col>
                                     </Row>

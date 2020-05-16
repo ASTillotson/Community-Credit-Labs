@@ -140,20 +140,15 @@ class CourseAdding extends Component {
                     </Row>
                     {sections}
                 </Grid>
-                {/* <Link to={{ pathname: '/admin/courseoutline', state: this.state.course }}>
-                    <Button bsStyle="info" pullRight fill type="submit" >
-                        Create Course
-                    </Button>
-                </Link> */}
-                <div className="document-upload">
+                {/* <div className="document-upload">
                     <Card
                         title={<input type="file" className="custom-file-input" onChange={this.handleFileChange.bind(this)} multiple />}
                         content={
                             <p>Uploaded Files: {uploadedFiles}</p>
                         }
                     />
-                </div>
-                <Link to='/admin/courses'>
+                </div> */}
+                <Link to='/admin/course'>
                     <Button bsStyle="info" pullRight fill>
                         Publish
                     </Button>

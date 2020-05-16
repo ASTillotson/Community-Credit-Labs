@@ -49,8 +49,8 @@ class Sidebar extends Component {
         <div className="sidebar-wrapper">
           <UserCard
             avatar={avatar}
-            name="Case Manager"
-            userName="cm124"
+            name="John Thomson"
+            userName="john124"
             description={
               <span>
                 Case Manager

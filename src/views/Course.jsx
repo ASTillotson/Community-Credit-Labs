@@ -10,7 +10,7 @@ import course2 from "assets/img/jfs.png";
 import edit from "assets/img/edit.png";
 import course from "../assets/img/course.png";
 
-class Courses extends Component {
+class Course extends Component {
 
     render() {
         return (
@@ -25,6 +25,28 @@ class Courses extends Component {
                         <Tab eventKey="Courses" title="Active Courses">
                             <Grid fluid>
                                 <Row>
+                                <Col md={4}>
+                                        <Card
+                                            id="chartActivity"
+                                            title="Introduction to Community Credit Lab"
+                                            category="Published: 2020-05-15"
+                                            stats="Active"
+                                            statsIcon="fa fa-check"
+                                            content={
+                                                <div className="ct-chart course-img">
+                                                    <a
+                                                        className="img-holder switch-trigger"
+                                                    >
+                                                        <img src={course} alt="..." />
+                                                    </a>
+
+                                                    <Link to='/admin/addcourse'>
+                                                        <a><img className="edit" src={edit} /></a>
+                                                    </Link>
+                                                </div>
+                                            }
+                                        />
+                                    </Col>
                                     <Col md={4}>
                                         <Card
                                             id="chartActivity"
@@ -47,32 +69,7 @@ class Courses extends Component {
                                         />
                                     </Col>
 
-                                    {/* <Col md={4}>
-                                        <Card
-                                            id="chartActivity"
-                                            title="Course2"
-                                            category="Published: YYYY-MM-DD"
-                                            stats="Active"
-                                            statsIcon="fa fa-check"
-                                            content={
-                                                <div className="ct-chart course-img">
-                                                    <a
-                                                        className="img-holder switch-trigger"
-                                                    // onClick={() => {
-                                                    //     this.setState({ bgImage: imagine1 });
-                                                    //     this.props.handleImageClick(imagine1);
-                                                    // }}
-                                                    >
-                                                        <img src={course} alt="..." />
-                                                    </a>
-
-                                                    <Link to='/admin/addcourse'>
-                                                        <a><img className="edit" src={edit} /></a>
-                                                    </Link>
-                                                </div>
-                                            }
-                                        />
-                                    </Col> */}
+                                    
                                 </Row>
                             </Grid>
                         </Tab>
@@ -144,4 +141,4 @@ class Courses extends Component {
         );
     }
 }
-export default Courses;
+export default Course;

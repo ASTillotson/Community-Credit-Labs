@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Times-Roman'
     },
     subtitle: {
-        paddingTop: 25,
+        paddingTop: 20,
         textAlign: 'center',
         fontSize: 25
     },
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     image: {
         height: 100,
         width: 100,
-        marginTop: -70,
-        marginLeft: 650,
+        marginTop: -90,
+        marginLeft: 630,
         transform: "rotate(20deg)"
     },
     background: {
@@ -65,6 +65,15 @@ const styles = StyleSheet.create({
         height: '70px',
         marginTop: 58,
         marginLeft: 250
+    },
+    underLine:{
+        marginTop: -20,
+        textAlign: 'center'
+    },
+    name:{
+        paddingTop: 30,
+        fontSize: 35,
+        textAlign: 'center'
     }
 });
 
@@ -76,10 +85,11 @@ const MyDocument = (
                 <Image style={styles.logo} src={logo}></Image>
                 <Text style={styles.title}>Certificate of Completion</Text>
                 <Text style={styles.subtitle}>This Certificate is Awarded to</Text>
-                <Text style={styles.subtitle}>______________________________________</Text>
+                <Text style={styles.name}>JOHN THOMSON</Text> 
+                <Text style={styles.underLine}>______________________________________</Text>
                 <Text style={styles.subtitle}>for completing </Text>
                 <Text style={styles.courseName}>Introduction to Community Credit Lab</Text>
-                <Text style={styles.subtitle}>on May 11, 2020</Text>
+                <Text style={styles.subtitle}>on May 15, 2020</Text>
                 <Image style={styles.image} src={stamp}></Image>
             </View>
         </Page>
@@ -88,30 +98,30 @@ const MyDocument = (
 
 const course = [
     {
-        name: 'Section 1: Introducing CCL',
+        name: "Section 1 : Introducing CCL",
         pages: [
-            { name: 'Our Mission Statement' }, //pages
-            { name: 'Our Co-Founders' },
-        ],
+            {
+                contents: { content: "https://ccl985605d4e97c4fb7937ee5ca5d4907a2201726-prod.s3.amazonaws.com/public/images/contact.jpg", contentType: "image" }, 
+                name: "Who are we?",
+                template: "FULLSCREEN IMAGE"
+            },
+            {
+                contents: { content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/EhagRQtrzGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', contentType: "video" },
+                name: "Our SVP Pitch",
+                template: "FULLSCREEN VIDEO"
+            },
+        ]
     },
     {
-        name: 'Section 2: Our Partners',
+        name: "Section 2: Quiz",
         pages: [
-            { name: 'Jewish Family Services' },
-            { name: 'Express Credit Union' },
-            { name: 'UW Information School' },
-            { name: 'Business Impact NW' },
-            { name: 'Welcome Back center' },
-            { name: 'Credit Builders Alliance' },
-        ],
-    },
-    {
-        name: 'Section 3: Quiz',
-        pages: [
-            { name: 'Quiz 1' },
-            { name: 'Quiz 2' },
-        ],
-    },
+            {
+                contents: { content: { answerOne: "Affordable credit", answerTwo: "Organizations", answerThree: "Programs", answerFour: "Workshops", checkOne: true, checkTwo: false, checkThree: false, checkFour: false, theQuestion: "CCL exists to facilitate access to ______ for underserved communities." }, contentType: "quiz" },
+                name: "Quiz 1",
+                template: "QUIZ CONTENT"
+            },
+        ]
+    }
 ];
 
 class CourseTaking extends Component {

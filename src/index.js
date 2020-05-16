@@ -20,7 +20,7 @@ ReactDOM.render(
         <Redirect to="/admin" />
       </Route>
       <Route exact path="/admin">
-        <Redirect to="/admin/dashboard" />
+        <Redirect to="/admin/courses" />
       </Route>
       <Route exact path="/user">
         <Redirect to="/user/usercourse" />
