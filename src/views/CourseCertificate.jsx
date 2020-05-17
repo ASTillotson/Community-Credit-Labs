@@ -124,7 +124,7 @@ const course = [
     }
 ];
 
-class CourseTaking extends Component {
+class CourseCertificate extends Component {
     constructor() {
         super();
         this.state = {
@@ -181,4 +181,4 @@ class CourseTaking extends Component {
         );
     }
 }
-export default CourseTaking;
+export default CourseCertificate;

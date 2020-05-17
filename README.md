@@ -225,18 +225,12 @@ CCL
     ├── variables
     │   └── Variables.jsx
     └── views
-        ├── Dashboard.jsx
         ├── Icons.jsx
-        ├── Maps.jsx
-        ├── Notifications.jsx
-        ├── TableList.jsx
         ├── Typography.jsx
-        ├── Upgrade.jsx
         ├── CourseAdding.jsx
-        ├── CourseMedia.jsx
         ├── CourseOutline.jsx
         ├── Courses.jsx
-        ├── CourseTaking.jsx
+        ├── CourseCertificate.jsx
         ├── FullImageContent.jsx
         ├── FullImagePreview.jsx
         ├── FullTextContent.jsx
@@ -253,8 +247,7 @@ CCL
         ├── QuizPreview.jsx
         ├── UserCourse.jsx
         ├── VideoCapContent.jsx
-        ├── VideoCapPreview.jsx
-        └── UserProfile.jsx
+        └── VideoCapPreview.jsx
 ```
 
 ## Browser Support

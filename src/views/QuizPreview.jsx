@@ -172,7 +172,7 @@ class QuizPreview extends Component {
         }
         if(this.state.checkOne == true && this.state.submitted == true){
             complete_statement = <div><p style={{ fontSize: "14px", marginTop: "10px", textAlign: "center", color: "green" }}>Congratulations! You have completed the course.</p><p style={{ fontSize: "14px",marginTop: "-10px", textAlign: "center", color: "green" }}> Click the button below to get your certificate.</p></div>
-            cert_btn = <Link to='/user/coursetaking'><button className="btn btn-fill" style={{ float: "right", marginTop: "20px", color: "white", textDecoration: 'none' }} >
+            cert_btn = <Link to='/user/coursecertificate'><button className="btn btn-fill" style={{ float: "right", marginTop: "20px", color: "white", textDecoration: 'none' }} >
             Get your Certificate
         </button></Link>
         }
