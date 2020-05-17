@@ -237,12 +237,8 @@ CCL
         ├── FullTextPreview.jsx
         ├── FullVideoContent.jsx
         ├── FullVideoPreview.jsx
-        ├── HorizontalMultiImgs.jsx
-        ├── HorizontalMultiImgsPreview.jsx
         ├── ImageCapContent.jsx
         ├── ImageCapPreview.jsx
-        ├── MultiImgCapContent.jsx
-        ├── MultiImgCapPreview.jsx
         ├── QuizContent.jsx
         ├── QuizPreview.jsx
         ├── UserCourse.jsx
