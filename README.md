@@ -64,74 +64,166 @@ The documentation for the Light Bootstrap Dashboard React is hosted at our [webs
 Within the download you'll find the following directories and files:
 
 ```
-light-bootstrap-dashboard-react
+CCL Project Structure
 .
-├── CHANGELOG.md
-├── ISSUE_TEMPLATE.md
-├── LICENSE.md
+CCL
 ├── README.md
 ├── jsconfig.json
 ├── package.json
-├── Documentation
-│   ├── css
-│   │   ├── demo.css
-│   │   ├── documentation.css
-│   │   └── light-bootstrap-dashboard.css
-│   ├── img
-│   └── tutorial-components.html
+├── package-lock.json
+├── .graphqlconfig.yml
+├── amplify
+│   ├── #current-cloud-backend
+│   │   ├── api
+│   │   │   └── ccl
+│   │   │       ├── build
+│   │   │       │   ├── functions
+│   │   │       │   ├── pipelineFunctions
+│   │   │       │   ├── resolvers
+│   │   │       │   ├── stacks
+│   │   │       │   │   ├── Certificate.json
+│   │   │       │   │   ├── ConnectionStack.json
+│   │   │       │   │   ├── Content.json
+│   │   │       │   │   ├── Course.json
+│   │   │       │   │   ├── CustomResources.json
+│   │   │       │   │   ├── Page.json
+│   │   │       │   │   ├── Program.json
+│   │   │       │   │   ├── Section.json
+│   │   │       │   │   ├── User.json
+│   │   │       │   │   ├── UserCourse.json
+│   │   │       │   │   └── UserProgram.json
+│   │   │       │   ├── cloudformation-template.json
+│   │   │       │   ├── parameters.json
+│   │   │       │   └── schema.graphql
+│   │   │       ├── resolvers
+│   │   │       ├── stacks
+│   │   │       │   └── CustomResources.json
+│   │   │       ├── parameters.json
+│   │   │       ├── transform.conf.json
+│   │   │       └── schema.graphql
+│   │   ├── auth
+│   │   │   └── cclf4b7731e
+│   │   │       ├── cclf4b7731e-cloudformation-template.yml
+│   │   │       └── parameters.json
+│   │   ├── storage
+│   │   │   └── cclimages
+│   │   │       ├── s3-cloudformation-template.json
+│   │   │       ├── storage-params.json
+│   │   │       └── parameters.json
+│   │   ├── amplify-meta.json
+│   │   └── backend-config.json
+│   ├── .config
+│   │   ├── local-aws-info.json
+│   │   ├── local-env-info.json
+│   │   └── project-config.json
+│   ├── backend
+│   │   ├── api
+│   │   │   └── ccl
+│   │   │       ├── build
+│   │   │       │   ├── functions
+│   │   │       │   ├── pipelineFunctions
+│   │   │       │   ├── resolvers
+│   │   │       │   ├── stacks
+│   │   │       │   │   ├── Certificate.json
+│   │   │       │   │   ├── ConnectionStack.json
+│   │   │       │   │   ├── Content.json
+│   │   │       │   │   ├── Course.json
+│   │   │       │   │   ├── CustomResources.json
+│   │   │       │   │   ├── Page.json
+│   │   │       │   │   ├── Program.json
+│   │   │       │   │   ├── Section.json
+│   │   │       │   │   ├── User.json
+│   │   │       │   │   ├── UserCourse.json
+│   │   │       │   │   └── UserProgram.json
+│   │   │       │   ├── cloudformation-template.json
+│   │   │       │   ├── parameters.json
+│   │   │       │   └── schema.graphql
+│   │   │       ├── resolvers
+│   │   │       ├── stacks
+│   │   │       │   └── CustomResources.json
+│   │   │       ├── parameters.json
+│   │   │       ├── transform.conf.json
+│   │   │       └── schema.graphql
+│   │   ├── auth
+│   │   │   └── cclf4b7731e
+│   │   │       ├── cclf4b7731e-cloudformation-template.yml
+│   │   │       └── parameters.json
+│   │   ├── storage
+│   │   │   └── cclimages
+│   │   │       ├── s3-cloudformation-template.json
+│   │   │       ├── storage-params.json
+│   │   │       └── parameters.json
+│   │   ├── amplify-meta.json
+│   │   └── backend-config.json
+│   └── team-provider-info
 ├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
 └── src
     ├── index.js
     ├── logo.svg
     ├── routes.js
+    ├── Route.jsx
+    ├── PrivateRoute.jsx
+    ├── aws-exports.js
+    ├── Auth.js
     ├── assets
-    │   ├── css
-    │   │   ├── animate.min.css
-    │   │   ├── demo.css
-    │   │   ├── light-bootstrap-dashboard-react.css
-    │   │   ├── light-bootstrap-dashboard-react.css.map
-    │   │   ├── light-bootstrap-dashboard-react.min.css
-    │   │   └── pe-icon-7-stroke.css
-    │   ├── fonts
-    │   ├── img
-    │   │   ├── faces
-    │   └── sass
-    │       ├── lbd
-    │       │   └── mixins
-    │       └── light-bootstrap-dashboard-react.scss
+    │   ├── css
+    │   │   ├── animate.min.css
+    │   │   ├── demo.css
+    │   │   ├── light-bootstrap-dashboard-react.css
+    │   │   ├── light-bootstrap-dashboard-react.css.map
+    │   │   ├── light-bootstrap-dashboard-react.min.css
+    │   │   └── pe-icon-7-stroke.css
+    │   ├── fonts
+    │   ├── img
+    │   │   ├── faces
+    │   └── sass
+    │       ├── lbd
+    │       │   └── mixins
+    │       └── light-bootstrap-dashboard-react.scss
     ├── components
-    │   ├── Card
-    │   │   └── Card.jsx
-    │   ├── CustomButton
-    │   │   └── CustomButton.jsx
-    │   ├── CustomCheckbox
-    │   │   └── CustomCheckbox.jsx
-    │   ├── CustomRadio
-    │   │   └── CustomRadio.jsx
-    │   ├── FixedPlugin
-    │   │   └── FixedPlugin.jsx
-    │   ├── Footer
-    │   │   └── Footer.jsx
-    │   ├── FormInputs
-    │   │   └── FormInputs.jsx
-    │   ├── Navbars
-    │   │   ├── AdminNavbar.jsx
-    │   │   └── AdminNavbarLinks.jsx
-    │   ├── Sidebar
-    │   │   └── Sidebar.jsx
-    │   ├── StatsCard
-    │   │   └── StatsCard.jsx
-    │   ├── Tasks
-    │   │   └── Tasks.jsx
-    │   └── UserCard
-    │       └── UserCard.jsx
+    │   ├── Card
+    │   │   └── Card.jsx
+    │   ├── CustomButton
+    │   │   └── CustomButton.jsx
+    │   ├── CustomCheckbox
+    │   │   └── CustomCheckbox.jsx
+    │   ├── CustomRadio
+    │   │   └── CustomRadio.jsx
+    │   ├── FixedPlugin
+    │   │   └── FixedPlugin.jsx
+    │   ├── Footer
+    │   │   └── Footer.jsx
+    │   ├── FormInputs
+    │   │   └── FormInputs.jsx
+    │   ├── Navbars
+    │   │   ├── AdminNavbar.jsx
+    │   │   └── AdminNavbarLinks.jsx
+    │   ├── PopUp
+    │   │   ├── Uploader.jsx
+    │   │   └── PopUp.jsx
+    │   ├── ProgressBar
+    │   │   └── ProgressBar.jsx
+    │   ├── Section
+    │   │   └── Section.jsx
+    │   ├── Sidebar
+    │   │   ├── CourseSidebar.jsx
+    │   │   ├── UserSidebar.jsx
+    │   │   └── Sidebar.jsx
+    │   ├── StatsCard
+    │   │   └── StatsCard.jsx
+    │   ├── Tasks
+    │   │   └── Tasks.jsx
+    │   └── UserCard
+    │       └── UserCard.jsx
     ├── layouts
-    │   └── Admin.jsx
+    │   ├── HomeLayout.jsx
+    │   ├── UserLayout.jsx
+    │   └── AdminLayout.jsx
     ├── variables
-    │   └── Variables.jsx
+    │   └── Variables.jsx
     └── views
         ├── Dashboard.jsx
         ├── Icons.jsx
@@ -140,6 +232,28 @@ light-bootstrap-dashboard-react
         ├── TableList.jsx
         ├── Typography.jsx
         ├── Upgrade.jsx
+        ├── CourseAdding.jsx
+        ├── CourseMedia.jsx
+        ├── CourseOutline.jsx
+        ├── Courses.jsx
+        ├── CourseTaking.jsx
+        ├── FullImageContent.jsx
+        ├── FullImagePreview.jsx
+        ├── FullTextContent.jsx
+        ├── FullTextPreview.jsx
+        ├── FullVideoContent.jsx
+        ├── FullVideoPreview.jsx
+        ├── HorizontalMultiImgs.jsx
+        ├── HorizontalMultiImgsPreview.jsx
+        ├── ImageCapContent.jsx
+        ├── ImageCapPreview.jsx
+        ├── MultiImgCapContent.jsx
+        ├── MultiImgCapPreview.jsx
+        ├── QuizContent.jsx
+        ├── QuizPreview.jsx
+        ├── UserCourse.jsx
+        ├── VideoCapContent.jsx
+        ├── VideoCapPreview.jsx
         └── UserProfile.jsx
 ```
 
