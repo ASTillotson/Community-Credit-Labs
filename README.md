@@ -65,7 +65,7 @@ Within the download you'll find the following directories and files:
 
 ```
 CCL Project Structure
-.
+
 CCL
 ├── README.md
 ├── jsconfig.json
