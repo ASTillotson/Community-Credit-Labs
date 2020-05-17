@@ -225,8 +225,6 @@ CCL
     ├── variables
     │   └── Variables.jsx
     └── views
-        ├── Icons.jsx
-        ├── Typography.jsx
         ├── CourseAdding.jsx
         ├── CourseOutline.jsx
         ├── Courses.jsx
